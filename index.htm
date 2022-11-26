@@ -238,6 +238,27 @@
 				</div>
 			</div>
 		</div>
+		<!--判断设备和执行跳转-->
+	<script>
+        function browserRedirect() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            //document.writeln("您的浏览设备为：");
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+               
+                window.location.href="https://360rom.github.io"; //请在此处填写移动端的网址
+            }
+        }
+        //执行跳转
+        browserRedirect();
+</script>
 		<!--底部信息-->
 		<div id="ft" class="xm_footer">
 			<div class="xm_footerInner">
@@ -247,11 +268,9 @@
 					<div class="links">
 						<a href="" target="_blank">
 						</a>
-						<font size="3" color="#FF0000"> 声明：非官方 公益站</font>
+						<font size="3" color="#FF0000">注：非官方 公益站</font>
 						</br>
-						<font size="3" color="#FF0000">注：下载页·点"系统合集包下载>>"下载刷机包</font>
-						</br>
-						<font size="3" color="#FF0000"> 360手机：刷机、解锁、纯净无广告系统、twrp、root(微：wander-wechat)</font>
+						<font size="3" color="#FF0000">微信：wander-wechat</font>
 					</div>
 				</div>
 			</div>
