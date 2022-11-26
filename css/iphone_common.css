@@ -1,0 +1,42 @@
+@charset "utf-8";
+*,html{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "微软雅黑", "宋体", SimHei, Verdana, Arial, sans-serif;
+    text-align: center;
+    margin:0 auto;
+    font-size:0.25rem;
+    width:7.5rem;
+    background-color: #d9d9d9;
+}
+ul li,ul{
+    list-style: none;
+}
+a{
+    border:none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color:transparent;
+    outline:none;
+}
+/* 清除浮动 */
+.clearfix:before,.clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after {
+    clear:both;
+    overflow:hidden;
+}
+.clearfix {
+    zoom:1; /* for ie6 & ie7 */
+}
+.clear {
+    clear:both;
+    display:block;
+    font-size:0;
+    height:0;
+    line-height:0;
+    overflow:hidden;
+}
