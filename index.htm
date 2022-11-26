@@ -238,28 +238,13 @@
 				</div>
 			</div>
 		</div>
-		<!--判断设备和执行跳转-->
-	
-<script type="text/javascript">  
-var userAgent = navigator.userAgent.toLowerCase();
-    var platform;
-    if(userAgent == null || userAgent == ''){
-        platform = 'WEB' ; 
-    }else{
-        if(userAgent.indexOf("android") != -1 ){ 
-            platform = 'ANDROID';
-            location.href = "https://360rom.github.io/index.htm";
-        }else if(userAgent.indexOf("ios") != -1 || userAgent.indexOf("iphone") != -1 || userAgent.indexOf("ipad") != -1){ 
-            platform = 'IOS';
-            location.href = "https://360rom.github.io/index.htm";
-        }else if(userAgent.indexOf("windows phone") != -1 ){ 
-            platform = 'WP';
-            location.href = "https://360rom.github.io/";
-        }else{
-            platform = 'WEB' ;
-            location.href = "https://360rom.github.io/";
-        }
-    }
+		<!--终端设备全识别和跳转-->
+<script>
+if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {  
+    window.location.href="https://360rom.github.io/index.htm";  
+}else{  
+    window.location.href="https://360rom.github.io";  
+}  
 </script>
 		<!--底部信息-->
 		<div id="ft" class="xm_footer">
