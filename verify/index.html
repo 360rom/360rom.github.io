@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" /> 
+  <title>安全验证-360手机资源下载</title>
+  <meta name="description" content="360手机刷机解锁救砖、360刷机包；360N5、360N5S、360N6、N6Lite、360N6PRO、360N7、360N7Lite、360N7PRO、360Q5、360Q5Plus" />
+  <meta name="keywords" content="360手机,360手机解锁,360手机刷机救砖,360手机刷机包,360手机纯净系统,酷派,奇酷,360,miui,CPB,QGDP破解版,twrp,root,magisk,qiku download assistant,360N5,360N5S,360N6,360N6Lite,360N6PRO,360N7,360N7Lite,360N7Pro,360Q5,360Q5Plus" />
+  <link rel="shortcut icon" href="favicon.png" /> 
+  <link rel="stylesheet" type="text/css" href="css/verify.css" /> 
+  <style>
+   body {
+    background: url(https://source.unsplash.com/1600x900/?nature,animal,city,girl,starry) no-repeat center center fixed;
+    /*兼容浏览器版本*/
+                -webkit-background-size: cover;
+    -o-background-size: cover;               
+    background-size: cover;
+   }
+   
+  </style> 
+ </head> 
+ <body> 
+  <div style="text-align:center;clear:both;margin:50px 0"> 
+  </div> 
+  <!--普通验证码字母、加和（上原背景图：https://picsum.photos/1920）
+<h3>普通验证码</h3>
+<div id="mpanel2" >
+</div>
+
+<button type="button" id="check-btn" class="verify-btn">确定</button>
+
+
+<div id="mpanel3" style="margin-top: 20px">
+</div>
+
+<button type="button" id="check-btn2" class="verify-btn">确定</button>
+--> 
+  <center> 
+   <h3><font size="" color="#A10303">人机验证</font></h3> 
+   <div id="mpanel1"> 
+   </div> 
+   <!--滑动验证-有图
+<div id="mpanel4" style="margin-top:50px;">
+</div>
+--> 
+   <!--
+<h3>点选验证码</h3>
+<div id="mpanel5" style="margin-top:50px;">
+</div>
+
+<div id="mpanel6" style="margin-top:50px;">
+</div>
+
+--> 
+   <script type="text/javascript" src="js/jquery.min.js"></script> 
+   <script type="text/javascript" src="js/verify.js"></script> 
+   <script type="text/javascript">
+	
+/**$('#mpanel2').codeVerify({
+		type : 1,
+		width : '400px',
+		height : '50px',
+		fontSize : '30px',
+		codeLength : 6,
+		btnId : 'check-btn',
+		ready : function() {
+		},
+		success : function() {
+			alert('验证匹配！');
+		},
+		error : function() {
+			alert('验证码不匹配！');
+		}
+	});
+	
+	
+	$('#mpanel3').codeVerify({
+		type : 2,
+		figure : 100,	//位数，仅在type=2时生效
+		arith : 0,	//算法，支持加减乘，不填为随机，仅在type=2时生效
+		width : '200px',
+		height : '50px',
+		fontSize : '30px',
+		btnId : 'check-btn2',
+		ready : function() {
+		},
+		success : function() {
+			alert('验证匹配！');
+		},
+		error : function() {
+			alert('验证码不匹配！');
+		}
+	});**/
+	
+	
+	
+	$('#mpanel1').slideVerify({
+		type : 1,		//类型
+		vOffset : 5,	//误差量，根据需求自行调整
+		barSize : {
+			width : '45%',
+			height : '50px',
+		},
+		ready : function() {
+		},
+		success : function() {
+			
+			// 匹配成功以后写入你要跳转的页面
+                window.location.href="https://pan.xunlei.com/s/VN8T0M6ULzwPnUcPP9xyBFL-A1?pwd=rc82#";
+		},
+		error : function() {
+//		        	alert('验证失败！');
+		}
+		
+	});
+	
+	
+	/**$('#mpanel4').slideVerify({
+		type : 2,		//类型
+		vOffset : 5,	//误差量，根据需求自行调整
+		vSpace : 5,	//间隔
+		imgName : ['1.jpg', '2.jpg'],
+		imgSize : {
+			width: '400px',
+			height: '200px',
+		},
+		blockSize : {
+			width: '40px',
+			height: '40px',
+		},
+		barSize : {
+			width : '400px',
+			height : '40px',
+		},
+		ready : function() {
+		},
+		success : function() {
+			alert('验证成功，添加你自己的代码！');
+			//......后续操作
+		},
+		error : function() {
+//		        	alert('验证失败！');
+		}
+		
+	});
+	
+	
+	
+	$('#mpanel5').pointsVerify({
+		defaultNum : 4,	//默认的文字数量
+		checkNum : 2,	//校对的文字数量
+		vSpace : 5,	//间隔
+		imgName : ['1.jpg', '2.jpg'],
+		imgSize : {
+			width: '600px',
+			height: '200px',
+		},
+		barSize : {
+			width : '600px',
+			height : '40px',
+		},
+		ready : function() {
+		},
+		success : function() {
+			alert('验证成功，添加你自己的代码！');
+			//......后续操作
+		},
+		error : function() {
+//		        	alert('验证失败！');
+		}
+		
+	});
+	
+	$('#mpanel6').pointsVerify({
+		defaultNum : 4,	//默认的文字数量
+		checkNum : 2,	//校对的文字数量
+		vSpace : 5,	//间隔
+		imgName : ['1.jpg', '2.jpg'],
+		imgSize : {
+			width: '600px',
+			height: '200px',
+		},
+		barSize : {
+			width : '600px',
+			height : '40px',
+		},
+		ready : function() {
+		},
+		success : function() {
+			alert('验证成功，添加你自己的代码！');
+			//......后续操作
+		},
+		error : function() {
+//		        	alert('验证失败！');
+		}
+		
+	});**/
+	
+	
+</script> 
+   <p><font size="1" color="#DB7093"><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script type="text/javascript"> document.write(returnCitySN["cip"]+','+returnCitySN["cname"]) </script> <br /> 
+     <!--位置显示，不推荐ttps://ip.sb/api/  
+<script type="application/javascript">
+function getgeoip(json){
+    document.write("Geolocation information for IP address: ", json.ip);
+    document.write("Country: ", json.country);
+    document.write("Latitude: ", json.latitude);
+    document.write("Longitude: ", json.longitude);
+}
+</script>
+<script src="ip.js"></script>
+<script type="application/javascript" src="https://api.ip.sb/geoip?callback=getgeoip"></script>--> 
+     <!--
+		   <span>IP：</span>
+            <span id="pconline">查询中...
+            </span>
+			--> <span>IP:</span> <span id="ipsb">查询中... </span> 
+     <!--下·调用接口、搜狐独立--> <script>
+    $(document).ready(function() {
+        $.ajax({
+            //太平洋 ip接口
+            url: "https://whois.pconline.com.cn/ipJson.jsp",
+            dataType: "jsonp",
+            timeout: 5000,
+            success: function(re) {
+                $("#pconline").html(re.ip + "&nbsp;|&nbsp;" + re.city);
+            },
+            error: function() {
+                $("#pconline").html("<font color='red'>链接失败</font>");
+            },
+            complete: function() {},
+        });
+        $.ajax({
+            url: "https://api-ipv4.ip.sb/geoip",
+            dataType: "jsonp",
+            timeout: 5000,
+            success: function(re) {
+                $("#ipsb").html(re.ip + "&nbsp;|&nbsp;" + re.country + "&nbsp;&nbsp;");
+            },
+            error: function() {
+                $("#ipsb").html("<font color='red'>链接失败</font>");
+            },
+            complete: function() {},
+        });
+        $.ajax({
+            url: "https://freegeoip.app/json/",
+            dataType: "jsonp",
+            timeout: 5000,
+            success: function(re) {
+                $("#freegeoip").html(re.ip + "&nbsp;|&nbsp;" + re.country_code + "&nbsp;&nbsp;<img class='flag' src='https://cdn.jsdelivr.net/gh/5iux/dyimg/flag/" + re.country_code+".svg'>");
+            },
+            error: function() {
+                $("#freegeoip").html("<font color='red'>链接失败</font>");
+            },
+            complete: function() {},
+        });
+
+        function ping(url) {
+            var img = new Image();
+            var start = new Date().getTime();
+            img.src = url + start;
+            var flag = false; //无法访问
+            img.onload = function() {
+                flag = true;
+                $("#appspot").html("<font color='green'>链接成功！</font>");
+            };
+            img.onerror = function() {
+                flag = true;
+                $("#appspot").html("<font color='green'>链接成功！</font>");
+            };
+            var timer = setTimeout(function() {
+                if (!flag) { //如果真的无法访问
+                    flag = false;
+                    $("#appspot").html("<font color='red'>链接失败</font>");
+                }
+            }, 1500);
+        }
+
+        $.ajax({
+            url: "https://ipquery.et.r.appspot.com",
+            dataType: "jsonp",
+            timeout: 5000,
+            success: function(re) {
+                $("#appspot").html(re.address + "&nbsp;|&nbsp;" + re.geographical + "&nbsp;&nbsp;" + re.flag);
+            },
+            error: function(re) {
+                var d = new Date().getTime();
+                ping('https://www.google.com/favicon.ico?t=' + d);
+
+                //$("#appspot").html("<font color='red'>链接失败</font>");
+            },
+            complete: function() {},
+        });
+    });
+    </script> </font></p> 
+   <!--文字放置最底层--> 
+   <div style="position:fixed; bottom:0px; width:100%; text-align:center;">
+    <font size="1" color="#F5F5F5">Tips: IP位置已记录（刷新即换图）</font>
+   </div>  
+  </center>
+ </body>
+</html>

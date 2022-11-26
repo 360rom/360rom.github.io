@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title></title>
+	<link rel="stylesheet" href="https://360iphoneos.github.io/src/webmp3/css/player.css">
+</head>
+<body>
+<div id="QPlayer">               
+<div id="pContent">
+	<div id="player">
+		<span class="cover"></span>
+		<div class="ctrl">
+			<div class="musicTag marquee">
+				<strong>Title</strong>
+				 <span> - </span>
+				<span class="artist">Artist</span>
+			</div>
+			<div class="progress">
+				<div class="timer left">0:00</div>
+				<div class="contr">
+					<div class="rewind icon"></div>
+					<div class="playback icon"></div>
+					<div class="fastforward icon"></div>
+				</div>
+				<div class="right">
+					<div class="liebiao icon"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="ssBtn">
+	        <div class="adf"></div>
+    </div>
+</div>
+<ol id="playlist"></ol>
+</div>
+
+<script src="https://360iphoneos.github.io/src/webmp3/js/jquery.min.js"></script>
+<script src="https://test-1252777009.cos.ap-beijing.myqcloud.com/webmp3/js/jquery.marquee.min.js
+"></script>
+<!--插件后台配置歌曲格式:
+
+1
+{title:"xxx", artist:"xxx", cover:"http:xxxx", mp3:"http:xxxx"}
+，每个歌曲之间用英文,隔开。 请保证歌曲列表里至少有一首歌！
+
+添加网易云音乐(需主机支持curl扩展)
+
+去网易云音乐官网找到音乐id,支持 歌单|艺人|专辑|单曲 类型的id解析(单曲解析需国内服务器)，billboard等排行榜也支持(实质就是歌单)。 -->
+<script>
+	var	playlist = [
+{title:"July Tun - 清新的小女孩",artist:"July Tun",mp3:"https://allall02.baidupcs.com/file/7c711730bq3b9fa47289b06803228c68?bkt=en-26dcfdb4e5ee1a4950660638fb9428d4d4732843f91a58be1e34d59c7ec5baa3db8d4cfe469843f2&fid=3870841501-250528-198525829583717&time=1658968990&sign=FDTAXUbGERLQlBHSKfWqi-DCb740ccc5511e5e8fedcff06b081203-XaIWnE5Nm6G2ETaDA8FRyuyBn%2BM%3D&to=80&size=9666395&sta_dx=9666395&sta_cs=0&sta_ft=mp3&sta_ct=0&sta_mt=0&fm2=MH%2CYangquan%2CAnywhere%2C%2C%E5%B1%B1%E8%A5%BF%2Ccnc&ctime=1658968971&mtime=1658968971&resv0=-1&resv1=0&resv2=rlim&resv3=5&resv4=9666395&vuk=3870841501&iv=0&htype=&randtype=&tkbind_id=0&newver=1&newfm=1&secfm=1&flow_ver=3&pkey=en-d086dfaf28731c345135f5e097959aa85a5d7a620c2b74576f246f9fd8651fee02636a4bcb6c0af3&sl=76480590&expires=8h&rt=pr&r=522940146&vbdid=3704672119&fin=July+Tun+-+%E6%B8%85%E6%96%B0%E7%9A%84%E5%B0%8F%E5%A5%B3%E5%AD%A9+my-free-mp3s.com+.mp3&fn=July+Tun+-+%E6%B8%85%E6%96%B0%E7%9A%84%E5%B0%8F%E5%A5%B3%E5%AD%A9+my-free-mp3s.com+.mp3&rtype=1&dp-logid=220847575927997983&dp-callid=0.1&hps=1&tsl=80&csl=80&fsl=-1&csign=lnNK130e9hJAl2vKR5TeSTJDwug%3D&so=0&ut=6&uter=4&serv=0&uc=738096701&ti=f6e24c9f0958028707d98519acdac159161b6b2d759aa464&hflag=30&from_type=1&adg=c_3d06c6f7a8fbf52b7e65bf1a842fa4a5&reqlabel=250528_f_0d379c25691f1db02fd2dff786ffd19a_-1_e575750a3c4aa01749b9e79faa454520&by=themis",cover:"http://p2.music.126.net/YkkP3KjwQ6ZF5CsOWNfU1A==/109951164258026349.jpg?param=106x106",},
+];
+  var isRotate = true;
+  var autoplay = false;
+</script>
+<script src="https://test-1252777009.cos.ap-beijing.myqcloud.com/webmp3/js/player.js"></script>
+<script>
+
+function bgChange(){
+	var lis= $('.lib');
+	for(var i=0; i<lis.length; i+=2)
+	lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+}
+window.onload = bgChange;
+</script>
+
+</body>
+</html>
