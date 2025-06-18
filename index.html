@@ -135,7 +135,77 @@
     </style>
     <!--头条搜推js -->
   </head>
-  
+  <script type="text/javascript">
+// 禁用特定操作的配置项
+const disabledActions = {
+  contextMenu: true, // 右键菜单
+  ctrlS: true, // Ctrl+S
+  f12: true, // F12
+ // backspace: true, // 退格键
+  //tab: true, // Tab键
+  //enter: true, // Enter键
+  iframe: true, // 禁用iframe操作
+  frameBusting: true // 防止被嵌入iframe
+};
+
+// 提示信息配置
+const alertMessage = "权限禁止";
+
+// 禁用右键菜单
+if (disabledActions.contextMenu) {
+  document.addEventListener('contextmenu', e => {
+    if (!['INPUT', 'TEXTAREA'].includes(e.target.tagName)) {
+      e.preventDefault();
+      alert(alertMessage);
+    }
+  });
+}
+
+// 禁用键盘快捷键
+if (disabledActions.ctrlS || disabledActions.f12 || disabledActions.backspace || disabledActions.tab || disabledActions.enter) {
+  document.addEventListener('keydown', e => {
+    const { keyCode, ctrlKey, metaKey } = e;
+    const isCtrl = ctrlKey || metaKey;
+    
+    if (
+      (disabledActions.ctrlS && isCtrl && keyCode === 83) ||
+      (disabledActions.f12 && keyCode === 123) ||
+      (disabledActions.backspace && keyCode === 8) ||
+      (disabledActions.tab && keyCode === 9) ||
+      (disabledActions.enter && keyCode === 13)
+    ) {
+      e.preventDefault();
+      alert(alertMessage);
+    }
+  });
+}
+
+// 禁用iframe内部操作
+if (disabledActions.iframe) {
+  try {
+    const iframe = document.getElementById('iframe');
+    if (iframe?.contentDocument) {
+      ['contextmenu', 'keydown'].forEach(event => {
+        iframe.contentDocument.addEventListener(event, e => {
+          e.preventDefault();
+          alert(alertMessage);
+        });
+      });
+    }
+  } catch (err) {
+    console.warn('无法禁用iframe操作:', err);
+  }
+}
+
+// 防止页面被iframe嵌入
+if (disabledActions.frameBusting && window.top !== window.self) {
+  try {
+    window.top.location.href = window.self.location.href;
+  } catch {
+    document.body.innerHTML = '<h1>权限禁止iframe中显示</h1>';
+  }
+}    
+</script>
   <!-- part 1 -->
   <body id="nv_forum" class="pg_romproduct" onkeydown="if(event.keyCode==27) return false;">
     <!--顶部横条信息-->
