@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360手机-在线刷机服务检测</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#4f46e5',
+                        success: '#10b981',
+                        danger: '#ef4444',
+                        warning: '#f59e0b',
+                        info: '#3b82f6',
+                        light: '#f3f4f6',
+                        dark: '#1f2937',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .bg-gradient-blue {
+                background: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            }
+            .animate-pulse-slow {
+                animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+            .animate-pulse-medium {
+                animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+            .animate-pulse-fast {
+                animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen font-sans">
+    <!-- 页面头部 -->
+    <header class="bg-gradient-blue text-white shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fa fa-mobile-phone text-4xl" aria-hidden="true"></i>
+                    <h1 class="text-2xl md:text-3xl font-bold text-shadow">360手机-刷机服务检测</h1>
+                </div>
+                <div class="flex items-center space-x-4 text-sm opacity-90">
+                    <span><i class="fa fa-calendar mr-1" aria-hidden="true"></i> <span id="current-date">----年--月--日</span></span>
+                    <span><i class="fa fa-clock-o mr-1" aria-hidden="true"></i> <span id="current-time">--:--:--</span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <!-- 检测进度条 -->
+            <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-xl font-bold text-gray-800">检测进度</h2>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-gray-500" id="progress-text">0% 完成</span>
+                        <button id="refresh-btn" class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg transition-colors flex items-center">
+                            <i class="fa fa-refresh mr-2" aria-hidden="true"></i>
+                           
+                        </button>
+                    </div>
+                </div>
+                <div class="h-4 w-full bg-gray-200 rounded-full overflow-hidden">
+                    <div id="progress-bar" class="h-full bg-primary rounded-full transition-all duration-500 ease-out" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- 检测结果区域 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- 左侧检测结果 -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                        <i class="fa fa-check-square-o text-primary mr-2" aria-hidden="true"></i>
+                        检测列表
+                    </h2>
+
+                    <!-- 互联网状态 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fa fa-globe text-info mr-2" aria-hidden="true"></i>
+                            正在检测 互联网状态
+                        </h3>
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <div id="network-status" class="flex items-center">
+                                <div class="animate-pulse-slow mr-3">
+                                    <i class="fa fa-spinner fa-spin text-primary" aria-hidden="true"></i>
+                                </div>
+                                <span class="text-gray-700">检测中...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 360OS资源站通信状态 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fa fa-server text-info mr-2" aria-hidden="true"></i>
+                            正在检测 360OS资源站通信状态
+                        </h3>
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <div id="resource-site-status" class="flex items-center">
+                                <div class="animate-pulse-slow mr-3">
+                                    <i class="fa fa-spinner fa-spin text-primary" aria-hidden="true"></i>
+                                </div>
+                                <span class="text-gray-700">检测中...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 刷机服务器状态 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fa fa-server text-info mr-2" aria-hidden="true"></i>
+                            正在检测 刷机服务器状态
+                        </h3>
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <div id="server-status" class="flex items-center">
+                                <div class="animate-pulse-slow mr-3">
+                                    <i class="fa fa-spinner fa-spin text-primary" aria-hidden="true"></i>
+                                </div>
+                                <span class="text-gray-700">检测中...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 网速测试 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fa fa-tachometer text-info mr-2" aria-hidden="true"></i>
+                            正在测试 网速
+                        </h3>
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <div id="speed-test" class="flex items-center">
+                                <div class="animate-pulse-slow mr-3">
+                                    <i class="fa fa-spinner fa-spin text-primary" aria-hidden="true"></i>
+                                </div>
+                                <span class="text-gray-700">测试中...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右侧检测结果 -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                        <i class="fa fa-check-square-o text-primary mr-2" aria-hidden="true"></i>
+                        检测列表
+                    </h2>
+
+                    <!-- 设备类型 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fa fa-mobile text-info mr-2" aria-hidden="true"></i>
+                            正在测试 设备类型
+                        </h3>
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <div id="device-type" class="flex items-center">
+                                <div class="animate-pulse-slow mr-3">
+                                    <i class="fa fa-spinner fa-spin text-primary" aria-hidden="true"></i>
+                                </div>
+                                <span class="text-gray-700">测试中...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 系统情况 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fa fa-desktop text-info mr-2" aria-hidden="true"></i>
+                            正在检测 系统情况
+                        </h3>
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <div id="system-status" class="flex items-center">
+                                <div class="animate-pulse-slow mr-3">
+                                    <i class="fa fa-spinner fa-spin text-primary" aria-hidden="true"></i>
+                                </div>
+                                <span class="text-gray-700">检测中...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 系统属性 -->
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fa fa-cogs text-info mr-2" aria-hidden="true"></i>
+                            正在检测 系统属性
+                        </h3>
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <div id="system-property" class="flex items-center">
+                                <div class="animate-pulse-slow mr-3">
+                                    <i class="fa fa-spinner fa-spin text-primary" aria-hidden="true"></i>
+                                </div>
+                                <span class="text-gray-700">检测中...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 远程服务 -->
+                    <div>
+                        <h3 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+                            <i class="fa fa-remote text-info mr-2" aria-hidden="true"></i>
+                            正在检测 远程服务
+                        </h3>
+                        <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
+                            <div id="remote-service" class="flex items-center">
+                                <div class="animate-pulse-slow mr-3">
+                                    <i class="fa fa-spinner fa-spin text-primary" aria-hidden="true"></i>
+                                </div>
+                                <span class="text-gray-700">检测中...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="mt-6 pt-6 border-t border-gray-700 text-center">
+                <p class="text-sm opacity-70">检测结果仅供参考，如遇问题请联系</p>
+                <p class="text-sm opacity-70">本站网站：<a href="https://check.360os.top" class="text-blue-400 hover:text-blue-300 transition-colors">check.360os.top</a></p>
+                <p class="text-sm opacity-70">技术支持：<a href="https://360os.top" class="text-blue-400 hover:text-blue-300 transition-colors">360os.top</a></p> 
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 更新当前时间和日期
+        function updateDateTime() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString();
+            const dateStr = now.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('current-time').textContent = timeStr;
+            document.getElementById('current-date').textContent = dateStr;
+        }
+        
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // 模拟检测过程
+        function runDetection() {
+            let progress = 0;
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            
+            // 更新进度条
+            function updateProgress(newProgress) {
+                progress = newProgress;
+                progressBar.style.width = `${progress}%`;
+                progressText.textContent = `${progress}% 完成`;
+            }
+            
+            // 重置所有检测项为初始状态
+            function resetAllChecks() {
+                // 获取所有检测项元素
+                const checkItems = [
+                    'network-status', 'resource-site-status', 'server-status', 'speed-test',
+                    'device-type', 'system-status', 'system-property', 'remote-service'
+                ];
+                
+                // 重置每个检测项
+                checkItems.forEach(itemId => {
+                    const element = document.getElementById(itemId);
+                    element.innerHTML = `
+                        <div class="animate-pulse-slow mr-3">
+                            <i class="fa fa-spinner fa-spin text-primary" aria-hidden="true"></i>
+                        </div>
+                        <span class="text-gray-700">检测中...</span>
+                    `;
+                });
+                
+                // 重置进度条
+                updateProgress(0);
+            }
+            
+            // 互联网状态检测
+            setTimeout(() => {
+                const networkStatus = document.getElementById('network-status');
+                
+                // 创建一个小型图像对象来测试网络连接
+                const testImage = new Image();
+                testImage.src = 'https://www.baidu.com/favicon.ico?t=' + Date.now();
+                
+                testImage.onload = function() {
+                    networkStatus.innerHTML = `
+                        <div class="text-success mr-3">
+                            <i class="fa fa-check-circle text-xl" aria-hidden="true"></i>
+                        </div>
+                        <span class="text-success font-medium">网络正常</span>
+                    `;
+                };
+                
+                testImage.onerror = function() {
+                    networkStatus.innerHTML = `
+                        <div class="text-danger mr-3">
+                            <i class="fa fa-times-circle text-xl" aria-hidden="true"></i>
+                        </div>
+                        <span class="text-danger font-medium">网络异常</span>
+                    `;
+                };
+                
+                // 设置超时时间
+                setTimeout(() => {
+                    if (networkStatus.innerHTML.includes('检测中')) {
+                        networkStatus.innerHTML = `
+                            <div class="text-danger mr-3">
+                                <i class="fa fa-times-circle text-xl" aria-hidden="true"></i>
+                            </div>
+                            <span class="text-danger font-medium">网络异常</span>
+                        `;
+                    }
+                    updateProgress(14.28); // 进度调整为1/7
+                }, 2000);
+            }, 500);
+            
+            // 360OS资源站通信状态检测
+            setTimeout(() => {
+                const resourceSiteStatus = document.getElementById('resource-site-status');
+                
+                // 尝试访问相关网站
+                const urls = ['https://360os.top', 'https://360rom.github.io'];
+                let success = false;
+                
+                fetch(urls[0])
+                    .then(response => {
+                        if (response.ok) {
+                            success = true;
+                            resourceSiteStatus.innerHTML = `
+                                <div class="text-success mr-3">
+                                    <i class="fa fa-check-circle text-xl" aria-hidden="true"></i>
+                                </div>
+                                <span class="text-success font-medium">网络访问正常</span>
+                            `;
+                        }
+                        return success;
+                    })
+                    .catch(error => {
+                        // 尝试检测第二个URL
+                        return fetch(urls[1])
+                            .then(response => {
+                                if (response.ok) {
+                                    success = true;
+                                    resourceSiteStatus.innerHTML = `
+                                        <div class="text-success mr-3">
+                                            <i class="fa fa-check-circle text-xl" aria-hidden="true"></i>
+                                        </div>
+                                        <span class="text-success font-medium">网络访问正常</span>
+                                    `;
+                                }
+                                return success;
+                            })
+                            .catch(error => {
+                                success = false;
+                                resourceSiteStatus.innerHTML = `
+                                    <div class="text-danger mr-3">
+                                        <i class="fa fa-times-circle text-xl" aria-hidden="true"></i>
+                                    </div>
+                                    <span class="text-danger font-medium">访问异常</span>
+                                `;
+                                return success;
+                            });
+                    })
+                    .then(success => {
+                        updateProgress(28.57); // 进度调整为2/7
+                    });
+            }, 2500);
+            
+            // 服务器检测
+            setTimeout(() => {
+                const serverStatus = document.getElementById('server-status');
+                
+                // 尝试访问360相关网站
+                const urls = ['https://360os.top', 'https://360rom.github.io'];
+                let success = false;
+                
+                fetch(urls[0])
+                    .then(response => {
+                        if (response.ok) {
+                            success = true;
+                            serverStatus.innerHTML = `
+                                <div class="text-success mr-3">
+                                    <i class="fa fa-check-circle text-xl" aria-hidden="true"></i>
+                                </div>
+                                <span class="text-success font-medium">负载正常</span>
+                            `;
+                        }
+                        return success;
+                    })
+                    .catch(error => {
+                        // 尝试检测第二个URL
+                        return fetch(urls[1])
+                            .then(response => {
+                                if (response.ok) {
+                                    success = true;
+                                    serverStatus.innerHTML = `
+                                        <div class="text-success mr-3">
+                                            <i class="fa fa-check-circle text-xl" aria-hidden="true"></i>
+                                        </div>
+                                        <span class="text-success font-medium">负载正常</span>
+                                    `;
+                                }
+                                return success;
+                            })
+                            .catch(error => {
+                                success = false;
+                                serverStatus.innerHTML = `
+                                    <div class="text-danger mr-3">
+                                        <i class="fa fa-times-circle text-xl" aria-hidden="true"></i>
+                                    </div>
+                                    <span class="text-danger font-medium">异常</span>
+                                `;
+                                return success;
+                            });
+                    })
+                    .then(success => {
+                        updateProgress(42.85); // 进度调整为3/7
+                    });
+            }, 4500);
+            
+            // 网速测试
+            setTimeout(() => {
+                const speedTest = document.getElementById('speed-test');
+                
+                // 创建一个大型图像对象来测试网速
+                const testImage = new Image();
+                const startTime = new Date().getTime();
+                const imageSize = 1024 * 1024; // 假设图片大小为1MB
+                
+                testImage.src = 'https://picsum.photos/2000/2000?t=' + startTime;
+                
+                testImage.onload = function() {
+                    const endTime = new Date().getTime();
+                    const duration = (endTime - startTime) / 1000; // 转换为秒
+                    const speed = (imageSize / duration / 1024).toFixed(2); // 计算速度，单位为KB/s
+                    const unit = speed > 1024 ? 'MB/s' : 'KB/s';
+                    const displaySpeed = speed > 1024 ? (speed / 1024).toFixed(2) : speed;
+                    
+                    speedTest.innerHTML = `
+                        <div class="text-success mr-3">
+                            <i class="fa fa-check-circle text-xl" aria-hidden="true"></i>
+                        </div>
+                        <span class="text-gray-700">预计网速：${displaySpeed} ${unit}</span>
+                    `;
+                    
+                    updateProgress(57.14); // 进度调整为4/7
+                };
+                
+                testImage.onerror = function() {
+                    speedTest.innerHTML = `
+                        <div class="text-danger mr-3">
+                            <i class="fa fa-times-circle text-xl" aria-hidden="true"></i>
+                        </div>
+                        <span class="text-danger font-medium">抱歉，测试失败</span>
+                    `;
+                    
+                    updateProgress(57.14); // 进度调整为4/7
+                };
+                
+                // 设置超时时间
+                setTimeout(() => {
+                    if (speedTest.innerHTML.includes('测试中')) {
+                        speedTest.innerHTML = `
+                            <div class="text-danger mr-3">
+                                <i class="fa fa-times-circle text-xl" aria-hidden="true"></i>
+                            </div>
+                            <span class="text-danger font-medium">抱歉，测试失败</span>
+                        `;
+                        updateProgress(57.14); // 进度调整为4/7
+                    }
+                }, 8000);
+            }, 6500);
+            
+            // 设备类型测试
+            setTimeout(() => {
+                const deviceType = document.getElementById('device-type');
+                
+                // 检测设备类型
+                const userAgent = navigator.userAgent.toLowerCase();
+                let device = '未知设备';
+                
+                if (userAgent.indexOf('mobile') !== -1) {
+                    if (userAgent.indexOf('iphone') !== -1) {
+                        device = '苹果手机';
+                    } else if (userAgent.indexOf('android') !== -1) {
+                        device = '安卓手机';
+                    } else {
+                        device = '手机';
+                    }
+                } else if (userAgent.indexOf('tablet') !== -1 || userAgent.indexOf('ipad') !== -1) {
+                    device = '平板';
+                } else if (userAgent.indexOf('mac') !== -1) {
+                    device = '苹果电脑';
+                } else if (userAgent.indexOf('windows') !== -1) {
+                    device = 'Windows电脑';
+                } else if (userAgent.indexOf('linux') !== -1) {
+                    device = 'Linux电脑';
+                }
+                
+                deviceType.innerHTML = `
+                    <div class="text-success mr-3">
+                        <i class="fa fa-check-circle text-xl" aria-hidden="true"></i>
+                    </div>
+                    <span class="text-gray-700">${device}</span>
+                `;
+                
+                updateProgress(71.42); // 进度调整为5/7
+            }, 10000);
+            
+            // 系统情况检测
+            setTimeout(() => {
+                const systemStatus = document.getElementById('system-status');
+                
+                try {
+                    // 获取用户代理字符串
+                    const userAgent = navigator.userAgent.toLowerCase();
+                    let osInfo = '未知系统';
+                    let browserInfo = '未知浏览器';
+                    let systemFeatures = [];
+                    
+                    // 检测操作系统
+                    if (userAgent.indexOf('windows') !== -1) {
+                        if (userAgent.indexOf('windows nt 10.0') !== -1) {
+                            osInfo = 'Windows 10/11';
+                        } else if (userAgent.indexOf('windows nt 6.3') !== -1) {
+                            osInfo = 'Windows 8.1';
+                        } else if (userAgent.indexOf('windows nt 6.2') !== -1) {
+                            osInfo = 'Windows 8';
+                        } else if (userAgent.indexOf('windows nt 6.1') !== -1) {
+                            osInfo = 'Windows 7';
+                        } else if (userAgent.indexOf('windows nt 6.0') !== -1) {
+                            osInfo = 'Windows Vista';
+                        } else if (userAgent.indexOf('windows nt 5.1') !== -1) {
+                            osInfo = 'Windows XP';
+                        } else {
+                            osInfo = 'Windows (未知版本)';
+                        }
+                    } else if (userAgent.indexOf('macintosh') !== -1) {
+                        osInfo = 'macOS';
+                    } else if (userAgent.indexOf('linux') !== -1) {
+                        osInfo = 'Linux';
+                    } else if (userAgent.indexOf('android') !== -1) {
+                        osInfo = 'Android';
+                    } else if (userAgent.indexOf('iphone') !== -1 || userAgent.indexOf('ipad') !== -1) {
+                        osInfo = 'iOS';
+                    }
+                    
+                    // 检测浏览器
+                    if (userAgent.indexOf('chrome') !== -1) {
+                        browserInfo = 'Chrome';
+                    } else if (userAgent.indexOf('safari') !== -1) {
+                        browserInfo = 'Safari';
+                    } else if (userAgent.indexOf('firefox') !== -1) {
+                        browserInfo = 'Firefox';
+                    } else if (userAgent.indexOf('edge') !== -1) {
+                        browserInfo = 'Edge';
+                    } else if (userAgent.indexOf('msie') !== -1 || userAgent.indexOf('trident') !== -1) {
+                        browserInfo = 'Internet Explorer';
+                    }
+                    
+                    // 检测系统特性支持
+                    if ('WebGLRenderingContext' in window) {
+                        systemFeatures.push('WebGL');
+                    }
+                    if ('serviceWorker' in navigator) {
+                        systemFeatures.push('Service Worker');
+                    }
+                    if ('localStorage' in window) {
+                        systemFeatures.push('LocalStorage');
+                    }
+                    if ('indexedDB' in window) {
+                        systemFeatures.push('IndexedDB');
+                    }
+                    
+                    // 构建详细的系统信息
+                    let systemDetails = `<div class="text-success mr-3">
+                        <i class="fa fa-check-circle text-xl" aria-hidden="true"></i>
+                    </div>
+                    <div class="text-gray-700">
+                        <p>操作系统: ${osInfo}</p>
+                        <p>浏览器: ${browserInfo}</p>
+                        <p>系统特性支持: ${systemFeatures.length > 0 ? systemFeatures.join(', ') : '无特殊支持'}</p>
+                    </div>`;
+                    
+                    systemStatus.innerHTML = systemDetails;
+                } catch (error) {
+                    systemStatus.innerHTML = `
+                        <div class="text-danger mr-3">
+                            <i class="fa fa-times-circle text-xl" aria-hidden="true"></i>
+                        </div>
+                        <span class="text-danger font-medium">抱歉，检测失败</span>
+                    `;
+                }
+                
+                updateProgress(85.71); // 进度调整为6/7
+            }, 12000);
+            
+            // 系统属性检测
+            setTimeout(() => {
+                const systemProperty = document.getElementById('system-property');
+                
+                systemProperty.innerHTML = `
+                    <div class="text-warning mr-3">
+                        <i class="fa fa-exclamation-triangle text-xl" aria-hidden="true"></i>
+                    </div>
+                    <span class="text-warning font-medium">请留意：您似乎，使用了盗版系统，可能因缺乏相关，带来兼容影响，建议：更换正版或打补丁解决</span>
+                `;
+                
+                updateProgress(100);
+            }, 13000);
+            
+            // 远程服务检测
+            setTimeout(() => {
+                const remoteService = document.getElementById('remote-service');
+                
+                remoteService.innerHTML = `
+                    <div class="text-success mr-3">
+                        <i class="fa fa-check-circle text-xl" aria-hidden="true"></i>
+                    </div>
+                    <span class="text-gray-700">推荐您使用：<a href="https://sunlogin.oray.com/" target="_blank" class="text-primary hover:text-primary/80 transition-colors">向日葵</a>、<a href="https://www.todesk.com/" target="_blank" class="text-primary hover:text-primary/80 transition-colors">todesk</a>、<a href="https://www.rdviewer.com/" target="_blank" class="text-primary hover:text-primary/80 transition-colors">rdviewer</a>等远程服务</span>
+                `;
+                
+                updateProgress(100);
+            }, 14000);
+        }
+        
+        // 页面加载完成后开始检测
+        document.addEventListener('DOMContentLoaded', () => {
+            runDetection();
+            
+            // 绑定刷新按钮事件
+            const refreshBtn = document.getElementById('refresh-btn');
+            refreshBtn.addEventListener('click', () => {
+                // 重置按钮状态
+                refreshBtn.innerHTML = `
+                    <i class="fa fa-spinner fa-spin mr-2" aria-hidden="true"></i>
+                    <span>刷新中...</span>
+                `;
+                refreshBtn.disabled = true;
+                
+                // 重置所有检测项
+                const checkItems = [
+                    'network-status', 'resource-site-status', 'server-status', 'speed-test',
+                    'device-type', 'system-status', 'system-property', 'remote-service'
+                ];
+                
+                checkItems.forEach(itemId => {
+                    const element = document.getElementById(itemId);
+                    element.innerHTML = `
+                        <div class="animate-pulse-slow mr-3">
+                            <i class="fa fa-spinner fa-spin text-primary" aria-hidden="true"></i>
+                        </div>
+                        <span class="text-gray-700">检测中...</span>
+                    `;
+                });
+                
+                // 重置进度条
+                const progressBar = document.getElementById('progress-bar');
+                const progressText = document.getElementById('progress-text');
+                progressBar.style.width = '0%';
+                progressText.textContent = '0% 完成';
+                
+                // 重新运行检测
+                runDetection();
+                
+                // 恢复按钮状态
+                setTimeout(() => {
+                    refreshBtn.innerHTML = `
+                        <i class="fa fa-refresh mr-2" aria-hidden="true"></i>
+                     
+                    `;
+                    refreshBtn.disabled = false;
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
