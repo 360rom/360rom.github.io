@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>360OS-360手机刷机-友情捐赠</title>
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .g-head {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+        }
+        .g-main {
+            padding: 40px 0;
+        }
+        /* 捐赠卡片样式 */
+        .donation-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .donation-card:hover {
+            transform: translateY(-5px);
+        }
+        .donation-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        .donation-type {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+        .donation-text {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        /* 响应式布局 */
+        @media (min-width: 768px) {
+            .donation-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+        @media (min-width: 992px) {
+            .donation-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        /* 提示语样式 */
+        .donation-hint {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="g-head">
+        <div class="wrap">
+            <h1>360OS 公益捐赠</h1>
+        </div>
+    </div>
+
+    <div class="g-main">
+        <div class="wrap" id="tab">
+            <!-- 新增的捐赠提示语 -->
+            <div class="donation-hint">
+                提示：恶意捐赠（0.01-1），直接无视
+            </div>
+            
+            <div class="donation-grid">
+                <!-- 捐赠选项将由JS动态生成 -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 捐赠列表数据
+        var pay_list = [
+            {
+                'type': 'alipay2',
+                'name': '微信捐赠',
+                'text': '微信扫一扫 失败请换码或联系',
+                'qr': 'wx1.png',
+                'pass': '',
+            },
+            {
+                'type': 'qq',
+                'name': '备用捐赠',
+                'text': '微信扫一扫 失败请换码或联系',
+                'qr': 'wx2.png',
+                'pass': '',
+            },
+            {
+                'type': 'wechat',
+                'name': '人工支持',
+                'text': '---微信扫码 在线人工---',
+                'qr': 'my-wx.png',
+                'pass': '',
+            }
+        ];
+
+        // 动态生成捐赠卡片
+        document.addEventListener('DOMContentLoaded', function() {
+            const grid = document.querySelector('.donation-grid');
+            
+            pay_list.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'donation-card';
+                card.innerHTML = `
+                    <div class="donation-type">${item.name}</div>
+                    <img src="${item.qr}" alt="${item.name}二维码">
+                    <div class="donation-text">${item.text}</div>
+                `;
+                grid.appendChild(card);
+            });
+        });
+    </script>
+</body>
+</html>
