@@ -1,700 +1,619 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-  
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
     <meta name="baidu-site-verification" content="codeva-dCMsLe1AR4" />
-    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>360手机-360手机刷机RootTwrp</title>
-    <meta name="description" content="360手机官方资源站；支持360手机 刷机解锁救砖 免费下载360手机刷机包 360N5、360N5S、360N6、N6Lite、360N6PRO、360N7、360N7Lite、360N7PRO、360Q5、360Q5Plus" />
+    <meta name="description" content="360手机官方资源站:全网唯一可用，支持刷机解锁救砖Twrp/Root/Magisk教程与位置穿越功能修复，免费下载360手机刷机包" />
     <meta name="keywords" content="360手机 360手机解锁 360手机刷机救砖 360手机刷机包分享 360手机纯净无广告系统 360手机位置穿越 酷派奇酷刷机 CPB解包 QGDP破解版 360手机TwrpRootMagisk QikuDownloadAssistant 360N5 360N5S 360N6 360N6Lite 360N6PRO 360N7 360N7Lite 360N7Pro 360Q5 360Q5Plus" />
-    <meta name="generator" content="Discuz! X3.1" />
-    <meta name="MSSmartTagsPreventParsing" content="True" />
-    <meta http-equiv="MSThemeCompatible" content="Yes" />
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
     <base href="https://360rom.github.io" />
     <link rel="shortcut icon" href="https://360rom.github.io/favicon.ico" />
-    <link rel="stylesheet" href="https://360rom.github.io/css/homepagestyle.css" />
     <link rel="stylesheet" type="text/css" href="https://360rom.github.io/css/style_4_common.css" />
-    <!--webmp3 -->
     <link rel="stylesheet" href="https://360rom.github.io/src/webmp3/css/player.css" />
-    <script src="https://360rom.github.io/js/common.js" type="text/javascript">
-    </script>
-    <!--客服CSS -->
+    <link rel="stylesheet" type="text/css" href="https://360rom.github.io/css/list.min.css">
+    <script src="https://360rom.github.io/js/common.js" type="text/javascript"></script>
+
     <style>
-	.my_kefu {
-  position: fixed;
-  width: auto;
-  top: 30%;
-  right: 0px;
-  z-index: 99;
-}
+      /* 模态框样式 */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
 
-.my_kefu ul {}
+      /* 修改模态框内容区域的样式 */
+      .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto; /* 调整上下外边距，让模态框垂直居中更合适 */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 60%; /* 调整宽度为 60%，可根据需要修改 */
+        max-height: 80%; /* 设置最大高度为视口高度的 80% */
+        overflow-y: auto; /* 当内容超出最大高度时显示垂直滚动条 */
+      }
 
-.my_kefu ul li {
-  background: ;
-  width: auto;
-  height: auto;
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  padding: 0px 0px;
-}
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
 
-.my_kefu_item img {
-  width: 20px;
-}
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
 
-.my_kefu_item {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  color: white;
-}
+      /* 新增/修改的CSS样式 */
+      .modal-content {
+        position: relative; /* 为绝对定位的关闭按钮提供参考 */
+        padding-top: 60px; /* 为顶部的关闭按钮留出空间 */
+        border-radius: 12px; /* 可选：添加圆角 */
+      }
+      
+      .close {
+        position: absolute;
+        top: 15px; /* 距离模态框顶部的距离 */
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 28px;
+        font-weight: bold;
+        color: #888;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #f0f0f0; /* 浅灰色背景 */
+        transition: all 0.2s ease;
+        z-index: 1; /* 确保在模态框内容之上 */
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: #ff4d4f; /* 悬停时变为红色 */
+        background: #f8f8f8; /* 悬停时背景变亮 */
+        transform: translateX(-50%) scale(1.1);
+      }
 
-.my_kefu ul li:hover {
-  cursor: pointer;
-  background: ;
-}
+      /* 右侧固定按钮样式 */
+      .fixed-buttons {
+        position: fixed;
+        right: 10px; /* 更靠近右侧边缘 */
+        top: 50%; /* 垂直居中 */
+        transform: translateY(-50%); /* 精确垂直居中 */
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-.my_kefu_img {
-  display: none;
-  width: 140px;
-  height: auto;
-  position: absolute;
-  right: 4rem;
-  background: #424242;
-  color: white;
-}
+      /* 修改这里，让按钮大小可自定义 */
+      .fixed-buttons img {
+        display: block;
+        width: auto; /* 自动宽度，让图片保持原始比例 */
+        height: auto; /* 自动高度，让图片保持原始比例 */
+        max-width: 35px; /* 最大宽度 */
+        max-height: 50px; /* 最大高度 */
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
 
-.my_kefu_img img {
-  width: 100%;
-}
+      /* 客服图片样式，让其完美呈现 */
+      #service-btn {
+        width: auto; /* 自动宽度，保持原始比例 */
+        height: auto; /* 自动高度，保持原始比例 */
+        max-width: 100%; /* 最大宽度为父元素宽度 */
+        max-height: 100%; /* 最大高度为父元素高度 */
+      }
+      
+      /* 二维码样式 */
+      #qrcode {
+        display: none;
+        position: fixed;
+        right: 60px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 999;
+      }
 
-.my_kefu_hidden {
-  display: none;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  height: 50px;
-  border-radius: 10px;
-  width: auto;
-  background: red;
-  color: #fff;
-  padding: 0px 20px;
-}
-
-.my_kefu_hidden img {
-  width: 20px;
-}
-
-.my_kefu_hidden a {
-  display: flex;
-  flex-direction: row;
-  width: 90px;
-  align-items: center;
-  color: #fff;
-  justify-content: center;
-}
-
-.my_kefu_hidden>div {
-  display: flex;
-  flex-direction: column;
-  min-width: 120px;
-}
-
-.my_kefu ul li:hover .my_kefu_item {
-  display: none;
-}
-
-.my_kefu ul li:hover .my_kefu_hidden {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  position: absolute;
-  right: 0px;
-}
-
-.my_kefu ul li:hover .my_kefu_img {
-  display: flex;
-}
-
-</style>
+      #qrcode img {
+        width: 150px;
+        height: 150px;
+      }
+    </style>
     <!--头条搜推js -->
   </head>
-  <!--参考51前端 禁止代码 -->
-  <script type="text/javascript">//iframe内部禁止方法
-    window.onload = function() {
-
-      document.getElementById('iframe').contentDocument.onkeydown = function(ev) {
-
-        //禁止保存ctrl+s
-        if (ev && (ev.ctrlKey || ev.metaKey) && (ev.keyCode == 83)) {
-          alert("权限禁止...");
-          return false;
-        }
-        //禁止F12等等~~
-        if (ev && (ev.keyCode == 123 || ev.keyCode == 8 || ev.keyCode == 9 || ev.keyCode == 13)) {
-          alert("权限禁止...");
-          return false;
-        }
-
-      }
-      //禁止右键
-      document.getElementById('iframe').contentDocument.oncontextmenu = function() {
-        alert("360手机刷机 微信: Wander-WeChat");
-        return false;
-      }
-
-    }
-
-    //iframe外部禁止
-    document.onkeydown = function() {
-      /*9:Tab键, 17：Control键, 18:Alt键, 123:F12键, 83:S键*/
-
-      //禁止保存ctrl+s
-      if (window.event && (window.event.ctrlKey || window.event.metaKey) && (window.event.keyCode == 83)) {
-        alert("360手机刷机 微信: Wander-WeChat");
-        return false;
-      }
-
-      //禁止F12等等~~
-      if (window.event && (window.event.keyCode == 123 || window.event.keyCode == 8 || window.event.keyCode == 9 || window.event.keyCode == 13)) {
-        alert("360手机刷机 微信: Wander-WeChat");
-        window.event.returnValue = false;
-      }
-    }
-
-    //屏蔽右键
-    document.oncontextmenu = function(event) {
-      if (window.event) {
-        event = window.event;
-      }
-      try {
-        var the = event.srcElement;
-        if (! ((the.tagName == "INPUT" && the.type.toLowerCase() == "text") || the.tagName == "TEXTAREA")) {
-          return false;
-        }
-        return true;
-      } catch(e) {
-        return false;
-      }
-    }</script>
-  <!-- part 1 -->
   
+  <!-- part 1 -->
   <body id="nv_forum" class="pg_romproduct" onkeydown="if(event.keyCode==27) return false;">
     <!--顶部横条信息-->
-    <div class="xm_header_top">
+    <header class="xm_header_top">
       <p class="xm_header_top_ul">
         <span class="pipe-head">
-          <font size="2" color="#FFFFFF">360手机刷机、纯净系统、解锁、Root、Twrp</font>
+          <span class="header-text" style="font-size: 12px; color: #fff;">360手机刷机、纯净系统、解锁、Root、Twrp</span>
         </span>
       </p>
-      <!-- <p> <center>
-      <font size="3" color="#FF6A6A"><b>⚠️</b>公告: 如遇困难 可付费代劳 成功率100%<b>⚠️</b></font>  	 </center></p><br>
-      <font size="3" color="#FF6A6A">今日诗词：<span id="jinrishici-sentence">正在加载今日诗词....</span></font>  	 </center></p><br>
-      <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-      <!-- <p class="xm_header_top_ul">
-      <span> <a href="//www.360.com/" target="_blank">360官网</a> <span class="pipe-head">|</span> </span>
-      <span> <a href="//mall.360.cn/?utm_source=SQDH007" target="_blank">360商城</a> 
-      </p>-->
-    </div>
+    </header>
     <br>
-    <!-- part 2-->
+    <!-- part 2 顶条 
     <div id="hd" class="xm_header">
       <div class="xm_headerInner headerInner">
-        <div class="cl ">
-          <!--360logo <div class="logo" id="logo">
-          <a href="//bbs.360.cn/"> <img src="https://b1.qikucdn.com/dfsj_imgs/indeximg/qiku_community_logo.png?N39" alt=""></a>
-          </div>-->
+        <div class="cl "></div>
+      </div> 
+    </div> -->
+
+    <!--系统下载-->
+    <main id="wp" class="wp">
+      <div class="main-content">
+        <div class="list-t clearfix">
+          <span>系统下载（全部机型）</span>
+          <div class="search">
+            <input type="text" class="search-value" name="search-value">
+            <span class="search-sub"></span>
+          </div>
         </div>
-        <!-- part 3 -->
-        <div id="hd" class="xm_header">
-          <div class="xm_headerInner headerInner">
-            <div class="cl ">
-              <!--360logo <div class="logo" id="logo">
-              <a href="//bbs.360.cn/"> <img src="https://b1.qikucdn.com/dfsj_imgs/indeximg/qiku_community_logo.png?N39" alt=""></a>
-              </div>-->
-            </div>
-            <!--系统下载-->
-            <div id="wp" class="wp">
-              <link rel="stylesheet" type="text/css" href="https://360rom.github.io/css/list.min.css">
-              <div class="main-content">
-                <div class="list-t clearfix">
-                  <span>系统下载（全部机型）</span>
-                  <div class="search">
-                    <input type="text" class="search-value" name="search-value">
-                    <span class="search-sub">
-                    </span>
+        <ul class="version-list clearfix">
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n7lite/360n7lite.html">
+              <img src="https://360rom.github.io/pic/n7lite.png" alt="360手机N7 Lite机型图片">
+              <p>360手机N7 Lite</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n7pro/360n7pro.html">
+              <img src="https://360rom.github.io/pic/n7pro.png" alt="360手机N7 Pro机型图片">
+              <p>360手机N7 Pro</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n7/360n7.html">
+              <img src="https://360rom.github.io/pic/n7.png" alt="360手机N7机型图片">
+              <p>360手机N7</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n6lite/360n6lite.html">
+              <img src="https://360rom.github.io/pic/n6lite.png" alt="360手机N6 Lite机型图片">
+              <p>360手机N6 Lite</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n6pro/360n6pro.html">
+              <img src="https://360rom.github.io/pic/n6pro.png" alt="360手机N6 Pro机型图片">
+              <p>360手机N6 Pro</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n6/360n6.html">
+              <img src="https://360rom.github.io/pic/n6.png" alt="360手机N6机型图片">
+              <p>360手机N6</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360vizza/360vizza.html">
+              <img src="https://360rom.github.io/pic/vizza.png" alt="360手机vizza机型图片">
+              <p>360手机 vizza</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n5s/360n5s.html">
+              <img src="https://360rom.github.io/pic/n5s.png" alt="360手机N5S机型图片">
+              <p>360手机 N5S</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n5/360n5.html">
+              <img src="https://360rom.github.io/pic/n5.png" alt="360手机N5机型图片">
+              <p>360手机 N5</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n4a/360n4a.html">
+              <img src="https://360rom.github.io/pic/n4a.png" alt="360手机N4A机型图片">
+              <p>360手机N4A</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360q5/360q5.html">
+              <img src="https://360rom.github.io/pic/q5.png" alt="360手机Q5机型图片">
+              <p>360手机 Q5</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360q5plus/360q5plus.html">
+              <img src="https://360rom.github.io/pic/q5plus.png" alt="360手机Q5 Plus机型图片">
+              <p>360手机 Q5 Plus</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n4s/360n4s.html">
+              <img src="https://360rom.github.io/pic/n4s.png" alt="360手机N4S骁龙版机型图片">
+              <p>360手机 N4S骁龙版</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n4smtk/360n4smtk.html">
+              <img src="https://360rom.github.io/pic/n4s.png" alt="360手机N4S机型图片">
+              <p>360手机N4S</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360n4/360n4.html">
+              <img src="https://360rom.github.io/pic/n4.png" alt="360手机N4全网通机型图片">
+              <p>360手机N4全网通</p>
+            </a>
+          </li>
+          <li>
+            <a target="_blank" href="https://360rom.github.io/360os/360f4/360f4.html">
+              <img src="https://360rom.github.io/pic/f4.png" alt="360手机f4全网通机型图片">
+              <p>360手机f4全网通</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <img src="https://360rom.github.io/pic/n4.png" alt="360手机N4移动版机型图片">
+              <p>360手机N4移动版</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <img src="https://360rom.github.io/pic/f4.png" alt="360手机f4移动版机型图片">
+              <p>360手机f4移动版</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <img src="https://360rom.github.io/pic/qikupro.png" alt="奇酷手机极客版机型图片">
+              <p>奇酷手机极客版</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <img src="https://360rom.github.io/pic/dazen.png" alt="大神Note3全网通机型图片">
+              <p>大神Note3全网通</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <img src="https://360rom.github.io/pic/dazen.png" alt="大神Note3移动版机型图片">
+              <p>大神Note3移动版</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <img src="https://360rom.github.io/pic/qikupro.png" alt="奇酷手机旗舰版（全网通）机型图片">
+              <p>奇酷手机旗舰版（全网通）</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <img src="https://360rom.github.io/pic/qikupro.png" alt="奇酷手机旗舰版（移动联通双4G）机型图片">
+              <p>奇酷手机旗舰版（移动联通双4G）</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <img src="https://360rom.github.io/pic/qiku.png" alt="奇酷手机青春版（全网通）机型图片">
+              <p>奇酷手机青春版（全网通）</p>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:;">
+              <img src="https://360rom.github.io/pic/qiku.png" alt="奇酷手机青春版（移动联通双4G）机型图片">
+              <p>奇酷手机青春版（移动联通双4G）</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </main>
+
+    <!--part 4弹窗 -->
+    <div class="web_notice" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.5);z-index: 99999;display: flex;align-items: center;justify-content: center;">
+      <div style="position: relative;width: 550px;background: #FFF;border-radius: 40px;padding: 60px 50px;box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+        <div style="font-size: 16px;margin-top: 10px;line-height: 28px;color: #666;">
+          <p style="text-align: left;">最新网站：<a href="http://360os.top" target="_blank"><strong>360os.top</strong></a></p>
+          <p style="text-align: left;margin-top: 15px;padding-left: 20px;position: relative;">
+            <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 支持下载：刷机包+刷机工具+教程
+          </p>
+          <p style="text-align: left;margin-top: 10px;padding-left: 20px;position: relative;">
+            <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 刷纯净版：无任何广告+卸载360全家桶
+          </p>
+          <p style="text-align: left;margin-top: 10px;padding-left: 20px;position: relative;">
+            <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 技术支持："位置穿越" 功能修复和使用
+          </p>
+          <p style="margin-top: 20px;padding: 12px;background: #fff8f8;border-left: 4px solid #ff6b6b;border-radius: 4px;color: #cd5c5c;text-align: left;">
+            <strong>注：</strong>仅回复捐赠者；公益站，访问卡顿，请换网
+          </p>
+        </div>
+        <a style="display: block;background: linear-gradient(135deg, #7b88ff, #98a3ff);color: #FFF;text-align: center;font-weight: bold;font-size: 20px;line-height: 64px;margin: 0 auto;margin-top: 40px;border-radius: 32px;width: 80%;transition: all 0.3s;box-shadow: 0 4px 12px rgba(123,136,255,0.4);" onclick="document.querySelector('.web_notice').remove()">
+          我已了解
+        </a>
+      </div>
+    </div>
+
+    <!-- part 5 -->
+    <footer id="ft" class="xm_footer">
+      <div class="xm_footerInner">
+        <div style="clear:both;"></div>
+        <div class="xm_footerInnerInner">
+          <div class="links">
+            <span style="font-size: 16px;">
+              <a href="https://360rom.github.io/src/notice/index.html" target="_blank">公告</a> |
+              <!-- <a href="javascript:;" onclick="alert('Wander-WeChat')">微信</a> | -->
+              <a href="javascript:;" onclick="alert('OS360@foxmail.com')">邮件</a> |
+              <a href="https://www.bilibili.com/video/BV15M411A7bK/" target="_blank">刷机教程</a> |
+              <a href="https://360rom.github.io/verify/index.html" target="_blank">资源下载</a> |
+              <a href="https://360rom.github.io/src/donation/index.html" target="_blank">捐赠</a> |
+              <!-- 修改此处，添加点击事件 -->
+              <a href="javascript:void(0);" id="aboutLink">关于</a> |
+            </span>
+            
+            <!-- 站点统计 -->
+            <script type="text/javascript" src="//js.users.51.la/21405253.js"></script>
+            <br>
+            
+            <span style="font-size: 16px; color: #000000;">
+              新网站/域名：
+              <a href="https://360rom.github.io/" target="_blank">360os.top</a> |
+              <a href="https://360iphoneos.github.io/" target="_blank">360iphoneos.github.io</a>
+            </span>
+            <br>
+            <a href="https://h5.lot-ml.com/ProductEn/Index/2d52273e3f038d26" target="_blank" style="font-size: 18px;">🔞成人福利 深夜独享</a>
+          </div>
+        </div>
+        
+        <hr>
+        
+        <!--webmp3 -->
+        <div id="QPlayer">
+          <div id="pContent">
+            <div id="player">
+              <span class="cover"></span>
+              <div class="ctrl">
+                <div class="musicTag marquee">
+                  <strong>Title</strong>
+                  <span>-</span>
+                  <span class="artist">Artist</span>
+                </div>
+                <div class="progress">
+                  <div class="timer left">0:00</div>
+                  <div class="contr">
+                    <div class="rewind icon"></div>
+                    <div class="playback icon"></div>
+                    <div class="fastforward icon"></div>
+                  </div>
+                  <div class="right">
+                    <div class="liebiao icon"></div>
                   </div>
                 </div>
-                <ul class="version-list clearfix">
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n7lite/360n7lite.html">
-                      <img src="https://360rom.github.io/pic/n7lite.png">
-                      <p>360手机N7 Lite</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n7pro/360n7pro.html">
-                      <img src="https://360rom.github.io/pic/n7pro.png">
-                      <p>360手机N7 Pro</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n7/360n7.html">
-                      <img src="https://360rom.github.io/pic/n7.png">
-                      <p>360手机N7</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n6lite/360n6lite.html">
-                      <img src="https://360rom.github.io/pic/n6lite.png">
-                      <p>360手机N6 Lite</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n6pro/360n6pro.html">
-                      <img src="https://360rom.github.io/pic/n6pro.png">
-                      <p>360手机N6 Pro</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n6/360n6.html">
-                      <img src="https://360rom.github.io/pic/n6.png">
-                      <p>360手机N6</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360vizza/360vizza.html">
-                      <img src="https://360rom.github.io/pic/vizza.png">
-                      <p>360手机 vizza</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n5s/360n5s.html">
-                      <img src="https://360rom.github.io/pic/n5s.png">
-                      <p>360手机 N5S</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n5/360n5.html">
-                      <img src="https://360rom.github.io/pic/n5.png">
-                      <p>360手机 N5</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n4a/360n4a.html">
-                      <img src="https://360rom.github.io/pic/n4a.png">
-                      <p>360手机N4A</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360q5/360q5.html">
-                      <img src="https://360rom.github.io/pic/q5.png">
-                      <p>360手机 Q5</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360q5plus/360q5plus.html">
-                      <img src="https://360rom.github.io/pic/q5plus.png">
-                      <p>360手机 Q5 Plus</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n4s/360n4s.html">
-                      <img src="https://360rom.github.io/pic/n4s.png">
-                      <p>360手机 N4S骁龙版</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n4smtk/360n4smtk.html">
-                      <img src="https://360rom.github.io/pic/n4s.png">
-                      <p>360手机N4S</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360n4/360n4.html">
-                      <img src="https://360rom.github.io/pic/n4.png">
-                      <p>360手机N4全网通</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a target="_blank" href="https://360rom.github.io/360os/360f4/360f4.html">
-                      <img src="https://360rom.github.io/pic/f4.png">
-                      <p>360手机f4全网通</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <img src="https://360rom.github.io/pic/n4.png">
-                      <p>360手机N4移动版</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <img src="https://360rom.github.io/pic/f4.png">
-                      <p>360手机f4移动版</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <img src="https://360rom.github.io/pic/qikupro.png">
-                      <p>奇酷手机极客版</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <img src="https://360rom.github.io/pic/dazen.png">
-                      <p>大神Note3全网通</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <img src="https://360rom.github.io/pic/dazen.png">
-                      <p>大神Note3移动版</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <img src="https://360rom.github.io/pic/qikupro.png">
-                      <p>奇酷手机旗舰版（全网通）</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <img src="https://360rom.github.io/pic/qikupro.png">
-                      <p>奇酷手机旗舰版（移动联通双4G）</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <img src="https://360rom.github.io/pic/qiku.png">
-                      <p>奇酷手机青春版（全网通）</p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="javascript:;">
-                      <img src="https://360rom.github.io/pic/qiku.png">
-                      <p>奇酷手机青春版（移动联通双4G）</p>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <!--？ <script src="//b1.qikucdn.com/dfsj_imgs/romdownload/list.min.js" type="text/javascript"></script>  -->
-            </div>
-            <!--搜索内容反馈结果 <script src="https://b1.qikucdn.com/static/js/monitor_analytic.js"></script>
-            <script>
-            monitor.setProject('QH_82_1').getTrack().getClickAndKeydown().getClickHeatmap(10, 1);
-            </script>    -->
-            <!--part 4弹窗 -->
-            <div class="web_notice" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.3);z-index: 99999;">
-              <div style="position: fixed;top: 50%;left: 50%;width: 550px;background: #FFF;transform: translate(-50%, -50%);border-radius: 40px;padding: 50px 40px;">
-                <div style="font-size: 16px;margin-top: 26px;line-height: 30px;color: #999;
-                ">
-                  <p>最新域名：360os.top</p>&#12288; 1.支持下载：刷机包+刷机工具+教程
-                  <br>&#12288; 2.刷纯净版：无任何广告+卸载360全家桶
-                  <br>&#12288; 3.技术支持："位置穿越" 功能修复和使用
-                  <br>
-                  <p>
-                    <font size="3" color="#CD5C5C">注：公益站，捐赠自愿；访问卡顿，请换网</p>
-                </div>
-                <a style="display: block;background: #98a3ff;color: #FFF;text-align: center;font-weight: bold;font-size: 19px;line-height: 60px;margin: 0 auto;margin-top: 45px;border-radius: 32px;width: 80%;" onclick="javascript:document.querySelector('.web_notice').remove()">我了解</a>
               </div>
             </div>
-            <!-- part 5-->
-            <div id="ft" class="xm_footer">
-              <div class="xm_footerInner">
-                <div style="clear:both;">
-                </div>
-                <div class="xm_footerInnerInner">
-                  <div class="links">
-                    <font size="3" color="">
-                      <a href="https://360rom.github.io/src/notice/index.html" target="_blank">公告</a> |
-                      <!-- <a href="javascript:;" onclick="alert('Wander-WeChat')">
-                      微信
-                      </a>
-                      |-->
-                      <a href="javascript:;" onclick="alert('OS360@foxmail.com')">邮件</a> |
-                      <a href="https://www.bilibili.com/video/BV15M411A7bK/" target="_blank">刷机教程</a> |
-                      <a href="https://360rom.github.io/verify/index.html" target="_blank">资源下载</a> |
-                      <a href=" https://360rom.github.io/src/donation/index.html" target="_blank">捐赠</a> |
-                      <font size="3" color="">
-                        <button id="triggerBtn">关于</font>
-                      </button> |
-                      <!--站点统计-->
-                      <script type="text/javascript" src="//js.users.51.la/21405253.js"></script>
-                      </br>
-                    </font>
-                    <font size="3" color="#000000">新网站/域名：
-                      <a href="https://360rom.github.io/" target="_blank">360os.top</a> |
-                      <a href="https://360iphoneos.github.io/" target="_blank">360iphoneos.github.io</font>
-                    </a>
-                    </br>
-                    <a href="https://h5.lot-ml.com/ProductEn/Index/2d52273e3f038d26" target="_blank">🔞成人福利 深夜独享</a>
-                  </div>
-                  <hr>
-                  <p>现在时间：
-                    <span id="cg">1999/4/21/ AM12:00:00</span>
-                    <!-- 模态框 -->
-                    <div id="myModal" class="modal">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                        </div>
-                        <span id="closeBtn" class="close">×</span>
-                        <div class="modal-body">
-                          <div style="text-align:left;">
-                            <p>
-                              <font size="3" color="" style="line-height:2em;">星光点点，不问赶路人…
-                                <br>
-                                <p style="text-indent:2em;">
-                                  <font style="line-height:2em;">北冬，总缺些春夏雅韵，总似: 叶落风高掠野荒，漫天飞絮舞苍茫；四季交替之际，物随心境与颜语。
-                                    <p style="text-indent:2em;">
-                                      <font style="line-height:2em;">忆起此机的故事，伫立人生路途中，自购第一机，停留在N6/4+32G；充满着惊奇与未知，跌宕起伏带来各种问题…
-                                        <p style="text-indent:2em;">
-                                          <font style="line-height:2em;">于辗转流年之中，在摩尔定律下，渐感此机，卡顿和弊端，自感，似打补丁，修补填坑。
-                                            <p style="text-indent:2em;">
-                                              <font style="line-height:2em;">结业多年，或是难以言喻的情怀，终在22年，此机正式退役，隐匿在不知名角落下；亦如18年青春岁月，一去不返。
-                                                <p style="text-indent:2em;">
-                                                  <font style="line-height:2em;">后知，360手机"战略转型"的变动、使该品牌齿轮，停滞且定格在18-19年；同因官方关闭某些服务，而自经4.5月之久的研究与测验，取得不限机型，100%成功率的幸运。
-                                                    <p style="text-indent:2em;">
-                                                      <font style="line-height:2em;">随不久，基于情怀，渐有感而发，耗时耗力，上线本站、开放整合资源；为360机友，公益性提供/维护部分内容。
-                                                        <p style="text-indent:2em;">
-                                                          <font style="line-height:2em;">性价比或是一种选择；但事、物在某些方面，究是要在天平两端倾平；小众也是一种市场与选择。
-                                                            <p style="text-indent:2em;">
-                                                              <font style="line-height:2em;">最后，愿360手机回归；See You Again…</p>
-                          </div>
-                          <p>
-                            <font style="line-height:1;">
-                              <p style="text-align:right;">
-                                <font size="3" color="#A4A4A4" style="line-height:3;">by.2022年春夏之夜</font>
-                              </p>
-                              <p style="text-indent:2em;">
-                                <font style="line-height:1.5;">提示:点击框外或顶部X均可退出</p>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- 模型框js -->
-                    <script type="text/javascript" src="modalBox.js">
-                    </script>
-                    <script>(function() {
-                        /*建立模态框对象*/
-                        var modalBox = {};
-                        /*获取模态框*/
-                        modalBox.modal = document.getElementById("myModal");
-                        /*获得trigger按钮*/
-                        modalBox.triggerBtn = document.getElementById("triggerBtn");
-                        /*获得关闭按钮*/
-                        modalBox.closeBtn = document.getElementById("closeBtn");
-                        /*模态框显示*/
-                        modalBox.show = function() {
-                          console.log(this.modal);
-                          this.modal.style.display = "block";
-                        }
-                        /*模态框关闭*/
-                        modalBox.close = function() {
-                          this.modal.style.display = "none";
-                        }
-                        /*当用户点击模态框内容之外的区域，模态框也会关闭*/
-                        modalBox.outsideClick = function() {
-                          var modal = this.modal;
-                          window.onclick = function(event) {
-                            if (event.target == modal) {
-                              modal.style.display = "none";
-                            }
-                          }
-                        }
-                        /*模态框初始化*/
-                        modalBox.init = function() {
-                          var that = this;
-                          this.triggerBtn.onclick = function() {
-                            that.show();
-                          }
-                          this.closeBtn.onclick = function() {
-                            that.close();
-                          }
-                          this.outsideClick();
-                        }
-                        modalBox.init();
+            <div class="ssBtn">
+              <div class="adf"></div>
+            </div>
+          </div>
+          <ol id="playlist"></ol>
+        </div>
+        
+        <script src="https://360rom.github.io/src/webmp3/js/jquery.min.js"></script>
+        <script src="https://360rom.github.io/src/webmp3/js/jquery.marquee.min.js"></script>
+        
+        <script>
+          var playlist = [
+            {
+              title: "See You Again - ",
+              artist: "",
+              cover: "https://p2.music.126.net/6MhAiNsF-Je1DtG15nY5ug==/109951164497419892.jpg?param=106x106F",
+              mp3: "https://workdrive.zohopublic.com.cn/external/a44da1ff17bb0eb428cbb9907eef7b33e30b1d6c31ee28709e58ec3a3269110a/download?directDownload=true"
+            },
+            {
+              title: "星月神话",
+              artist: "金莎",
+              mp3: "http://music.163.com/song/media/outer/url?id=406730463.mp3",
+              cover: "http://p1.music.126.net/Ka9mTytJ3bEOLG0Gz-HqkA==/3274345638672304.jpg?param=106x106",
+            },
+            {
+              title: "红豆",
+              artist: "要不要买菜",
+              mp3: "http://music.163.com/song/media/outer/url?id=1468957767.mp3",
+              cover: "http://p2.music.126.net/S9vpC0pua4NDmCfcZviFew==/109951165212014716.jpg?param=106x106",
+            },
+            {
+              title: "My Soul - July",
+              artist: "July",
+              cover: "http://p1.music.126.net/NFl1s5Hl3E37dCaFIDHfNw==/727876697598920.jpg?param=106x106",
+              mp3: "http://music.163.com/song/media/outer/url?id=5308028.mp3"
+            }
+          ];
+          
+          var isRotate = true;
+          var autoplay = false;
+        </script>
+        
+        <script src="https://360rom.github.io/src/webmp3/js/player.js"></script>
+        
+        <script>
+          function bgChange() {
+            var lis = $('.lib');
+            for (var i = 0; i < lis.length; i += 2) {
+              lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+            }
+          }
+          
+          window.onload = bgChange;
+        </script>
+        
+        <script>
+          setInterval("cg.innerHTML=new Date().toLocaleString()", 1000);
+        </script>
+        
+        <!--运行时间显示 -->
+        <span id="showsectime" class="text-[clamp(0.6rem,0.8vw,0.8rem)] font-mono text-[#8B814C]"></span>
+        
+        <script>
+          // 初始化函数，减少全局变量
+          function initTimeDisplay() {
+            // 目标日期 - 使用更简洁的方式设置
+            const birthDay = new Date('2022-03-16T00:00:00Z');
+            
+            // 更新时间显示的函数
+            function updateTime() {
+              const now = new Date();
+              const timeDiff = now - birthDay;
+              
+              // 计算各时间单位
+              const seconds = Math.floor(timeDiff / 1000);
+              const days = Math.floor(seconds / 86400);
+              const hours = Math.floor((seconds % 86400) / 3600);
+              const minutes = Math.floor((seconds % 3600) / 60);
+              
+              // 更新DOM，使用模板字符串更简洁
+              document.getElementById('showsectime').innerText = 
+                `已运行：${days}天${hours}小时${minutes}分`;
+            }
+            
+            // 立即更新一次
+            updateTime();
+            // 设置定时器，使用箭头函数更简洁
+            setInterval(updateTime, 1000);
+          }
+          
+          // 页面加载后初始化
+          document.addEventListener('DOMContentLoaded', initTimeDisplay);
+        </script>
+        
+        <!-- 移动端设备判断和跳转 -->
+        <script type="text/javascript">
+          function browserRedirect() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
 
-                      })();</script>
-                    <!--webmp3 -->
-                    <div id="QPlayer">
-                      <div id="pContent">
-                        <div id="player">
-                          <span class="cover">
-                          </span>
-                          <div class="ctrl">
-                            <div class="musicTag marquee">
-                              <strong>Title</strong>
-                              <span>-</span>
-                              <span class="artist">Artist</span>
-                            </div>
-                            <div class="progress">
-                              <div class="timer left">0:00</div>
-                              <div class="contr">
-                                <div class="rewind icon">
-                                </div>
-                                <div class="playback icon">
-                                </div>
-                                <div class="fastforward icon">
-                                </div>
-                              </div>
-                              <div class="right">
-                                <div class="liebiao icon">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="ssBtn">
-                          <div class="adf">
-                          </div>
-                        </div>
-                      </div>
-                      <ol id="playlist">
-                      </ol>
-                    </div>
-                    <script src="https://360rom.github.io/src/webmp3/js/jquery.min.js">
-                    </script>
-                    <script src="https://360rom.github.io/src/webmp3/js/jquery.marquee.min.js">
-                    </script>
-                    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8">
-                    </script>
-                    <!--今日诗词API-->
-                    <!--插件后台配置歌曲格式: 1 {title:"xxx", artist:"xxx", cover:"http:xxxx", mp3:"http:xxxx"} ，每个歌曲之间用英文,隔开。 请保证歌曲列表里至少有一首歌！ 添加网易云音乐(需主机支持curl扩展) 去网易云音乐官网找到音乐id,支持 歌单|艺人|专辑|单曲 类型的id解析(单曲解析需国内服务器)，billboard等排行榜也支持(实质就是歌单)。 -->
-                      <script>var playlist = [{
-                          title: "See You Again - ",
-                          artist: "",
-                          cover: "https://p2.music.126.net/6MhAiNsF-Je1DtG15nY5ug==/109951164497419892.jpg?param=106x106F",
-                          mp3: "https://workdrive.zohopublic.com.cn/external/a44da1ff17bb0eb428cbb9907eef7b33e30b1d6c31ee28709e58ec3a3269110a/download?directDownload=true"
-                        },
-                        {
-                          title: "星月神话",
-                          artist: "金莎",
-                          mp3: "http://music.163.com/song/media/outer/url?id=406730463.mp3",
-                          cover: "http://p1.music.126.net/Ka9mTytJ3bEOLG0Gz-HqkA==/3274345638672304.jpg?param=106x106",
-                        },
-                        {
-                          title: "红豆",
-                          artist: "要不要买菜",
-                          mp3: "http://music.163.com/song/media/outer/url?id=1468957767.mp3",
-                          cover: "http://p2.music.126.net/S9vpC0pua4NDmCfcZviFew==/109951165212014716.jpg?param=106x106",
-                        },
-                        {
-                          title: "My Soul - July",
-                          artist: "July",
-                          cover: "http://p1.music.126.net/NFl1s5Hl3E37dCaFIDHfNw==/727876697598920.jpg?param=106x106",
-                          mp3: "http://music.163.com/song/media/outer/url?id=5308028.mp3"
-                        }];
-                        var isRotate = true;
-                        var autoplay = false;</script>
-                      <script src="https://360rom.github.io/src/webmp3/js/player.js">
-                      </script>
-                      <script>function bgChange() {
-                          var lis = $('.lib');
-                          for (var i = 0; i < lis.length; i += 2) lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
-                        }
-                        window.onload = bgChange;</script>
-                      <script>setInterval("cg.innerHTML=new Date().toLocaleString()", 1000);</script>
-                    <!--web show time work -->
-                    <font size="1" face="arial" color="">
-                      <span id="showsectime" style="color:#8B814C;">
-                      </span>
-                      <script type="text/javascript">function NewDate(str) {
-                          str = str.split('-');
-                          var date = new Date();
-                          date.setUTCFullYear(str[0], str[1] - 1, str[2]);
-                          date.setUTCHours(0, 0, 0, 0);
-                          return date;
-                        }
-                        function showsectime() {
-                          var birthDay = NewDate("2022-3-16");
-                          var today = new Date();
-                          var timeold = today.getTime() - birthDay.getTime();
-                          var sectimeold = timeold / 1000
-                          var secondsold = Math.floor(sectimeold);
-                          var msPerDay = 24 * 60 * 60 * 1000;
-                          var e_daysold = timeold / msPerDay;
-                          var daysold = Math.floor(e_daysold);
-                          var e_hrsold = (daysold - e_daysold) * -24;
-                          var hrsold = Math.floor(e_hrsold);
-                          var e_minsold = (hrsold - e_hrsold) * -60;
-                          var minsold = Math.floor((hrsold - e_hrsold) * -60);
-                          var seconds = Math.floor((minsold - e_minsold) * -60).toString();
-                          document.getElementById("showsectime").innerHTML = "已运行：" + daysold + "天" + hrsold + "小时" + minsold + "分";
-                          setTimeout(showsectime, 1000);
-                        }
-                        showsectime();</script>
-                    </font>
-                    <!--客服&js-->
-                    <div class="my_kefu">
-                      <ul>
-                        <li>
-                          <div>
-                            <img src="https://360rom.github.io/pic/openTrigger.jpg">
-                          </div>
-                          <div class="my_kefu_img">
-                            <img id="weixin" src="./styles/images/weixin_han.jpg">
-                          </div>
-                        </li>
-                        <li>
-                          <div style="color: white;font-size: 18px" id="top">
-                            <img src="https://360rom.github.io/pic/scrolltop.png" alt="Smiley face" width="42" height="42">
-                          </div>
-                        </li>
-                      </ul>
-                      <script type="text/javascript">var list = [{
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+              window.location.href = 'https://360rom.github.io/index.htm';
+            } else {
+              // window.location= '';
+            }
+          }
+          
+          browserRedirect(); //调用自身，页面一打开就开始跳转
+        </script>
+      </div>
+    </footer>
 
-                          weixin: 'https://360rom.github.io/pic/helpcode.png'
-                        },
-                        ];
+    <!-- 模态框 HTML 结构 -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span id="closeBtn" class="close">×</span>
+        <div style="text-align:left;">
+          <p style="line-height:2em; font-size:16px;">星光点点，不问赶路人…</p>
+          <p style="text-indent:2em; line-height:2em; font-size:16px;">
+            北冬，总缺些春夏雅韵，总似: 叶落风高掠野荒，漫天飞絮舞苍茫；四季交替之际，物随心境与颜语。
+          </p>
+          <p style="text-indent:2em; line-height:2em; font-size:16px;">
+            忆起此机的故事，伫立人生路途中，自购第一机，停留在N6/4+32G；充满着惊奇与未知，跌宕起伏带来各种问题…
+          </p>
+          <p style="text-indent:2em; line-height:2em; font-size:16px;">
+            于辗转流年之中，在摩尔定律下，渐感此机，卡顿和弊端，自感，似打补丁，修补填坑。
+          </p>
+          <p style="text-indent:2em; line-height:2em; font-size:16px;">
+            结业多年，或是难以言喻的情怀，终在22年，此机正式退役，隐匿在不知名角落下；亦如18年青春岁月，一去不返。
+          </p>
+          <p style="text-indent:2em; line-height:2em; font-size:16px;">
+            后知，360手机"战略转型"的变动、使该品牌齿轮，停滞且定格在18-19年；同因官方关闭某些服务，而自经4.5月之久的研究与测验，取得不限机型，100%成功率的幸运。
+          </p>
+          <p style="text-indent:2em; line-height:2em; font-size:16px;">
+            随不久，基于情怀，渐有感而发，耗时耗力，上线本站、开放整合资源；为360机友，公益性提供/维护部分内容。
+          </p>
+          <p style="text-indent:2em; line-height:2em; font-size:16px;">
+            性价比或是一种选择；但事、物在某些方面，究是要在天平两端倾平；小众也是一种市场与选择。
+          </p>
+          <p style="text-indent:2em; line-height:2em; font-size:16px;">
+            最后，愿360手机回归；See You Again…
+          </p>
+        </div>
+        <p style="text-align:right; line-height:3;">
+          <span style="font-size:16px; color:#A4A4A4;">by.2022年春夏之夜</span>
+        </p>
+        <p style="text-indent:2em; line-height:1.5; font-size:16px; text-align: center;">
+          提示:点框外或顶部X 均可退出
+        </p>
+      </div>
+    </div>
 
-                        var weixin = document.getElementById('weixin');
-                        var qq = document.getElementById('qq');
-                        var name1 = document.getElementById('name1');
-                        var name2 = document.getElementById('name2');
-                        var phone = document.getElementById('phone');
-                        var zuoji = document.getElementById('zuoji');
+    <!-- 右侧固定按钮 -->
+    <div class="fixed-buttons">
+      <img id="service-btn" src="https://360rom.github.io/pic/openTrigger.jpg" alt="客服">
+      <img id="top-btn" src="https://360rom.github.io/pic/scrolltop.png" alt="返回顶部">
+    </div>
+    
+    <!-- 添加二维码元素 -->
+    <div id="qrcode" style="display: none; position: fixed; right: 60px; top: 50%; transform: translateY(-50%);">
+      <img src="https://360rom.github.io/pic/helpcode.png" alt="微信二维码" style="width: 150px; height: 150px;">
+    </div>
 
-                        var i = Math.floor(Math.random() * (list.length - 0) + 0);
+    <script>
+      // 获取模态框、触发按钮和关闭按钮
+      var modal = document.getElementById("myModal");
+      var btn = document.getElementById("aboutLink");
+      var span = document.getElementById("closeBtn");
 
-                        console.log(i);
-                        weixin.src = list[i].weixin;
+      // 点击按钮时显示模态框
+      btn.onclick = function() {
+        modal.style.display = "block";
+      }
 
-                        $("#top").click(function() {
-                          $("html,body").animate({
-                            scrollTop: 0
-                          },
-                          'slow')
-                        })</script>
-                      <!-- 移动端设备判断和跳转-->
-                      <script type="text/javascript">function browserRedirect() {
-                          var sUserAgent = navigator.userAgent.toLowerCase();
-                          var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-                          var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-                          var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-                          var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-                          var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-                          var bIsAndroid = sUserAgent.match(/android/i) == "android";
-                          var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-                          var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+      // 点击关闭按钮时隐藏模态框
+      span.onclick = function() {
+        modal.style.display = "none";
+      }
 
-                          if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
-                            window.location.href = 'https://360rom.github.io/index.htm';
-                          } else {
-                            //            window.location= '';
-                          }
-                        }
-                        browserRedirect(); //调用自身，页面一打开就开始跳转
-                        </script>
-                    </div>
-                </div>
-              </div>
+      // 点击模态框外部区域时隐藏模态框
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
 
+      // 客服按钮事件
+      var serviceBtn = document.getElementById('service-btn');
+      var qrcode = document.getElementById('qrcode');
+
+      serviceBtn.addEventListener('mouseenter', function() {
+        qrcode.style.display = 'block';
+      });
+
+      serviceBtn.addEventListener('mouseleave', function() {
+        qrcode.style.display = 'none';
+      });
+
+      // 返回顶部按钮事件
+      var topBtn = document.getElementById('top-btn');
+
+      topBtn.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+  </body>
 </html>
