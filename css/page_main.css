@@ -1,0 +1,244 @@
+/* 基础样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+body {
+  font-family: 'Microsoft Yahei', Tahoma, 'Simsun', Arial, Helvetica, STHeiti;
+  font-size: 14px;
+  color: #444;
+  line-height: 1.6;
+  background-color: #f5f5f5;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #2ec7bb;
+}
+
+img {
+  border: none;
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* 顶部横条样式 */
+.top-bar {
+  background-color: #757575;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.top-bar p {
+  color: #fff;
+  font-size: 12px;
+}
+
+/* 主要内容区样式 */
+.main-container {
+  padding: 20px 0;
+}
+
+.content-wrapper {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  padding: 30px 24px;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* 标题样式 */
+.section-title {
+  border-bottom: 1px solid #e9e9e9;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+}
+
+.section-title span {
+  font-size: 24px;
+  color: #3c3c3c;
+}
+
+/* 机型列表样式 */
+.device-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.device-list li {
+  width: 25%;
+  padding: 0 15px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.device-list li img {
+  width: 175px;
+  height: 204px;
+  display: block;
+  margin: 0 auto 15px;
+}
+
+.device-list li p {
+  font-size: 16px;
+  line-height: 40px;
+}
+
+/* 页脚样式 */
+.footer {
+  background: #f7f8fa;
+  padding: 24px 0 10px;
+  color: #222;
+  border-top: 1px solid #eaeaea;
+  text-align: center;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.footer-links a {
+  color: #222;
+  margin: 0 6px;
+}
+
+.site-info {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.site-info a {
+  color: #222;
+}
+
+.runtime {
+  font-size: 0.8rem;
+  color: #8B814C;
+  margin: 10px 0;
+}
+
+/* 模态框样式 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
+  padding-top: 60px;
+  border-radius: 12px;
+}
+.close {
+  position: absolute;
+  top: 15px;
+  right: 15px; /* 从左中改为右上 */
+  left: auto;
+  transform: none;
+  font-size: 28px;
+  font-weight: bold;
+  color: #888;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f0f0f0;
+  transition: all 0.2s ease;
+  z-index: 1;
+}
+.close:hover, .close:focus {
+  color: #ff4d4f;
+  background: #f8f8f8;
+  transform: scale(1.1); /* 仅缩放，不移动 */
+}
+
+/* 右下角固定按钮区域 */
+.fixed-bottom-buttons {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.fixed-bottom-buttons > div {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  background: #fff;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* 微信二维码弹窗 */
+#wechat-qrcode {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s;
+  position: fixed;
+  z-index: 10000;
+  background: #fff;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+}
+
+/* 权限提示弹窗 */
+.permission-alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.permission-alert.show {
+  opacity: 1;
+}
