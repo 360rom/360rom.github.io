@@ -140,43 +140,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 右下角微信二维码显示/隐藏
-  const wechatBtn = document.getElementById('wechat-btn');
-  const wechatQrcode = document.getElementById('wechat-qrcode');
-  if (wechatBtn && wechatQrcode) {
-    wechatBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      if (wechatQrcode.style.visibility === 'visible') {
-        wechatQrcode.style.visibility = 'hidden';
-        wechatQrcode.style.opacity = '0';
-      } else {
-        var btnRect = wechatBtn.getBoundingClientRect();
-        var qrcodeRect = wechatQrcode.getBoundingClientRect();
-        var left = btnRect.left - qrcodeRect.width - 12;
-        var top = btnRect.top + (btnRect.height - qrcodeRect.height) / 2;
-        wechatQrcode.style.left = left + 'px';
-        wechatQrcode.style.top = top + 'px';
-        wechatQrcode.style.right = '';
-        wechatQrcode.style.bottom = '';
-        wechatQrcode.style.visibility = 'visible';
-        wechatQrcode.style.opacity = '1';
-      }
-    });
-    wechatQrcode.addEventListener('click', function (e) {
-      e.stopPropagation();
-      wechatQrcode.style.visibility = 'hidden';
-      wechatQrcode.style.opacity = '0';
-    });
-    document.addEventListener('click', function (e) {
-      if (wechatQrcode.style.visibility === 'visible' &&
-        !wechatQrcode.contains(e.target) &&
-        e.target !== wechatBtn) {
-        wechatQrcode.style.visibility = 'hidden';
-        wechatQrcode.style.opacity = '0';
-      }
-    });
-  }
-
   // 置顶按钮
   const scrollTopBtn = document.getElementById('scroll-top-btn');
   if (scrollTopBtn) {
@@ -201,4 +164,39 @@ document.addEventListener('DOMContentLoaded', function () {
   };
   window.onload = window.bgChange;
   // 播放器相关JS建议外链
+
+  // 右下角按钮与微信二维码弹窗功能
+  // 微信二维码显示/隐藏功能
+  const wechatBtn = document.getElementById('wechat-btn');
+  const wechatQrcode = document.getElementById('wechat-qrcode');
+  if (wechatBtn && wechatQrcode) {
+    wechatBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (wechatQrcode.classList.contains('active')) {
+        wechatQrcode.classList.remove('active');
+      } else {
+        var btnRect = wechatBtn.getBoundingClientRect();
+        var qrcodeRect = wechatQrcode.getBoundingClientRect();
+        var left = btnRect.left - qrcodeRect.width - 32;
+        var top = btnRect.top + (btnRect.height - qrcodeRect.height) / 2;
+        if (left < 0) left = btnRect.right + 12;
+        wechatQrcode.style.left = left + 'px';
+        wechatQrcode.style.top = top + 'px';
+        wechatQrcode.style.right = '';
+        wechatQrcode.style.bottom = '';
+        wechatQrcode.classList.add('active');
+      }
+    });
+    wechatQrcode.addEventListener('click', function (e) {
+      e.stopPropagation();
+      wechatQrcode.classList.remove('active');
+    });
+    document.addEventListener('click', function (e) {
+      if (wechatQrcode.classList.contains('active') &&
+        !wechatQrcode.contains(e.target) &&
+        e.target !== wechatBtn) {
+        wechatQrcode.classList.remove('active');
+      }
+    });
+  }
 });
