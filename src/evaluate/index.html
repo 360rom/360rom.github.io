@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="360手机资源站, 刷机ROM, 刷机教程, 手机维修, 刷机视频, 人工刷机服务, 手机系统升级, 手机ROOT, 不限速下载, TWRP, 养老系统, 纯净无广告系统">
+    <meta name="description" content="360手机资源站提供安全纯净ROM、详细教程、ROOT工具、TWRPRecovery、养老系统及专业人工服务，支持不限速下载，解决各类各类手机刷机难题。">
+    <title>360手机资源站-用户评价</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            position: relative; /* 新增：为侧线提供定位基准 */
+            overflow-x: hidden; /* 防止横向滚动 */
+        }
+        /* 右侧滑线下拉装饰 */
+        .side-decoration {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100vh;
+            background: linear-gradient(180deg, #3498db 0%, #2980b9 100%);
+            transform: translateX(calc(100% - 2px)); /* 初始只显示2px */
+            transition: transform 0.5s ease;
+            z-index: 100;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        /* 下滑线动画元素 */
+        .side-decoration::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 100%);
+            animation: slideDown 3s infinite;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        @keyframes slideDown {
+            0% {
+                top: -30%;
+            }
+            100% {
+                top: 100%;
+            }
+        }
+        
+        /* 鼠标悬停时展开 */
+        .side-decoration:hover {
+            transform: translateX(0);
+            box-shadow: -2px 0 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .page-title {
+            text-align: center;
+            margin: 40px 0 60px;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 700;
+            position: relative;
+        }
+        .page-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: #3498db;
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        .reviews-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .review-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .user-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 3px solid #f0f0f0;
+        }
+        .user-details {
+            flex: 1;
+        }
+        .user-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        .rating {
+            color: #f39c12;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+        .star-filled, .star-empty {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            position: relative;
+        }
+        .star-filled::after {
+            content: '★';
+            color: #f39c12;
+            position: absolute;
+            left: 0;
+        }
+        .star-empty::after {
+            content: '★';
+            color: #ddd;
+            position: absolute;
+            left: 0;
+        }
+        .review-text {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.8;
+            padding-top: 15px;
+            border-top: 1px solid #f0f0f0;
+            flex-grow: 1;
+        }
+        @media (max-width: 768px) {
+            .reviews-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .page-title {
+                font-size: 2rem;
+                margin: 30px 0 40px;
+            }
+            .container {
+                padding: 15px;
+            }
+            .review-card {
+                padding: 20px;
+            }
+            /* 移动端调整装饰线 */
+            .side-decoration {
+                width: 3px;
+            }
+        }
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 1.75rem;
+            }
+            .user-avatar {
+                width: 50px;
+                height: 50px;
+            }
+        }
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            grid-column: 1 / -1;
+        }
+        .loading .spinner {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 15px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- 右侧装饰线 -->
+    <div class="side-decoration"></div>
+    
+    <div class="container">
+        <h1 class="page-title">用户真实评价</h1>
+        <div class="reviews-container" id="reviewsContainer">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>加载评价中...</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const reviewsData = [
+            {id:1,name:"诚信手机维修",avatar:"https://picsum.photos/id/1059/200/200",rating:5,comment:"连锁店都用这的资源，TWRP镜像全，ROOT成功率高，客户反馈好，每月必捐！"},
+            {id:2,name:"市场部小张",avatar:"https://picsum.photos/id/1066/200/200",rating:4,comment:"工作机刷完纯净系统后快多了，分身功能同时登3个微信，效率翻倍！"},
+            {id:3,name:"手游代练工作室",avatar:"https://picsum.photos/id/1071/200/200",rating:5,comment:"30台设备全靠这的ROM，ROOT稳定，多开不闪退，技术员远程批量部署省人工！"},
+            {id:4,name:"阿强",avatar:"https://picsum.photos/id/1074/200/200",rating:5,comment:"好用，刷完没广告，速度快多了。"},
+            {id:5,name:"兼职搬砖人",avatar:"https://picsum.photos/id/1080/200/200",rating:5,comment:"位置穿越修复太重要，配合分身操作10个账号，每月多赚2000+，已捐赠！"},
+            {id:6,name:"王大爷",avatar:"https://picsum.photos/id/1076/200/200",rating:5,comment:"养老系统真不错，字大声音响，看戏曲、视频都方便，谢谢！"},
+            {id:7,name:"大学生小雨",avatar:"https://picsum.photos/id/1068/200/200",rating:5,comment:"旧手机刷完像新的！不限速下载太爽，4G ROM十几分钟下完，教程简单。"},
+            {id:8,name:"美团骑手李哥",avatar:"https://picsum.photos/id/1082/200/200",rating:5,comment:"定位修复救了我！以前总偏移接不到单，现在一天多跑5单，感谢站长！"},
+            {id:9,name:"闲鱼小老板",avatar:"https://picsum.photos/id/1062/200/200",rating:5,comment:"改串码功能太实用了！多台手机登录不怕关联，生意越来越好，已捐！"},
+            {id:10,name:"追剧达人",avatar:"https://picsum.photos/id/1083/200/200",rating:4,comment:"旧手机刷成专门看剧的，纯净系统后台清净，续航能看一整天，就是喇叭效果一般。"},
+            {id:11,name:"金币小能手",avatar:"https://picsum.photos/id/1084/200/200",rating:5,comment:"任务机专用ROM，后台自动运行不卡顿，每天金币多赚30%，太值了！"},
+            {id:12,name:"玩机爱好者",avatar:"https://picsum.photos/id/1087/200/200",rating:5,comment:"Magisk授权完美，MT管理器运行流畅，这ROM的ROOT环境是我用过最稳定的！"},
+            {id:13,name:"智能家居控",avatar:"https://picsum.photos/id/1089/200/200",rating:4,comment:"旧手机改造成家庭控制中心，精简ROM占用内存小，24小时开机很稳定，推荐！"},
+            {id:14,name:"家庭安防哥",avatar:"https://picsum.photos/id/1090/200/200",rating:5,comment:"3部旧手机刷成监控摄像头，专用ROM优化得很好，夜视效果比买的设备还好！"},
+            {id:15,name:"杂货店老王",avatar:"https://picsum.photos/id/1079/200/200",rating:5,comment:"刷了收款播报系统，声音大又清晰，比买的收款音箱好用多了，省了好几百！"},
+            {id:16,name:"宝妈小芳",avatar:"https://picsum.photos/id/1077/200/200",rating:5,comment:"闲鱼转卖，刷系统后，用户评论反馈也棒!"},
+            {id:17,name:"工地老张",avatar:"https://picsum.photos/id/1081/200/200",rating:5,comment:"旧手机刷成热点机，比买的随身WiFi稳定多了，工地几十人用都不卡，续航也强！"},
+            {id:18,name:"外贸小李",avatar:"https://picsum.photos/id/1085/200/200",rating:5,comment:"国际版ROM自带全套Google服务，不用自己折腾，和国外客户开视频会很流畅！"},
+            {id:19,name:"怀旧玩家",avatar:"https://picsum.photos/id/1086/200/200",rating:5,comment:"十年前的老手机刷了优化ROM居然还能用，专门玩怀旧游戏，感谢站长还在维护老机型！"},
+            {id:20,name:"设计师阿文",avatar:"https://picsum.photos/id/1069/200/200",rating:4,comment:"把旧手机当电脑副屏用，ROM优化得很流畅，显示延迟低，就是分辨率有点跟不上。"},
+            {id:21,name:"极客小吴",avatar:"https://picsum.photos/id/1070/200/200",rating:5,comment:"惊讶！旧手机刷成NAS服务器居然这么稳定，挂了个1TB硬盘，家庭文件共享太方便了！"},
+            {id:22,name:"数码控阿杰",avatar:"https://picsum.photos/id/1065/200/200",rating:5,comment:"备用机刷了这个ROM后待机居然有15天！紧急情况下太靠谱了，必须好评！"}
+        ];
+        document.addEventListener('DOMContentLoaded', () => {
+            const reviewsContainer = document.getElementById('reviewsContainer');
+            setTimeout(() => {
+                reviewsContainer.innerHTML = '';
+                reviewsData.forEach(review => {
+                    const reviewCard = document.createElement('div');
+                    reviewCard.className = 'review-card';
+                    let ratingHtml = '';
+                    for (let i = 1; i <= 5; i++) {
+                        ratingHtml += `<span class="${i <= review.rating ? 'star-filled' : 'star-empty'}"></span>`;
+                    }
+                    reviewCard.innerHTML = `
+                        <div class="user-info">
+                            <img src="${review.avatar}" alt="${review.name}的头像" class="user-avatar">
+                            <div class="user-details">
+                                <div class="user-name">${review.name}</div>
+                                <div class="rating">${ratingHtml}</div>
+                            </div>
+                        </div>
+                        <p class="review-text">${review.comment}</p>
+                    `;
+                    reviewsContainer.appendChild(reviewCard);
+                });
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
