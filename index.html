@@ -2,11 +2,17 @@
 <html lang="zh-CN">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="codeva-dCMsLe1AR4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>360手机-360手机刷机RootTwrp</title>
+  <meta name="description" content="360手机官方资源站:全网唯一可用，支持刷机解锁救砖Twrp/Root/Magisk教程与位置穿越功能修复，免费下载360手机刷机包" />
+  <meta name="keywords"content="360手机 360手机解锁 360手机刷机救砖 360手机刷机包分享 360手机纯净无广告系统 360手机位置穿越 酷派奇酷刷机 CPB解包 QGDP破解版 360手机TwrpRootMagisk QikuDownloadAssistant 360N5 360N5S 360N6 360N6Lite 360N6PRO 360N7 360N7Lite 360N7Pro 360Q5 360Q5Plus" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <base href="https://360os.top" />
+  <link rel="shortcut icon" href="favicon.ico" />
   <link rel="stylesheet" href="https://360rom.github.io/src/webmp3/css/player.css">
-  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://360rom.github.io/css/page_main.css">
 </head>
 
@@ -293,51 +299,24 @@
       <iframe src="src/evaluate/index.html" frameborder="0" style="width:100%;height:100%;border-radius:12px;"></iframe>
     </div>
   </div>
-  <!-- 右下角固定按钮区域 -->
-  <div class="fixed-bottom-buttons">
-    <div id="wechat-btn">
-      <i class="fa fa-weixin" style="font-size:28px;color:#52c41a;"></i>
-    </div>
-    <div id="scroll-top-btn">
-      <i class="fa fa-arrow-up" style="font-size:24px;color:#1890ff;"></i>
-    </div>
-    <div id="scroll-bottom-btn">
-      <i class="fa fa-arrow-down" style="font-size:24px;color:#faad14;"></i>
-    </div>
+
+  <!-- 右下角浮动图标栏 -->
+  <div id="float-bar" style="position:fixed;right:18px;bottom:18px;z-index:9999;display:flex;flex-direction:column;gap:16px;">
+    <a id="wechatBtn" href="javascript:;" title="微信" style="background:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.12);width:48px;height:48px;display:flex;align-items:center;justify-content:center;">
+      <i class="fa fa-wechat" style="font-size:28px;color:#09bb07;"></i>
+    </a>
+    <a id="backToTopBtn" href="javascript:;" title="置顶" style="background:#fff;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.12);width:48px;height:48px;display:flex;align-items:center;justify-content:center;">
+      <i class="fa fa-arrow-up" style="font-size:26px;color:#666;"></i>
+    </a>
   </div>
-  <!-- 微信二维码弹窗 -->
-  <div id="wechat-qrcode">
-    <img src="https://360rom.github.io/pic/wx-gzh.png" alt="微信二维码" style="width:120px;height:120px;">
-  </div>
-  <!--webmp3 -->
-  <div id="QPlayer">
-    <div id="pContent">
-      <div id="player">
-        <span class="cover"></span>
-        <div class="ctrl">
-          <div class="musicTag marquee">
-            <strong>Title</strong>
-            <span>-</span>
-            <span class="artist">Artist</span>
-          </div>
-          <div class="progress">
-            <div class="timer left">0:00</div>
-            <div class="contr">
-              <div class="rewind icon"></div>
-              <div class="playback icon"></div>
-              <div class="fastforward icon"></div>
-            </div>
-            <div class="right">
-              <div class="liebiao icon"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="ssBtn">
-        <div class="adf"></div>
-      </div>
+
+  <!-- 微信二维码模态框 -->
+  <div id="wechatModal" class="modal" style="display:none;">
+    <div class="modal-content" style="width:320px;margin:15% auto;padding:30px 20px 20px 20px;text-align:center;position:relative;font-size:16px;">
+      <span class="close" id="closeWechatModal" style="position:absolute;right:16px;top:8px;font-size:28px;cursor:pointer;">×</span>
+      <p style="font-weight:bold;color:#7a7a7a;margin:10px 0 16px 0;">微信扫码关注</p>
+      <img src="https://360rom.github.io//pic/wx-gzh.png" alt="微信二维码" style="width:180px;height:180px;border-radius:12px;">
     </div>
-    <ol id="playlist"></ol>
   </div>
 
   <script src="https://360rom.github.io/src/webmp3/js/jquery.min.js"></script>
@@ -355,20 +334,29 @@
 
     var isRotate = true;
     var autoplay = false;
+
+    // 置顶按钮
+    document.getElementById('backToTopBtn').onclick = function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // 微信二维码弹窗
+    var wechatModal = document.getElementById('wechatModal');
+    document.getElementById('wechatBtn').onclick = function() {
+      wechatModal.style.display = 'block';
+    };
+    document.getElementById('closeWechatModal').onclick = function() {
+      wechatModal.style.display = 'none';
+    };
+    // 点击模态框外关闭
+    window.addEventListener('click', function(e) {
+      if (e.target === wechatModal) wechatModal.style.display = 'none';
+    });
   </script>
 
   <script src="https://360rom.github.io/src/webmp3/js/player.js"></script>
 
-  <script>
-    function bgChange() {
-      var lis = $('.lib');
-      for (var i = 0; i < lis.length; i += 2) {
-        lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
-      }
-    }
 
-    window.onload = bgChange;
-  </script>
   <!-- 权限提示弹窗 -->
   <div class="permission-alert"></div>
   <script src="https://360rom.github.io/js/page_main.js"></script>
