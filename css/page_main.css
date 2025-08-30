@@ -143,11 +143,14 @@ img {
   display: none;
   position: fixed;
   z-index: 1000;
-  left: 0; top: 0;
-  width: 100%; height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-content {
   background-color: #fefefe;
   margin: 10% auto;
@@ -160,10 +163,12 @@ img {
   padding-top: 60px;
   border-radius: 12px;
 }
+
 .close {
   position: absolute;
   top: 15px;
-  right: 15px; /* 从左中改为右上 */
+  right: 15px;
+  /* 从左中改为右上 */
   left: auto;
   transform: none;
   font-size: 28px;
@@ -179,13 +184,16 @@ img {
   transition: all 0.2s ease;
   z-index: 1;
 }
-.close:hover, .close:focus {
+
+.close:hover,
+.close:focus {
   color: #ff4d4f;
   background: #f8f8f8;
-  transform: scale(1.1); /* 仅缩放，不移动 */
+  transform: scale(1.1);
+  /* 仅缩放，不移动 */
 }
 
-/* 右下角固定按钮区域 */
+/* 右下角固定按钮区域（覆盖原有样式，兼容t.html结构） */
 .fixed-bottom-buttons {
   position: fixed;
   right: 18px;
@@ -195,8 +203,9 @@ img {
   flex-direction: column;
   gap: 16px;
 }
-.fixed-bottom-buttons > div {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+
+.fixed-bottom-buttons>div {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   background: #fff;
   border-radius: 50%;
   width: 48px;
@@ -207,20 +216,49 @@ img {
   cursor: pointer;
 }
 
-/* 微信二维码弹窗 */
+#wechat-btn i {
+  font-size: 28px;
+  color: #52c41a;
+}
+
+#scroll-top-btn i {
+  font-size: 24px;
+  color: #1890ff;
+}
+
+#scroll-bottom-btn i {
+  font-size: 24px;
+  color: #faad14;
+}
+
+/* 微信二维码弹窗样式（兼容t.html） */
 #wechat-qrcode {
   visibility: hidden;
   opacity: 0;
-  transition: all 0.2s;
+  pointer-events: none;
+  transform: scale(0.8);
+  transition: opacity 0.25s cubic-bezier(.4, 0, .2, 1), transform 0.25s cubic-bezier(.4, 0, .2, 1);
   position: fixed;
   z-index: 10000;
   background: #fff;
   padding: 8px;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 120px;
+}
+
+#wechat-qrcode.active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+#wechat-qrcode img {
+  width: 120px;
   height: 120px;
 }
 
@@ -229,7 +267,7 @@ img {
   position: fixed;
   top: 20px;
   right: 20px;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
@@ -239,6 +277,7 @@ img {
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
+
 .permission-alert.show {
   opacity: 1;
 }
