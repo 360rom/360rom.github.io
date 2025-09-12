@@ -1,0 +1,396 @@
+/* 将原 style 标签内容全部迁移至 main.css */
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+    background-color: #f5f7fa;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 80px;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+header {
+    background-color: #0076db;
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.logo i {
+    margin-right: 10px;
+    font-size: 28px;
+}
+.announcement {
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+.announcement h2 {
+    color: #0076db;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+.announcement-list {
+    height: 60px;
+    overflow: hidden;
+    position: relative;
+}
+.announcement-item {
+    position: absolute;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+.announcement-item strong {
+    color: #e53935;
+}
+.section {
+    background-color: #fff;
+    margin: 20px 0;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.section h2 {
+    color: #0076db;
+    margin-bottom: 20px;
+    font-size: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+.tool-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.input-group {
+    flex: 1;
+    min-width: 160px;
+}
+.input-group input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.input-group.extract-code {
+    flex: 0 0 130px;
+    min-width: 130px;
+}
+.btn, a.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    background: none;
+    outline: none;
+    user-select: none;
+}
+a.btn:focus {
+    outline: 2px solid #0076db;
+}
+.btn i, a.btn i {
+    margin-right: 5px;
+}
+.btn-primary, a.btn.btn-primary {
+    background-color: #0076db;
+    color: white;
+}
+.btn-primary:hover, a.btn.btn-primary:hover {
+    background-color: #005baa;
+}
+.btn-secondary, a.btn.btn-secondary {
+    background-color: #f0f0f0;
+    color: #333;
+}
+.btn-secondary:hover, a.btn.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+.hint {
+    text-align: center;
+    margin: 15px 0;
+    color: #666;
+}
+.collapsible {
+    background-color: #f5f5f5;
+    color: #333;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.collapsible:after {
+    content: '\f078';
+    font-family: 'FontAwesome';
+    transition: transform 0.3s;
+}
+.active:after {
+    transform: rotate(180deg);
+}
+.content {
+    padding: 0 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: white;
+}
+.password-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+}
+.password-table th {
+    color: #ff9800;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #f0f0f0;
+}
+.password-table td {
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.qr-container {
+    text-align: center;
+    margin: 20px 0;
+}
+.qr-image {
+    max-width: 200px;
+    height: auto;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 4px;
+}
+.button-center {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.help-text {
+    margin-bottom: 15px;
+    line-height: 1.8;
+}
+.link, a {
+    color: #0076db;
+    text-decoration: none;
+}
+.link:hover, a:hover {
+    text-decoration: underline;
+}
+a.btn:hover, a.btn:active {
+    text-decoration: none;
+}
+.divider {
+    height: 1px;
+    background-color: #eee;
+    margin: 20px 0;
+}
+footer {
+    background-color: #f0f0f0;
+    padding: 20px 0;
+    margin-top: 30px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.float-button {
+    position: fixed;
+    right: 20px;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    transition: width 0.3s ease;
+    overflow: hidden;
+    border-radius: 20px;
+}
+#qrButton {
+    bottom: 20px;
+}
+#topButton {
+    bottom: 70px;
+}
+.float-button.active {
+    width: 160px;
+}
+.float-button:hover {
+    width: 160px;
+}
+.float-btn {
+    width: 40px;
+    height: 40px;
+    background-color: #0076db;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+.float-content {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding-right: 45px;
+    background-color: #0076db;
+    color: white;
+    border-radius: 20px;
+    white-space: nowrap;
+    z-index: 1;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+.float-button.active .float-content,
+.float-button:hover .float-content {
+    opacity: 1;
+}
+.wechat-qr-container {
+    position: fixed;
+    right: 20px;
+    bottom: 80px;
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transform-origin: bottom right;
+    transform: scale(0.95);
+}
+.wechat-qr-container .wechat-qr-content {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 10px 10px 5px 10px;
+    text-align: center;
+}
+.wechat-qr-image {
+    width: 160px;
+    height: 160px;
+    border: 5px solid white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 8px;
+}
+.wechat-qr-text {
+    font-size: 15px;
+    color: #0076db;
+    margin-bottom: 2px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 8px;
+    position: relative;
+    animation: modalFadeIn 0.3s;
+}
+@keyframes modalFadeIn {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+.modal-body {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.modal-footer {
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+@media (max-width: 768px) {
+    .tool-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .input-group.extract-code {
+        flex: 1;
+        min-width: 200px;
+    }
+    .button-group {
+        justify-content: center;
+    }
+    .modal-content {
+        width: 95%;
+        margin: 30% auto;
+    }
+}

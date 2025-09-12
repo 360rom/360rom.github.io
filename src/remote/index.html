@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360手机 - 免费刷机解锁工具-远程刷机</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <meta name="keywords" content="360手机, 远程协助, 手机刷机, 解锁, 救砖, 系统修复, 数据恢复, 位置修复, 手机Root, TWRP" />
+    <meta name="description" content="提供360手机专业远程协助服务，包括刷机、解锁、救砖、系统修复、数据恢复及位置修复等，操作简单高效，成功率100%，专业技术团队支持。" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <style>
+        :root {
+            --primary-color: #2D8CF0;
+            --text-color: #333333;
+            --light-text: #666666;
+            --border-color: #EEEEEE;
+            --bg-color: #F5F7FA;
+            --white: #FFFFFF;
+            --success: #00B42A;
+            --warning: #FF7D00;
+            --danger: #F53F3F;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 头部样式 */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            padding: 0 10px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+            flex-shrink: 0;
+            /* 靠左对齐 */
+            justify-self: flex-start;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary-color);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-left: auto;
+        }
+
+        nav {
+            /* 移除居中，靠右 */
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-left: 10px;
+        }
+
+        /* 英雄区域 */
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4eaf1 100%);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        /* 功能区域 */
+        .features {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 26px;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 6px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(45, 140, 240, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
+            color: var(--light-text);
+            font-size: 14px;
+        }
+
+        /* 刷机流程 */
+        .flash-process {
+            background-color: var(--white);
+            padding: 70px 0;
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 40px;
+            right: 40px;
+            height: 2px;
+            background-color: var(--border-color);
+            z-index: 1;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 0 10px;
+        }
+
+        .step-progress {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 15px;
+            position: relative;
+        }
+
+        .step-progress svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .step-progress-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .step.active .step-progress {
+            /* 添加激活状态样式，如果需要的话 */
+        }
+
+        .step h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .step p {
+            color: var(--light-text);
+            font-size: 13px;
+        }
+
+        /* 设备连接与远程协助 */
+        .connection-remote {
+            padding: 70px 0;
+        }
+
+        .connection-remote-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .connection-section,
+        .remote-section {
+            flex: 1;
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .connection-steps {
+            margin-bottom: 20px;
+        }
+
+        .connection-step {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .connection-step-icon {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(45, 140, 240, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            flex-shrink: 0;
+            font-size: 14px;
+        }
+
+        .connection-step-content h4 {
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .connection-step-content p {
+            color: var(--light-text);
+            font-size: 13px;
+        }
+
+        .connection-status {
+            padding: 15px;
+            border-radius: 6px;
+            background-color: rgba(0, 180, 42, 0.1);
+            border-left: 3px solid var(--success);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .remote-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .remote-option {
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        .remote-option h4 {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .remote-option p {
+            color: var(--light-text);
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        /* 常见问题 */
+        .faq {
+            padding: 70px 0;
+            background-color: var(--white);
+        }
+
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background-color: var(--white);
+            padding: 12px 15px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+        }
+
+        .faq-question:after {
+            content: '+';
+            font-size: 18px;
+            color: var(--primary-color);
+        }
+
+        .faq-item.active .faq-question:after {
+            content: '-';
+        }
+
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            font-size: 14px;
+            color: var(--light-text);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 15px;
+            max-height: 300px;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: #1D2129;
+            color: #86909C;
+            padding: 40px 0 20px;
+            font-size: 14px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            color: var(--white);
+            font-size: 15px;
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column a {
+            color: #86909C;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid #2B2F36;
+            text-align: center;
+        }
+
+        /* 弹窗样式 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: var(--white);
+            border-radius: 6px;
+            width: 90%;
+            max-width: 400px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            /* 原为18px，放大 */
+            cursor: pointer;
+            color: var(--light-text);
+            width: 40px;
+            /* 增大点击区域 */
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #f0f0f0;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            padding: 12px 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* 连接状态指示器 */
+        .connection-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .indicator-connected {
+            background-color: var(--success);
+        }
+
+        .indicator-disconnected {
+            background-color: var(--danger);
+        }
+
+        .indicator-connecting {
+            background-color: var(--warning);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .connection-remote-container {
+                flex-direction: column;
+            }
+
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .process-steps:before {
+                width: 2px;
+                height: calc(100% - 100px);
+                top: 70px;
+                left: 50%;
+                right: auto;
+            }
+
+            .step {
+                width: 100%;
+                max-width: 250px;
+                margin-bottom: 30px;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fa fa-android"></i>
+                </div>
+                <span>360手机官方工具</span>
+            </div>
+            <div class="header-actions">
+                <nav>
+                    <ul>
+                        <li><a href="#features">服务项目</a></li>
+                        <li><a href="#process">刷机流程</a></li>
+                        <li><a href="#connection">远程协助</a></li>
+                        <li><a href="#faq">常见问题</a></li>
+                    </ul>
+                </nav>
+                <button class="contact-btn" id="contactBtn">
+                    <i class="fa fa-user"></i> 技术支持
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1>360手机<span>远程协助</span> </h1>
+            <p>刷机、解锁、救砖、纯净系统、Root、Twrp</p>
+            <div class="btn-group">
+                <a href="#connection" class="btn btn-primary">
+                    <i class="fa fa-laptop "></i> 远程协助
+                </a>
+                <a href="https://sunlogin.oray.com/download?categ=personal" target="_blank" class="btn btn-secondary">
+                    <i class="fa fa-mouse-pointer "></i> 向日葵远程
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能介绍 -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>服务内容</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-refresh"></i>
+                    </div>
+                    <h3>刷机/解锁</h3>
+                    <p>可解决99%问题；默认纯净版：无任何广告</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-map-marker "></i>
+                    </div>
+                    <h3>位置修复</h3>
+                    <p>打卡/定位</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fa fa-mobile  "></i>
+                    </div>
+                    <h3>数据恢复</h3>
+                    <p>支持：照片、联系人、短信等重要数据</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 刷机流程 -->
+    <section class="flash-process" id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>刷机流程</h2>
+            </div>
+            <div class="process-steps">
+                <div class="step active">
+                    <div class="step-progress">
+                        <svg width="50" height="50">
+                            <circle cx="25" cy="25" r="22" stroke="#EEEEEE" stroke-width="6" fill="none" />
+                            <circle cx="25" cy="25" r="22" stroke="#00B42A" stroke-width="6" fill="none"
+                                stroke-dasharray="138.2" stroke-dashoffset="110.56"
+                                style="transition:stroke-dashoffset 0.5s;" />
+                        </svg>
+                        <span class="step-progress-label">1</span>
+                    </div>
+                    <h3>备份数据</h3>
+                </div>
+                <div class="step">
+                    <div class="step-progress">
+                        <svg width="50" height="50">
+                            <circle cx="25" cy="25" r="22" stroke="#EEEEEE" stroke-width="6" fill="none" />
+                            <circle cx="25" cy="25" r="22" stroke="#00B42A" stroke-width="6" fill="none"
+                                stroke-dasharray="138.2" stroke-dashoffset="82.92"
+                                style="transition:stroke-dashoffset 0.5s;" />
+                        </svg>
+                        <span class="step-progress-label">2</span>
+                    </div>
+                    <h3>电脑远程</h3>
+                </div>
+                <div class="step">
+                    <div class="step-progress">
+                        <svg width="50" height="50">
+                            <circle cx="25" cy="25" r="22" stroke="#EEEEEE" stroke-width="6" fill="none" />
+                            <circle cx="25" cy="25" r="22" stroke="#00B42A" stroke-width="6" fill="none"
+                                stroke-dasharray="138.2" stroke-dashoffset="55.28"
+                                style="transition:stroke-dashoffset 0.5s;" />
+                        </svg>
+                        <span class="step-progress-label">3</span>
+                    </div>
+                    <h3>连接设备</h3>
+                </div>
+                <div class="step">
+                    <div class="step-progress">
+                        <svg width="50" height="50">
+                            <circle cx="25" cy="25" r="22" stroke="#EEEEEE" stroke-width="6" fill="none" />
+                            <circle cx="25" cy="25" r="22" stroke="#00B42A" stroke-width="6" fill="none"
+                                stroke-dasharray="138.2" stroke-dashoffset="27.64"
+                                style="transition:stroke-dashoffset 0.5s;" />
+                        </svg>
+                        <span class="step-progress-label">4</span>
+                    </div>
+                    <h3>开始刷机</h3>
+                </div>
+                <div class="step">
+                    <div class="step-progress">
+                        <svg width="50" height="50">
+                            <circle cx="25" cy="25" r="22" stroke="#EEEEEE" stroke-width="6" fill="none" />
+                            <circle cx="25" cy="25" r="22" stroke="#00B42A" stroke-width="6" fill="none"
+                                stroke-dasharray="138.2" stroke-dashoffset="0"
+                                style="transition:stroke-dashoffset 0.5s;" />
+                        </svg>
+                        <span class="step-progress-label">5</span>
+                    </div>
+                    <h3>完成</h3>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-primary" id="downloadToolBtn">
+                    <i class="fa fa-download"></i> 下载刷机工具
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设备连接与远程协助 -->
+    <section class="connection-remote" id="connection">
+        <div class="container">
+            <div class="connection-remote-container">
+                <div class="connection-section">
+                    <h3 class="section-subtitle">USB开发者</h3>
+                    <div class="connection-steps">
+                        <div class="connection-step">
+                            <div class="connection-step-icon">
+                                <i class="fa fa-mobile"></i>
+                            </div>
+                            <div class="connection-step-content">
+                                <h4>开启开发者选项</h4>
+                                <p>设置 -> 关于手机，连续点击"版本号"7次</p>
+                            </div>
+                        </div>
+                        <div class="connection-step">
+                            <div class="connection-step-icon">
+                                <i class="fa fa-code"></i>
+                            </div>
+                            <div class="connection-step-content">
+                                <h4>开启USB调试</h4>
+                                <p>设置 -> 开发者选项，开启"USB调试"</p>
+                            </div>
+                        </div>
+                        <div class="connection-step">
+                            <div class="connection-step-icon">
+                                <i class="fa fa-plug"></i>
+                            </div>
+                            <div class="connection-step-content">
+                                <h4>连接USB数据线</h4>
+                                <p>注意提示和授权</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="connection-status">
+                        <div>
+                            <span class="connection-indicator indicator-disconnected" id="connectionIndicator"></span>
+                            <span id="connectionStatusText">监测中...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="remote-section">
+                    <h3 class="section-subtitle">
+                        远程协助服务
+                        <button class="btn btn-secondary" id="onlineReserveBtn"
+                            style="margin-left:12px;padding:4px 12px;font-size:13px;">在线预约</button>
+                    </h3>
+                    <div class="remote-options">
+                        <div class="remote-option">
+                            <h4>
+                                <span>指导解答</span>
+                                <span class="price">¥9起</span>
+                            </h4>
+                            <p>提供各种基础内容</p>
+                        </div>
+                        <div class="remote-option">
+                            <h4>
+                                <span>远程服务</span>
+                                <span class="price">¥36起</span>
+                            </h4>
+                            <p>电脑远程·极速响应</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 常见问题 -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>常见问题</h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">远程时间、成功率？</div>
+                    <div class="faq-answer">
+                        <p>10-30分钟；支持批量刷机；100%成功率</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">比我操作，有啥优势？</div>
+                    <div class="faq-answer">
+                        <p>省时间和折腾，快速、成功率高、效率快，解决问题影响</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">远程协助，我要准备什么？</div>
+                    <div class="faq-answer">
+                        <p>可上网的电脑；原装USB数据线</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">可保资料（如：照片）刷机/解锁吗？</div>
+                    <div class="faq-answer">
+                        <p>支持</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">不成功，支持退款吗？</div>
+                    <div class="faq-answer">
+                        <p>支持</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">向日葵远程操作说明</div>
+                    <div class="faq-answer">
+                        <div style="text-align:center;">
+                            <img src="SunloginClient.png" alt="向日葵远程操作说明"
+                                style="max-width:100%;width:350px;max-height:400px;display:inline-block;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin:10px 0;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+
+        <div class="footer-bottom">
+            <p>刷机服务，质保一年</p>
+        </div>
+        </div>
+    </footer>
+
+    <!-- 弹窗 -->
+    <!-- 删除原有联系客服弹窗 -->
+    <!-- 新增：微信二维码弹窗 -->
+    <div class="modal-overlay" id="wxCodeModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">微信扫码联系</h3>
+                <button class="modal-close" id="closeWxCodeModal">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                <img src="wx-code.png" alt="微信二维码"
+                    style="max-width:220px;max-height:220px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.08);margin:10px 0;">
+                <div style="font-size:13px;color:#666;margin-top:8px;">请使用微信扫码添加技术支持</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">下载刷机工具</h3>
+                <button class="modal-close" id="closeDownloadModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 15px;">
+                    <div
+                        style="display: flex; justify-content: space-between; padding: 12px; border: 1px solid var(--border-color); border-radius: 4px;">
+                        <div>Windows 工具</div>
+                        <a href="#" class="btn btn-primary" style="padding: 5px 15px; font-size: 13px;">下载</a>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; padding: 12px; border: 1px solid var(--border-color); border-radius: 4px;">
+                        <div>Windows 驱动</div>
+                        <a href="#" class="btn btn-primary" style="padding: 5px 15px; font-size: 13px;">下载</a>
+                    </div>
+                </div>
+                <div
+                    style="padding: 10px; background-color: rgba(255, 125, 0, 0.1); border-radius: 4px; font-size: 13px;">
+                    <p><strong>注：</strong>确保手机电量充足</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="closeDownload">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // FAQ 折叠功能
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                question.parentElement.classList.toggle('active');
+            });
+        });
+
+        // 下载工具模态框
+        const downloadModal = document.getElementById('downloadModal');
+
+        // 技术支持按钮弹出微信二维码
+        document.getElementById('contactBtn').addEventListener('click', () => {
+            document.getElementById('wxCodeModal').classList.add('active');
+        });
+
+        document.getElementById('closeWxCodeModal').addEventListener('click', () => {
+            document.getElementById('wxCodeModal').classList.remove('active');
+        });
+
+        // 在线预约按钮弹出微信二维码
+        document.getElementById('onlineReserveBtn').addEventListener('click', () => {
+            document.getElementById('wxCodeModal').classList.add('active');
+        });
+
+        // 下载工具模态框相关
+        document.getElementById('downloadToolBtn').addEventListener('click', () => {
+            downloadModal.classList.add('active');
+        });
+
+        document.getElementById('closeDownloadModal').addEventListener('click', () => {
+            downloadModal.classList.remove('active');
+        });
+
+        document.getElementById('closeDownload').addEventListener('click', () => {
+            downloadModal.classList.remove('active');
+        });
+
+        // 点击模态框外部关闭（仅对存在的模态框生效）
+        window.addEventListener('click', (e) => {
+            const wxModal = document.getElementById('wxCodeModal');
+            if (e.target === wxModal) wxModal.classList.remove('active');
+            if (e.target === downloadModal) downloadModal.classList.remove('active');
+        });
+
+        // 设备连接状态模拟
+        // 红色和黄色之间交替闪烁
+        const statusText = document.getElementById('connectionStatusText');
+        const connectionIndicator = document.getElementById('connectionIndicator');
+        let indicatorToggle = false;
+
+        function updateConnectionIndicator() {
+            indicatorToggle = !indicatorToggle;
+            if (indicatorToggle) {
+                connectionIndicator.className = 'connection-indicator indicator-disconnected'; // 红色
+            } else {
+                connectionIndicator.className = 'connection-indicator indicator-connecting'; // 黄色闪烁
+            }
+            statusText.textContent = '监测中...';
+        }
+
+        setInterval(updateConnectionIndicator, 1000);
+
+        // 步骤进度模拟
+        const steps = document.querySelectorAll('.step');
+        let currentStep = 0;
+
+        function updateSteps() {
+            steps.forEach((step, index) => {
+                step.classList.toggle('active', index <= currentStep);
+            });
+            currentStep = (currentStep + 1) % steps.length;
+        }
+
+        setInterval(updateSteps, 5000);
+
+        // 平滑滚动（避免锚点为#时报错）
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

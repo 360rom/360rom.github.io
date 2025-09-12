@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>公益捐赠</title>
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        .g-head {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            /* 将标题对齐方式改为左对齐 */
+            text-align: left;
+        }
+        .g-main {
+            padding: 40px 0;
+        }
+        
+        /* 公告中心样式 */
+        .announcement-center {
+            margin-bottom: 30px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .announcement-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #343a40;
+        }
+        .announcement-title i {
+            margin-right: 10px;
+            color: #dc3545;
+        }
+        .announcement-list {
+            height: 80px;
+            overflow: hidden;
+            position: relative;
+        }
+        .announcement-items {
+            position: absolute;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+        .announcement-item {
+            padding: 8px 0;
+        }
+        .announcement-item span {
+            font-weight: bold;
+            color: #dc3545;
+        }
+        
+        /* 捐赠卡片样式 */
+        .donation-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .donation-card:hover {
+            transform: translateY(-5px);
+        }
+        .donation-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin: 15px 0;
+            max-height: 250px;
+        }
+        .donation-type {
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        .donation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .donation-btn {
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .donation-btn i {
+            margin-right: 5px;
+        }
+        .donation-btn:hover {
+            background-color: #0056b3;
+        }
+        .donation-btn.active {
+            background-color: #28a745;
+        }
+        .donation-text {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 15px;
+        }
+        
+        /* 响应式布局 */
+        @media (min-width: 768px) {
+            .donation-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+        @media (min-width: 992px) {
+            .donation-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="g-head">
+        <div class="wrap">
+            <h1>公益捐赠</h1>
+        </div>
+    </div>
+
+    <div class="g-main">
+        <div class="wrap" id="tab">
+            <!-- 公告中心 -->
+            <div class="announcement-center">
+                <div class="announcement-title">
+                    <i class="fas fa-bullhorn"></i>公告中心
+                </div>
+                <div class="announcement-list">
+                    <div class="announcement-items">
+                        <div class="announcement-item">
+                            <span>提示一：</span>提示：恶意捐赠（0.01这类人群），默认无效
+                        </div>
+                        <div class="announcement-item">
+                            <span>提示二：</span>因恶意打扰，回复/协助，仅捐赠者（其它不管）
+                        </div>
+                        <div class="announcement-item">
+                            <span>提示三：</span>重要的事情 说三遍；带来不便，实在抱歉
+                        </div>
+                    </div>
+                </div>
+            </div>
+              
+            <div class="donation-grid">
+                <!-- 微信捐赠卡片 -->
+                <div class="donation-card">
+                    <div class="donation-type">微信·捐赠</div>
+                    <div class="donation-buttons">
+                        <button class="donation-btn active" data-type="wechat" data-img="wx1.png">微信捐赠</button>
+                        <button class="donation-btn" data-type="wechat" data-img="wx2.png">换码</button>
+                    </div>
+                    <img src="wx1.png" alt="微信捐赠二维码" class="donation-qr">
+                    <div class="donation-text">扫码≥3 失败请换码或联系</div>
+                </div>
+                
+               <!-- 支付宝捐赠卡片修复 -->
+<div class="donation-card">
+    <div class="donation-type">支付宝·捐赠</div>
+    <div class="donation-buttons">
+        <button class="donation-btn active" data-type="alipay" data-img="zfb1.jpg">支付宝捐赠</button>
+        <button class="donation-btn" data-type="alipay" data-img="zfb2.jpg">换码</button>
+    </div>
+    <!-- 修复初始图片路径与第一个按钮的data-img一致 -->
+    <img src="zfb1.jpg" alt="支付宝捐赠二维码" class="donation-qr">
+    <div class="donation-text">扫码≥3 失败请换码或联系</div>
+</div>
+
+<!-- 人工客服卡片修复 -->
+<div class="donation-card">
+    <div class="donation-type">人工客服</div>
+    <div class="donation-buttons">
+        <!-- 只保留一个默认active按钮 -->
+        <button class="donation-btn active" data-type="service" data-img="my-wx.png">
+            <i class="fab fa-weixin"></i>人工客服A
+        </button>
+        <button class="donation-btn" data-type="service" data-img="my-wx2.png">
+            <i class="fab fa-weixin"></i>人工客服B
+        </button>
+    </div>
+    <!-- 初始图片路径与第一个按钮的data-img一致 -->
+    <img src="my-wx.png" alt="人工客服二维码" class="donation-qr">
+    <div class="donation-text">---提前捐赠 不符无效 人机验证---</div>
+</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 公告滚动效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const announcementItems = document.querySelector('.announcement-items');
+            const items = document.querySelectorAll('.announcement-item');
+            let currentIndex = 0;
+            const itemHeight = items[0].offsetHeight;
+            const totalItems = items.length;
+            
+            // 自动滚动公告
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalItems;
+                announcementItems.style.transform = `translateY(-${currentIndex * itemHeight}px)`;
+            }, 3000);
+            
+            // 捐赠按钮切换图片功能 - 统一处理所有带换码功能的按钮
+            const donationBtns = document.querySelectorAll('.donation-btn');
+            donationBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 只处理有data-img属性的按钮
+                    if (this.hasAttribute('data-img')) {
+                        // 移除同组按钮的active类
+                        const siblings = this.parentElement.querySelectorAll('.donation-btn');
+                        siblings.forEach(sib => sib.classList.remove('active'));
+                        
+                        // 给当前点击的按钮添加active类
+                        this.classList.add('active');
+                        
+                        // 切换二维码图片
+                        const imgSrc = this.getAttribute('data-img');
+                        const qrImg = this.closest('.donation-card').querySelector('.donation-qr');
+                        qrImg.src = imgSrc;
+                        qrImg.alt = this.textContent.trim() + '二维码';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
