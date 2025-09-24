@@ -1,5 +1,3 @@
-/* 将原 style 标签内容全部迁移至 main.css */
-/* 基础样式 */
 * {
     margin: 0;
     padding: 0;
@@ -86,6 +84,11 @@ header {
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
+}
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 .input-group {
     flex: 1;
@@ -381,16 +384,42 @@ footer {
     .tool-container {
         flex-direction: column;
         align-items: stretch;
+        gap: 10px;
     }
+    .input-group,
     .input-group.extract-code {
-        flex: 1;
-        min-width: 200px;
+        min-width: 100%;
+        width: 100%;
     }
     .button-group {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: stretch;
+    }
+    .btn, a.btn {
+        width: 100%;
         justify-content: center;
     }
-    .modal-content {
-        width: 95%;
-        margin: 30% auto;
+    .button-center {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        align-items: stretch;
+    }
+    .float-button {
+        right: 10px;
+        width: 40px !important;
+    }
+    .float-button.active,
+    .float-button:hover {
+        width: 120px !important;
+    }
+    .wechat-qr-container .wechat-qr-content {
+        padding: 5px 5px 2px 5px;
+    }
+    .wechat-qr-image {
+        width: 120px;
+        height: 120px;
     }
 }
