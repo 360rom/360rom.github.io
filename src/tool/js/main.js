@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     setupModal('showInfo', 'infoModal', 'closeInfoModal');
+    setupModal('showInfo2', 'infoModal', 'closeInfoModal');
     setupModal('humanService', 'serviceModal', 'closeServiceModal');
     // 绑定“密码获取-渠道二”按钮逻辑为人工客服弹窗
     document.getElementById('getKey').onclick = function() {

@@ -381,45 +381,24 @@ footer {
     border-top: 1px solid #eee;
 }
 @media (max-width: 768px) {
+    .section {
+        padding: 10px !important; /* 原来是25px，改小一点 */
+    }
     .tool-container {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 10px;
+        gap: 0 !important; /* 间距为0，彻底去掉空白 */
+        margin-bottom: 10px !important;
     }
     .input-group,
     .input-group.extract-code {
-        min-width: 100%;
-        width: 100%;
+        min-width: 0 !important;
+        width: 100% !important;
+        margin-bottom: 5px !important;
     }
     .button-group {
-        flex-direction: column;
-        gap: 10px;
+        gap: 5px !important;
+        margin-top: 0 !important;
+        justify-content: center !important; /* 新增：按钮居中 */
         width: 100%;
-        align-items: stretch;
-    }
-    .btn, a.btn {
-        width: 100%;
-        justify-content: center;
-    }
-    .button-center {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        align-items: stretch;
-    }
-    .float-button {
-        right: 10px;
-        width: 40px !important;
-    }
-    .float-button.active,
-    .float-button:hover {
-        width: 120px !important;
-    }
-    .wechat-qr-container .wechat-qr-content {
-        padding: 5px 5px 2px 5px;
-    }
-    .wechat-qr-image {
-        width: 120px;
-        height: 120px;
+        display: flex;
     }
 }

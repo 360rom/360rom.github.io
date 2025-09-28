@@ -101,7 +101,12 @@
                         <td>授权码</td>
                         <td>打开使用软件</td>
                         <td>公众号、网盘文件、捐赠、发卡</td>
-                        <td></td>
+                        <td>本次使用</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: left;">
+                            注：密码类型，非全部使用，仅作说明
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -111,19 +116,27 @@
             </div>
 
             <div class="button-center">
+                 <a href="https://sim.360os.top/" target="_blank" class="btn btn-primary" id="getPassword"
+                    aria-label="密码渠道">
+                    <i class="fa fa-key"></i> 免费·获取
+                </a>
+                </a>
                 <a href="https://pay.ldxp.cn/item/4sxtg5" target="_blank" class="btn btn-primary" id="getPassword"
                     aria-label="密码渠道">
-                    <i class="fa fa-key"></i> 密码-渠道一
+                    <i class="fa fa-unlock "></i> 自购·获取
                 </a>
                 <!-- <a href="javascript:;" class="btn btn-secondary" id="verifyOnline" aria-label="在线验证">
                     <i class="fa fa-check-circle"></i> 在线验证
                 </a>-->
                 <a href="javascript:;" class="btn btn-secondary" id="getKey" aria-label="密钥获取">
-                    <i class="fa fa-lock"></i> 密码-渠道二
+                    <i class="fa fa-unlock-alt "></i> 捐赠
                 </a>
+               <a href="javascript:;" class="btn btn-secondary" id="showInfo2" aria-label="显示说明">
+    <i class="fa fa-info-circle"></i> 说明
+</a>
             </div>
 
-            <div class="hint">亲，为防恶意使用，新增验证，感谢理解</div>
+            <div class="hint">亲，因存滥用、新增验证，感谢理解，100%可用</div>
 
             <button class="collapsible" id="passwordInstructions">
                 密码说明
@@ -213,22 +226,36 @@
     <div id="infoModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeInfoModal">&times;</span>
-            <h3>工具说明</h3>
+            <h3>工具</h3>
             <div class="modal-body">
-                <p>1. 注：如您已在官网下载，可忽视此该下载</p>
-                <p>2. 请您合理使用，不要随意滥用</p>
+                <p>1. 请您合理使用，不要随意滥用</p>
+                <p>2. 如您已在官网下载，可忽视此该下载</p>
                 <p>3. 请详阅，相关文本或附件，对您很有帮助</p>
+                <p>4. 请尽量在，正版windows操作系统上使用</p>
+            </div>
+             <h3>咨询</h3>
+             <div class="modal-body">
+                <p>1. 嫌繁琐，请考虑远程协助，成功率100%</p>
+                <p>2. 无关，无意义、认知面差异大的，咨询，孰不回答</p>
+            </div>
+             <h3>密码</h3>
+             <div class="modal-body">
+                <p>1. 免费：免费任务，完成获取（多种形式，可联系）</p>
+                <p>2. 发卡：自购后，获取</p>
+                <p>3. 捐赠：捐赠后，获取</p>
+                <p>4. 其它：公众号、下载的资源等</p>
             </div>
         </div>
     </div>
 
     <!-- 人工客服模态框 -->
     <div id="serviceModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" style="width: 320px; max-width: 90%; padding: 20px 18px;">
             <span class="close" id="closeServiceModal">&times;</span>
             <div class="modal-body" style="text-align: center;">
-                <img src="pic/wx-code.png" alt="二维码" style="max-width: 120px; margin: 10px auto;">
+                <img src="pic/wx-code.png" alt="二维码" style="max-width: 180px; margin: 10px auto;">
                 <p style="margin-top: 15px; font-weight: bold; color: red;">付费咨询 人机拒扰(加了白加)</p>
+                <p style="font-size: 13px; font-weight: bold; color: rgb(80, 80, 80);">注：简述事宜；无意义，认知差异大的人群，孰不回读</p>
             </div>
         </div>
     </div>
