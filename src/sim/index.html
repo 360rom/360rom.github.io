@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>畅游云通讯·免费大流量卡包邮</title>
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/plyr.css">
     <style>
         :root {
             --primary: #165DFF;
@@ -20,37 +22,37 @@
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             --transition: all 0.3s ease;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
         }
-        
+
         body {
             color: var(--dark);
             background-color: var(--lighter);
             line-height: 1.6;
 
         }
-        
+
         /* 通用样式 */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         .section {
             padding: 60px 0;
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 40px;
         }
-        
+
         .section-title h2 {
             font-size: 2rem;
             color: var(--primary);
@@ -59,7 +61,7 @@
             display: inline-block;
             padding-bottom: 10px;
         }
-        
+
         .section-title h2::after {
             content: '';
             position: absolute;
@@ -70,17 +72,18 @@
             height: 3px;
             background-color: var(--accent);
         }
-        
+
         .section-title p {
             color: var(--light);
             max-width: 700px;
             margin: 0 auto;
         }
-        
+
         .btn {
             display: inline-block;
             padding: 12px 24px;
-            background-color: transparent; /* 去除背景色 */
+            background-color: transparent;
+            /* 去除背景色 */
             color: var(--primary);
             text-decoration: none;
             border-radius: 0;
@@ -90,28 +93,31 @@
             cursor: pointer;
             text-align: center;
         }
-        
+
         .btn:hover {
             background-color: transparent;
             color: #0E42D2;
             box-shadow: none;
             transform: translateY(-2px);
         }
-        
+
         .btn-accent {
-            background-color: var(--primary); /* 主色 */
-            color: #fff !important; /* 白色字体 */
-            border-radius: 24px; /* 更明显圆角 */
+            background-color: var(--primary);
+            /* 主色 */
+            color: #fff !important;
+            /* 白色字体 */
+            border-radius: 24px;
+            /* 更明显圆角 */
             font-weight: 600;
             border: none;
             transition: var(--transition);
         }
-        
+
         .btn-accent:hover {
             background-color: #0E42D2;
             color: #fff !important;
         }
-        
+
         /* 头部样式 */
         header {
             background-color: var(--white);
@@ -120,38 +126,38 @@
             top: 0;
             z-index: 90;
         }
-        
+
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
             text-decoration: none;
         }
-        
+
         .logo-icon {
             font-size: 2rem;
             color: var(--primary);
         }
-        
+
         .logo-text {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary);
         }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
             gap: 30px;
         }
-        
+
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
@@ -160,7 +166,7 @@
             padding: 8px 0;
             position: relative;
         }
-        
+
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -171,15 +177,15 @@
             background-color: var(--primary);
             transition: var(--transition);
         }
-        
+
         .nav-links a:hover {
             color: var(--primary);
         }
-        
+
         .nav-links a:hover::after {
             width: 100%;
         }
-        
+
         .mobile-menu-btn {
             display: none;
             font-size: 1.5rem;
@@ -188,31 +194,31 @@
             cursor: pointer;
             color: var(--dark);
         }
-        
+
         /* 英雄区域 */
         .hero {
             background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
             padding: 80px 0;
             text-align: center;
         }
-        
+
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .hero h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
             color: var(--primary);
         }
-        
+
         .hero p {
             font-size: 1.2rem;
             margin-bottom: 30px;
             color: var(--dark);
         }
-        
+
         .hero-features {
             display: flex;
             justify-content: center;
@@ -220,7 +226,7 @@
             gap: 20px;
             margin: 40px 0;
         }
-        
+
         .feature-tag {
             background-color: var(--white);
             padding: 10px 20px;
@@ -231,11 +237,11 @@
             box-shadow: var(--shadow);
             font-weight: 500;
         }
-        
+
         .feature-icon {
             color: var(--secondary);
         }
-        
+
         .hero-image {
             max-width: 100%;
             height: auto;
@@ -243,12 +249,12 @@
             box-shadow: var(--shadow);
             margin-top: 20px;
         }
-        
+
         /* 活动公告 */
         .announcement {
             background-color: var(--white);
         }
-        
+
         .announcement-banner {
             background-color: #FFF8E6;
             border-left: 4px solid var(--accent);
@@ -257,7 +263,7 @@
             margin-bottom: 40px;
             position: relative;
         }
-        
+
         .announcement-banner h3 {
             color: var(--accent);
             margin-bottom: 10px;
@@ -266,18 +272,18 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         /* 超值套餐 */
         .packages {
             background-color: var(--lighter);
         }
-        
+
         .packages-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
-        
+
         .package-card {
             background-color: var(--white);
             border-radius: 10px;
@@ -285,12 +291,12 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
         }
-        
+
         .package-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
+
         .package-header {
             background-color: var(--primary);
             color: var(--white);
@@ -298,7 +304,7 @@
             text-align: center;
             position: relative;
         }
-        
+
         .free-first-month {
             position: absolute;
             right: 15px;
@@ -311,26 +317,28 @@
             font-size: 0.9rem;
             font-weight: 600;
         }
-        
+
         .package-body {
             padding: 25px;
         }
-        
+
         .package-detail {
             margin-bottom: 12px;
             padding-left: 25px;
             position: relative;
         }
-        
+
         .package-detail::before {
             content: "\f00c";
-            font-family: "FontAwesome"; /* 修正为4.7.0标准 */
-            font-weight: normal; /* 4.7.0不需要900 */
+            font-family: "FontAwesome";
+            /* 修正为4.7.0标准 */
+            font-weight: normal;
+            /* 4.7.0不需要900 */
             position: absolute;
             left: 0;
             color: var(--secondary);
         }
-        
+
         .package-price {
             font-size: 1.8rem;
             font-weight: 700;
@@ -338,18 +346,18 @@
             text-align: center;
             margin: 20px 0;
         }
-        
+
         /* 办理渠道 */
         .channels {
             background-color: var(--white);
         }
-        
+
         .channels-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 15px;
         }
-        
+
         .channel-item {
             background-color: var(--lighter);
             border-radius: 8px;
@@ -358,19 +366,19 @@
             transition: var(--transition);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         }
-        
+
         .channel-item:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow);
         }
-        
+
         .channel-item a {
             text-decoration: none;
             color: var(--primary);
             font-weight: 500;
             display: block;
         }
-        
+
         .channel-number {
             display: inline-block;
             width: 32px;
@@ -382,33 +390,34 @@
             margin-bottom: 12px;
             font-weight: 600;
         }
-        
+
         /* 客户评价 */
         .reviews {
             background-color: var(--lighter);
         }
-        
+
         .reviews-carousel {
             position: relative;
             overflow: hidden;
             padding: 20px 0;
         }
-        
+
         .reviews-track {
             display: flex;
             transition: transform 0.5s ease;
             gap: 20px;
             padding: 10px 0;
         }
-        
+
         .review-item {
-            min-width: calc(33.333% - 14px); /* 三张同时显示 */
+            min-width: calc(33.333% - 14px);
+            /* 三张同时显示 */
             background-color: var(--white);
             border-radius: 10px;
             overflow: hidden;
             box-shadow: var(--shadow);
         }
-        
+
         .review-image {
             width: 100%;
             height: auto;
@@ -418,29 +427,29 @@
             max-height: 300px;
             /* 移除原 height: 220px; */
         }
-        
+
         @media (max-width: 992px) {
             .review-image {
                 max-height: 220px;
             }
         }
-        
+
         @media (max-width: 576px) {
             .review-image {
                 max-height: 180px;
             }
         }
-        
+
         .review-content {
             padding: 20px;
         }
-        
+
         .reviewer {
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 10px;
         }
-        
+
         .carousel-control {
             position: absolute;
             top: 50%;
@@ -459,49 +468,20 @@
             z-index: 10;
             transition: var(--transition);
         }
-        
+
         .carousel-control:hover {
             background-color: var(--white);
             transform: translateY(-50%) scale(1.1);
         }
-        
+
         .carousel-prev {
             left: 10px;
         }
-        
+
         .carousel-next {
             right: 10px;
         }
-        
-        /* plyr播放器自适应优化 */
-        #introVideo {
-            width: 100% !important;
-            max-width: 800px;
-            height: 45vw;
-            max-height: 450px;
-            min-height: 220px;
-            border-radius: 0;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-            background: #000;
-            object-fit: cover;
-            display: block;
-            margin: 0 auto;
-        }
-        @media (max-width: 768px) {
-            #introVideo {
-                height: 55vw;
-                max-height: 320px;
-                min-height: 160px;
-            }
-        }
-        @media (max-width: 576px) {
-            #introVideo {
-                height: 60vw;
-                max-height: 200px;
-                min-height: 120px;
-            }
-        }
-        
+
         /* 右下角功能按钮组 */
         .fixed-actions {
             position: fixed;
@@ -512,7 +492,7 @@
             flex-direction: column;
             gap: 10px;
         }
-        
+
         .action-btn {
             width: 55px;
             height: 55px;
@@ -527,28 +507,30 @@
             transition: var(--transition);
             border: none;
         }
-        
+
         .action-btn:hover {
             transform: scale(1.05);
         }
-        
+
         .wechat-btn {
             background-color: #2DC100;
         }
-        
+
         .to-top-btn {
             background-color: var(--primary);
         }
-        
+
         .to-bottom-btn {
             background-color: var(--accent);
         }
-        
+
         /* 微信二维码 */
         .wechat-qrcode-container {
             position: fixed;
-            right: 85px; /* 按钮右侧，适应缩小后的按钮 */
-            bottom: 85px; /* 与微信按钮对齐 */
+            right: 85px;
+            /* 按钮右侧，适应缩小后的按钮 */
+            bottom: 85px;
+            /* 与微信按钮对齐 */
             background-color: var(--white);
             padding: 15px;
             border-radius: 10px;
@@ -557,11 +539,11 @@
             display: none;
             animation: fadeIn 0.3s ease;
         }
-        
+
         .wechat-qrcode-container.active {
             display: block;
         }
-        
+
         .wechat-qrcode {
             width: 180px;
             height: 180px;
@@ -570,34 +552,34 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .wechat-qrcode img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        
+
         .qrcode-caption {
             text-align: center;
             margin-top: 10px;
             font-weight: 500;
             color: var(--accent);
         }
-        
+
         /* 常见问题 */
         .faq {
             background-color: var(--white);
         }
-        
+
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
         }
-        
+
         .faq-item {
             border-bottom: 1px solid #E2E8F0;
         }
-        
+
         .faq-question {
             padding: 18px 0;
             cursor: pointer;
@@ -607,17 +589,17 @@
             font-weight: 500;
             transition: var(--transition);
         }
-        
+
         .faq-question:hover {
             color: var(--primary);
         }
-        
+
         .faq-icon {
             font-size: 1.2rem;
             color: var(--light);
             transition: var(--transition);
         }
-        
+
         .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -625,50 +607,59 @@
             padding-bottom: 0;
             color: var(--light);
         }
-        
+
         .faq-answer.active {
             max-height: 500px;
             padding-bottom: 18px;
         }
-        
+
         .operator-list {
             margin-top: 10px;
             padding-left: 20px;
         }
-        
+
         .operator-list li {
             margin-bottom: 5px;
         }
-        
+
         /* 页脚 */
         footer {
             background-color: var(--dark);
             color: var(--light);
-            padding: 16px 0 8px; /* 减少底部空白 */
+            padding: 16px 0 8px;
+            /* 减少底部空白 */
             text-align: center;
         }
-        
+
         .footer-content {
             margin-bottom: 0;
         }
-        
+
         .copyright {
             font-size: 0.9rem;
         }
-        
+
         /* 动画 */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(10px); }
-            to { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        
+
         /* 响应式设计 */
         @media (max-width: 992px) {
             .review-item {
-                min-width: calc(50% - 10px); /* 两张同时显示 */
+                min-width: calc(50% - 10px);
+                /* 两张同时显示 */
             }
         }
-        
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -682,78 +673,80 @@
                 box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
                 padding: 10px 0;
             }
-            
+
             .nav-links.active {
                 display: flex;
             }
-            
+
             .nav-links li {
                 padding: 0 20px;
             }
-            
+
             .nav-links a {
                 display: block;
                 padding: 12px 0;
             }
-            
+
             .mobile-menu-btn {
                 display: block;
             }
-            
+
             .hero h1 {
                 font-size: 2rem;
             }
-            
+
             .section {
                 padding: 40px 0;
             }
-            
+
             .feature-tag {
                 margin-bottom: 10px;
             }
-            
+
             .free-first-month {
                 font-size: 0.8rem;
                 padding: 3px 10px;
             }
         }
-        
+
         @media (max-width: 576px) {
             .review-item {
-                min-width: 100%; /* 一张显示 */
+                min-width: 100%;
+                /* 一张显示 */
             }
-            
+
             .hero {
                 padding: 60px 0;
             }
-            
+
             .hero h1 {
                 font-size: 1.8rem;
             }
-            
+
             .section-title h2 {
                 font-size: 1.6rem;
             }
-            
+
             .btn {
                 width: 100%;
             }
-            
+
             .channels-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            
+
             .wechat-qrcode-container {
                 right: 20px;
-                bottom: 190px; /* 适应缩小后的按钮组 */
+                bottom: 190px;
+                /* 适应缩小后的按钮组 */
             }
-            
+
             .action-btn {
                 width: 50px;
                 height: 50px;
                 font-size: 1.1rem;
             }
-            
+
             .free-first-month {
                 position: static;
                 transform: none;
@@ -763,6 +756,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- 头部导航 -->
     <header>
@@ -772,11 +766,11 @@
                     <i class="fa fa-cloud logo-icon"></i>
                     <span class="logo-text">畅游云通讯</span>
                 </a>
-                
+
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fa fa-bars"></i>
                 </button>
-                
+
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#packages">套餐</a></li>
                     <li><a href="#channels">在线办理</a></li>
@@ -787,15 +781,15 @@
         </div>
     </header>
 
-    
+
     <!-- 1 -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>免费大流量卡</h1>
                 <p>首月免费、全国通用、无合约、超值优惠</p>
-                
-                
+
+
                 <div class="hero-features">
                     <div class="feature-tag">
                         <i class="fa fa-rmb"></i>
@@ -811,12 +805,12 @@
                     </div>
                 </div>
                 <a href="#channels" class="btn btn-accent"><i class="fa fa-send"></i> 免费领取</a>
-                 <a href="#channels" class="btn btn-accent"><i class="fa fa-video-camera "></i> 视频了解</a>
+                <a href="#channels" class="btn btn-accent"><i class="fa fa-video-camera "></i> 视频了解</a>
             </div>
-           
+
         </div>
     </section>
-        
+
 
     <!-- 超值套餐 -->
     <section id="packages" class="packages section">
@@ -825,7 +819,7 @@
                 <h2>超值套餐</h2>
                 <p>更多套餐 详见“办理渠道”</p>
             </div>
-            
+
             <div class="packages-grid">
                 <!-- 联通套餐 -->
                 <div class="package-card">
@@ -843,7 +837,7 @@
                         <a href="#channels" class="btn">立即办理</a>
                     </div>
                 </div>
-                
+
                 <!-- 移动套餐 -->
                 <div class="package-card">
                     <div class="package-header">
@@ -860,7 +854,7 @@
                         <a href="#channels" class="btn">立即办理</a>
                     </div>
                 </div>
-                
+
                 <!-- 电信套餐 -->
                 <div class="package-card">
                     <div class="package-header">
@@ -880,7 +874,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- 办理渠道 -->
     <section id="channels" class="channels section">
         <div class="container">
@@ -888,285 +882,287 @@
                 <h2>办理渠道(任选)</h2>
                 <p>内部渠道，专属优惠(如不稳定 您可更换)</p>
                 <p><span style="color: red; font-weight: bold;">注：</span>部分卡，客服会联系审核；请您留意信息正确</p>
-                <!-- Plyr播放器样式和JS -->
-                <link rel="stylesheet" href="css/plyr.css">
-                <div style="display:flex;justify-content:center;align-items:center;margin-top:18px;">
-                    <video id="introVideo" controls playsinline>
-                        <source src="https://workdrive.zohopublic.com.cn/external/018ab5d812bbf68dc846e317dd6362e575de6f751d2c771f0cd68d32d847a9cf/download?directDownload=true" type="video/mp4">
-                        您的浏览器不支持视频播放
-                    </video>
+
+                <!-- 视频播放器 -->
+                <div style="display: flex; justify-content: center; margin: 30px 0;">
+                    <div style="width: 100%; max-width: 800px;">
+                        <video id="player" playsinline controls>
+                            <source
+                                src="https://workdrive.zohopublic.com.cn/external/018ab5d812bbf68dc846e317dd6362e575de6f751d2c771f0cd68d32d847a9cf/download?directDownload=true"
+                                type="video/mp4">
+                            您的浏览器不支持视频播放
+                        </video>
+                    </div>
                 </div>
-                <script src="js/plyr.min.js"></script>
-                <script>
-                    if(window.Plyr){
-                        new Plyr('#introVideo');
-                    }
-                </script>
+
+
+
+                <div class="channels-grid">
+                    <div class="channel-item">
+                        <span class="channel-number">1</span>
+                        <a href="https://ym.kashijiehaoka.cn/?s=s51Wpieg443972" target="_blank">[推荐]内部渠道A</a>
+                    </div>
+                    <div class="channel-item">
+                        <span class="channel-number">2</span>
+                        <a href="https://h5.lot-ml.com/ProductEn/Index/2d52273e3f038d26" target="_blank">内部渠道B</a>
+                    </div>
+                    <div class="channel-item">
+                        <span class="channel-number">3</span>
+                        <a href="https://ym.kashijiehaoka.cn/?s=s51Wpieg443972" target="_blank">内部渠道C</a>
+                    </div>
+                    <div class="channel-item">
+                        <span class="channel-number">4</span>
+                        <a href="https://hy.yunhaoka.com/#/pages/micro_store/index?agent_id=5444087ad25fca22"
+                            target="_blank">内部渠道D</a>
+                    </div>
+                    <div class="channel-item">
+                        <span class="channel-number">5</span>
+                        <a href="https://h5.gantanhao.com/url?value=QrrM51748777254528" target="_blank">内部渠道E</a>
+                    </div>
+                    <div class="channel-item">
+                        <span class="channel-number">6</span>
+                        <a href="https://vip.777haoka.cn/index?k=NDNxQSs5bzFIQ289" target="_blank">内部渠道F</a>
+                    </div>
+                    <div class="channel-item">
+                        <span class="channel-number">7</span>
+                        <a href="https://ky.kyaowang.cn/shop#/?promoCode=TbQ8apwk&indexFirstGroup=2"
+                            target="_blank">内部渠道G</a>
+                    </div>
+                    <div class="channel-item">
+                        <span class="channel-number">8</span>
+                        <a href="https://ka.dandanhou.net/index?k=S01vbVB5clRFL3M9" target="_blank">内部渠道H</a>
+                    </div>
+                    <div class="channel-item">
+                        <span class="channel-number">9</span>
+                        <a href="https://h5.haokavip.com/#/pages/sales_index/index?agent_id=638233"
+                            target="_blank">内部渠道I</a>
+                    </div>
+                    <div class="channel-item">
+                        <span class="channel-number">10</span>
+                        <a href="#" target="_blank">其它待定</a>
+                    </div>
+                </div>
+
             </div>
-              
-            <div class="channels-grid">
-                <div class="channel-item">
-                    <span class="channel-number">1</span>
-                    <a href="https://ym.kashijiehaoka.cn/?s=s51Wpieg443972" target="_blank">[推荐]内部渠道A</a>
-                </div>
-                <div class="channel-item">
-                    <span class="channel-number">2</span>
-                    <a href="https://h5.lot-ml.com/ProductEn/Index/2d52273e3f038d26" target="_blank">内部渠道B</a>
-                </div>
-                <div class="channel-item">
-                    <span class="channel-number">3</span>
-                    <a href="https://ym.kashijiehaoka.cn/?s=s51Wpieg443972" target="_blank">内部渠道C</a>
-                </div>
-                <div class="channel-item">
-                    <span class="channel-number">4</span>
-                    <a href="https://hy.yunhaoka.com/#/pages/micro_store/index?agent_id=5444087ad25fca22" target="_blank">内部渠道D</a>
-                </div>
-                <div class="channel-item">
-                    <span class="channel-number">5</span>
-                    <a href="https://h5.gantanhao.com/url?value=QrrM51748777254528" target="_blank">内部渠道E</a>
-                </div>
-                <div class="channel-item">
-                    <span class="channel-number">6</span>
-                    <a href="https://vip.777haoka.cn/index?k=NDNxQSs5bzFIQ289" target="_blank">内部渠道F</a>
-                </div>
-                <div class="channel-item">
-                    <span class="channel-number">7</span>
-                    <a href="https://ky.kyaowang.cn/shop#/?promoCode=TbQ8apwk&indexFirstGroup=2" target="_blank">内部渠道G</a>
-                </div>
-                <div class="channel-item">
-                    <span class="channel-number">8</span>
-                    <a href="https://ka.dandanhou.net/index?k=S01vbVB5clRFL3M9" target="_blank">内部渠道H</a>
-                </div>
-                <div class="channel-item">
-                    <span class="channel-number">9</span>
-                    <a href="https://h5.haokavip.com/#/pages/sales_index/index?agent_id=638233" target="_blank">内部渠道I</a>
-                </div>
-                <div class="channel-item">
-                    <span class="channel-number">10</span>
-                    <a href="#" target="_blank">其它待定</a>
-                </div>
+    </section>
+
+    <section id="reviews" class="reviews section">
+        <div class="container">
+            <div class="section-title">
+                <h2>用户评价</h2>
+                <p>真实反馈 效果棒棒哒</p>
             </div>
-            
+            <div class="reviews-carousel" id="reviewsCarousel" data-direction="R" data-interval="3">
+                <div class="reviews-track" id="reviewsTrack">
+                    <!-- 评价1 -->
+                    <div class="review-item">
+                        <img src="pic/p1.png" alt="" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">李先生</div>
+                            <div class="review-text">
+                                我们工作室 10 多台设备全换这卡了！之前办运营商企业包又贵又多条款，这卡能选四大运营商很灵活，流量用不完可转结，网速稳不卡顿，算下来省近一半，还资费透明没套路，特别省心！
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价2-->
+                    <div class="review-item">
+                        <img src="pic/p2.png" alt="" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">张女士</div>
+                            <div class="review-text">
+                                开始不太相信，抱着试一试想法，三天就收到了，办理超简单！首月还免费，500GB流量，看剧很流畅，还额外送10GB，这波惊喜到了～
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价3 -->
+                    <div class="review-item">
+                        <img src="pic/p3.png" alt="" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">王先生</div>
+                            <div class="review-text">
+                                比之前的卡省一半钱，刚需党闭眼入，跑外卖必备！导航不卡，语音管够，很给力
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价4 -->
+                    <div class="review-item">
+                        <img src="pic/p4.png" alt="" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">赵女士</div>
+                            <div class="review-text">
+                                学校公共电话卡，选的这个；学生联系家长，很方便。账单也清晰，比营业厅实惠
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价5 -->
+                    <div class="review-item">
+                        <img src="pic/p5.png" alt="" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">陈先生</div>
+                            <div class="review-text">
+                                宿舍四个人，共用热点，每个月，大家一起分摊话费，比之前，买的随身WIFI体验好
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价6 -->
+                    <div class="review-item">
+                        <img src="pic/p6.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">刘女士</div>
+                            <div class="review-text">
+                                工作需求，专门办的这个，和生活号分开超方便，包邮到家，激活后，查看套餐，和宣传的一样
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价7 -->
+                    <div class="review-item">
+                        <img src="pic/p7.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">孙大爷</div>
+                            <div class="review-text">
+                                孩给办的，19块钱一个月，也能接受，闲时和孩子们用来视频，看看电视，挺好
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价8 -->
+                    <div class="review-item">
+                        <img src="pic/p8.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">周先生</div>
+                            <div class="review-text">
+                                用了好几年，老用户了，那时办理的贵点，但货真价实；户外拍视频，全靠它撑着！5G上传速度快，剪好的视频几分钟就传完了，流量用不完，还能转结，简直绝配！
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价9 -->
+                    <div class="review-item">
+                        <img src="pic/p9.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">郑先生</div>
+                            <div class="review-text">
+                                出门在外，流量需求大，这卡流量多还便宜，长期使用很划算
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价10 -->
+                    <div class="review-item">
+                        <img src="pic/p10.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">吴先生</div>
+                            <div class="review-text">
+                                更新下载非常快，都超过我家的wifi了
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价11 -->
+                    <div class="review-item">
+                        <img src="pic/p11.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">肖先生</div>
+                            <div class="review-text">
+                                是真5G速率，测了好几次，流量真实，满足我的日常，整体好评
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价12 -->
+                    <div class="review-item">
+                        <img src="pic/p12.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">冯女士</div>
+                            <div class="review-text">
+                                原有的老卡，保号了，新办理一张，用了一阵子，很放心
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价13 -->
+                    <div class="review-item">
+                        <img src="pic/p14.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">蒋先生</div>
+                            <div class="review-text">
+                                公司刚起步，能力有限，选购了带副卡的套餐，平均下来也就几十块，超划算。还能统一管理，是官方正品
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价14 -->
+                    <div class="review-item">
+                        <img src="pic/p15.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">沈先生</div>
+                            <div class="review-text">
+                                不错，是我想要的
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价15 -->
+                    <div class="review-item">
+                        <img src="pic/p17.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">杨女士</div>
+                            <div class="review-text">
+                                一直在观望，终于下手了，还是我常用的电信
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价16 -->
+                    <div class="review-item">
+                        <img src="pic/p16.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">杨女士</div>
+                            <div class="review-text">
+                                开始的不满意，注销了；后经推荐，加价选择了这张卡，果然卡商，有能力
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- 评价17-->
+                    <div class="review-item">
+                        <img src="pic/p18.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">朱先生</div>
+                            <div class="review-text">
+                                京东快递小哥，教我在线激活的，客服后面才联系的我，回复有点慢，还好货真价实
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 评价18 -->
+                    <div class="review-item">
+                        <img src="pic/p19.png" alt="用户评价截图" class="review-image">
+                        <div class="review-content">
+                            <div class="reviewer">秦女士</div>
+                            <div class="review-text">
+                                朋友推荐来的，说是，不满意，可在线注销；打客服电话，也能打通，和普通电话卡一样，就是流量多，能转结
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control carousel-prev" id="prevBtn">
+                    <i class="fa fa-chevron-left"></i>
+                </button>
+                <button class="carousel-control carousel-next" id="nextBtn">
+                    <i class="fa fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
     </section>
-    
-   <section id="reviews" class="reviews section">
-    <div class="container">
-        <div class="section-title">
-            <h2>用户评价</h2>
-            <p>真实反馈 效果棒棒哒</p>
-        </div>
-        <div class="reviews-carousel" id="reviewsCarousel" data-direction="R" data-interval="3">
-            <div class="reviews-track" id="reviewsTrack">
-                <!-- 评价1 -->
-                <div class="review-item">
-                    <img src="pic/p1.png" alt="" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">李先生</div>
-                        <div class="review-text">
-                           我们工作室 10 多台设备全换这卡了！之前办运营商企业包又贵又多条款，这卡能选四大运营商很灵活，流量用不完可转结，网速稳不卡顿，算下来省近一半，还资费透明没套路，特别省心！
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 评价2-->
-                <div class="review-item">
-                    <img src="pic/p2.png" alt="" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">张女士</div>
-                        <div class="review-text">
-                            开始不太相信，抱着试一试想法，三天就收到了，办理超简单！首月还免费，500GB流量，看剧很流畅，还额外送10GB，这波惊喜到了～
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 评价3 -->
-                <div class="review-item">
-                    <img src="pic/p3.png" alt="" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">王先生</div>
-                        <div class="review-text">
-                            比之前的卡省一半钱，刚需党闭眼入，跑外卖必备！导航不卡，语音管够，很给力
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 评价4 -->
-                <div class="review-item">
-                    <img src="pic/p4.png" alt="" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">赵女士</div>
-                        <div class="review-text">
-                            学校公共电话卡，选的这个；学生联系家长，很方便。账单也清晰，比营业厅实惠
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- 评价5 -->
-                <div class="review-item">
-                    <img src="pic/p5.png" alt="" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">陈先生</div>
-                        <div class="review-text">
-                            宿舍四个人，共用热点，每个月，大家一起分摊话费，比之前，买的随身WIFI体验好
-                        </div>
-                    </div>
-                </div>
 
-                <!-- 评价6 -->
-                <div class="review-item">
-                    <img src="pic/p6.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">刘女士</div>
-                        <div class="review-text">
-                            工作需求，专门办的这个，和生活号分开超方便，包邮到家，激活后，查看套餐，和宣传的一样
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 评价7 -->
-                <div class="review-item">
-                    <img src="pic/p7.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">孙大爷</div>
-                        <div class="review-text">
-                            孩给办的，19块钱一个月，也能接受，闲时和孩子们用来视频，看看电视，挺好
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 评价8 -->
-                <div class="review-item">
-                    <img src="pic/p8.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">周先生</div>
-                        <div class="review-text">
-                            用了好几年，老用户了，那时办理的贵点，但货真价实；户外拍视频，全靠它撑着！5G上传速度快，剪好的视频几分钟就传完了，流量用不完，还能转结，简直绝配！
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 评价9 -->
-                <div class="review-item">
-                    <img src="pic/p9.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">郑先生</div>
-                        <div class="review-text">
-                             出门在外，流量需求大，这卡流量多还便宜，长期使用很划算
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 评价10 -->
-                <div class="review-item">
-                    <img src="pic/p10.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">吴先生</div>
-                        <div class="review-text">
-                            更新下载非常快，都超过我家的wifi了
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 评价11 -->
-                <div class="review-item">
-                    <img src="pic/p11.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">肖先生</div>
-                        <div class="review-text">
-                            是真5G速率，测了好几次，流量真实，满足我的日常，整体好评
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 评价12 -->
-                <div class="review-item">
-                    <img src="pic/p12.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">冯女士</div>
-                        <div class="review-text">
-                            原有的老卡，保号了，新办理一张，用了一阵子，很放心
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 评价13 -->
-                <div class="review-item">
-                    <img src="pic/p14.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">蒋先生</div>
-                        <div class="review-text">
-                            公司刚起步，能力有限，选购了带副卡的套餐，平均下来也就几十块，超划算。还能统一管理，是官方正品
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 评价14 -->
-                <div class="review-item">
-                    <img src="pic/p15.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">沈先生</div>
-                        <div class="review-text">
-                          不错，是我想要的
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 评价15 -->
-                <div class="review-item">
-                    <img src="pic/p17.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">杨女士</div>
-                        <div class="review-text">
-                          一直在观望，终于下手了，还是我常用的电信
-                        </div>
-                    </div>
-                </div>
-
-                 <!-- 评价16 -->
-                <div class="review-item">
-                    <img src="pic/p16.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">杨女士</div>
-                        <div class="review-text">
-                         开始的不满意，注销了；后经推荐，加价选择了这张卡，果然卡商，有能力
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- 评价17-->
-                <div class="review-item">
-                    <img src="pic/p18.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">朱先生</div>
-                        <div class="review-text">
-                            京东快递小哥，教我在线激活的，客服后面才联系的我，回复有点慢，还好货真价实
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 评价18 -->
-                <div class="review-item">
-                    <img src="pic/p19.png" alt="用户评价截图" class="review-image">
-                    <div class="review-content">
-                        <div class="reviewer">秦女士</div>
-                        <div class="review-text">
-                            朋友推荐来的，说是，不满意，可在线注销；打客服电话，也能打通，和普通电话卡一样，就是流量多，能转结
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control carousel-prev" id="prevBtn">
-                <i class="fa fa-chevron-left"></i>
-            </button>
-            <button class="carousel-control carousel-next" id="nextBtn">
-                <i class="fa fa-chevron-right"></i>
-            </button>
-        </div>
-    </div>
-</section>
-    
     <!-- 常见问题 -->
     <section id="faq" class="faq section">
         <div class="container">
@@ -1174,9 +1170,9 @@
                 <h2>常见问题</h2>
                 <p>如有其他疑问，欢迎联系我们的客服</p>
             </div>
-            
+
             <div class="faq-container">
-                
+
                 <div class="faq-item">
                     <div class="faq-question" data-target="faq2">
                         <span>配送范围、时间？</span>
@@ -1186,7 +1182,7 @@
                         <p>全国免费配送，1-3个工作日内送达；您可以通过预留手机号，查询物流信息。</p>
                     </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question" data-target="faq3">
                         <span>流量使用限制？</span>
@@ -1196,7 +1192,7 @@
                         <p>流量为：全国通用流量；请留意卡套餐详情</p>
                     </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question" data-target="faq4">
                         <span>话费、流量使用情况？</span>
@@ -1212,7 +1208,7 @@
                         </ul>
                     </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question" data-target="faq5">
                         <span>支持语音、短信、上网等功能吗？</span>
@@ -1222,7 +1218,7 @@
                         <p>均支持，官方正品卡</p>
                     </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question" data-target="faq6">
                         <span>可更换套餐或注销吗？</span>
@@ -1232,7 +1228,7 @@
                         <p>支持；建议客服热线、APP等，进行套餐变更/注销事宜</p>
                     </div>
                 </div>
-                
+
                 <div class="faq-item">
                     <div class="faq-question" data-target="faq7">
                         <span>我可为她/他人办理吗？</span>
@@ -1243,7 +1239,7 @@
                     </div>
                 </div>
 
- <div class="faq-item">
+                <div class="faq-item">
                     <div class="faq-question" data-target="faq8">
                         <span>申请后，客服会联系我吗？</span>
                         <i class="fa fa-chevron-down faq-icon"></i>
@@ -1252,11 +1248,11 @@
                         <p>部分会，因为卡种类不同，客服会与您确认审核；一般，同意确认即可</p>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
-    
+
     <!-- 页脚 -->
     <footer>
         <div class="container">
@@ -1266,7 +1262,7 @@
             </div>
         </div>
     </footer>
-    
+
     <!-- 右下角功能按钮组 -->
     <div class="fixed-actions">
         <button class="action-btn wechat-btn" id="wechatBtn" title="微信客服">
@@ -1279,229 +1275,169 @@
             <i class="fa fa-arrow-down"></i>
         </button>
     </div>
-    
+
     <div class="wechat-qrcode-container" id="wechatQrcode">
         <div class="wechat-qrcode">
             <img src="pic/wx-code.png" alt="微信客户经理">
         </div>
         <div class="qrcode-caption">扫码·客户经理</div>
     </div>
-    
+
     <script>
-        // 移动端菜单切换
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.getElementById('navLinks');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (navLinks.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-        
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // 关闭移动菜单
-                    if (navLinks.classList.contains('active')) {
+        // 优化：减少全局变量，合并事件绑定，提升性能
+        document.addEventListener('DOMContentLoaded', () => {
+            // 移动端菜单切换
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
                         navLinks.classList.remove('active');
                         const icon = mobileMenuBtn.querySelector('i');
-                        icon.classList.remove('fa-times');
                         icon.classList.add('fa-bars');
+                        icon.classList.remove('fa-times');
                     }
+                });
+            });
+
+            // 置顶和置底功能
+            document.getElementById('toTopBtn').onclick = () => window.scrollTo({top: 0, behavior: 'smooth'});
+            document.getElementById('toBottomBtn').onclick = () => window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+
+            // 客户评价轮播优化
+            const track = document.getElementById('reviewsTrack');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const carousel = document.getElementById('reviewsCarousel');
+            let position = 0;
+            let itemsToShow = window.innerWidth >= 992 ? 3 : window.innerWidth >= 576 ? 2 : 1;
+            const reviewItems = Array.from(track.querySelectorAll('.review-item'));
+            const itemCount = reviewItems.length;
+            let maxPosition = Math.max(0, itemCount - itemsToShow);
+            let direction = carousel.getAttribute('data-direction') === 'L' ? 'L' : 'R';
+            let intervalSec = Math.max(1, parseInt(carousel.getAttribute('data-interval') || '3', 10));
+
+            // 无限循环：复制头尾元素
+            function cloneItems() {
+                track.querySelectorAll('.clone').forEach(c => c.remove());
+                for (let i = 0; i < itemsToShow; i++) {
+                    track.appendChild(reviewItems[i].cloneNode(true)).classList.add('clone');
                 }
-            });
-        });
-        
-        // 置顶和置底功能
-        const toTopBtn = document.getElementById('toTopBtn');
-        const toBottomBtn = document.getElementById('toBottomBtn');
-        
-        toTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        toBottomBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth'
-            });
-        });
-        
-        // 客户评价轮播（多张同时显示） 支持自定义方向和间隔 无限循环优化
-        const track = document.getElementById('reviewsTrack');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const carousel = document.getElementById('reviewsCarousel');
-        let position = 0;
-        let itemsToShow = window.innerWidth >= 992 ? 3 : window.innerWidth >= 576 ? 2 : 1;
-        const reviewItems = Array.from(document.querySelectorAll('.review-item'));
-        const itemCount = reviewItems.length;
-        let maxPosition = Math.max(0, itemCount - itemsToShow);
-        let direction = (carousel && carousel.getAttribute('data-direction')) || 'R';
-        direction = direction === 'L' ? 'L' : 'R';
-        let intervalSec = parseInt((carousel && carousel.getAttribute('data-interval')) || '3', 10);
-        if (isNaN(intervalSec) || intervalSec < 1) intervalSec = 3;
-
-        // 无限循环：复制头尾元素
-        function cloneItems() {
-            // 清除旧的
-            const clones = track.querySelectorAll('.clone');
-            clones.forEach(c => c.remove());
-            // 头部复制
-            for (let i = 0; i < itemsToShow; i++) {
-                const clone = reviewItems[i].cloneNode(true);
-                clone.classList.add('clone');
-                track.appendChild(clone);
+                for (let i = itemCount - itemsToShow; i < itemCount; i++) {
+                    track.insertBefore(reviewItems[i].cloneNode(true), track.firstChild).classList.add('clone');
+                }
             }
-            // 尾部复制
-            for (let i = itemCount - itemsToShow; i < itemCount; i++) {
-                const clone = reviewItems[i].cloneNode(true);
-                clone.classList.add('clone');
-                track.insertBefore(clone, track.firstChild);
-            }
-        }
-        cloneItems();
-
-        // 重新计算宽度和位置
-        function updateCarousel() {
-            itemsToShow = window.innerWidth >= 992 ? 3 : window.innerWidth >= 576 ? 2 : 1;
-            maxPosition = Math.max(0, itemCount - itemsToShow);
-            track.style.transition = 'transform 0.5s ease';
-            track.style.transform = `translateX(-${(position + itemsToShow) * (100 / itemsToShow)}%)`;
-        }
-        updateCarousel();
-
-        // 跳转无动画
-        function jumpTo(pos) {
-            track.style.transition = 'none';
-            track.style.transform = `translateX(-${(pos + itemsToShow) * (100 / itemsToShow)}%)`;
-        }
-
-        prevBtn.addEventListener('click', () => {
-            if (position <= 0) {
-                position = maxPosition;
-                jumpTo(position);
-                setTimeout(() => {
-                    track.style.transition = 'transform 0.5s ease';
-                    position--;
-                    updateCarousel();
-                }, 20);
-            } else {
-                position--;
-                updateCarousel();
-            }
-        });
-        nextBtn.addEventListener('click', () => {
-            if (position >= maxPosition) {
-                position = 0;
-                jumpTo(position);
-                setTimeout(() => {
-                    track.style.transition = 'transform 0.5s ease';
-                    position++;
-                    updateCarousel();
-                }, 20);
-            } else {
-                position++;
-                updateCarousel();
-            }
-        });
-        window.addEventListener('resize', () => {
-            itemsToShow = window.innerWidth >= 992 ? 3 : window.innerWidth >= 576 ? 2 : 1;
             cloneItems();
-            maxPosition = Math.max(0, itemCount - itemsToShow);
-            position = Math.min(position, maxPosition);
-            jumpTo(position);
-        });
-        // 自动轮播 无限循环
-        let carouselInterval = setInterval(() => {
-            nextBtn.click();
-        }, intervalSec * 1000);
-        carousel.addEventListener('mouseenter', () => {
-            clearInterval(carouselInterval);
-        });
-        carousel.addEventListener('mouseleave', () => {
-            carouselInterval = setInterval(() => {
-                nextBtn.click();
-            }, intervalSec * 1000);
-        });
-        
-        // 微信按钮和二维码
-        const wechatBtn = document.getElementById('wechatBtn');
-        const wechatQrcode = document.getElementById('wechatQrcode');
-        
-        wechatBtn.addEventListener('click', () => {
-            wechatQrcode.classList.toggle('active');
-        });
-        
-        wechatBtn.addEventListener('mouseenter', () => {
-            wechatQrcode.classList.add('active');
-        });
-        
-        // 鼠标离开二维码区域时关闭
-        wechatQrcode.addEventListener('mouseleave', () => {
-            wechatQrcode.classList.remove('active');
-        });
-        
-        // 点击页面其他区域关闭二维码
-        document.addEventListener('click', (e) => {
-            if (!wechatBtn.contains(e.target) && !wechatQrcode.contains(e.target)) {
-                wechatQrcode.classList.remove('active');
+
+            function updateCarousel() {
+                itemsToShow = window.innerWidth >= 992 ? 3 : window.innerWidth >= 576 ? 2 : 1;
+                maxPosition = Math.max(0, itemCount - itemsToShow);
+                track.style.transition = 'transform 0.5s ease';
+                track.style.transform = `translateX(-${(position + itemsToShow) * (100 / itemsToShow)}%)`;
             }
-        });
-        
-        // FAQ 折叠功能
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const targetId = question.getAttribute('data-target');
-                const answer = document.getElementById(targetId);
-                const icon = question.querySelector('.faq-icon');
-                
-                answer.classList.toggle('active');
-                
-                if (answer.classList.contains('active')) {
-                    icon.style.transform = 'rotate(180deg)';
-                } else {
-                    icon.style.transform = 'rotate(0)';
+            function jumpTo(pos) {
+                track.style.transition = 'none';
+                track.style.transform = `translateX(-${(pos + itemsToShow) * (100 / itemsToShow)}%)`;
+            }
+            updateCarousel();
+
+            prevBtn.onclick = () => {
+                if (position <= 0) {
+                    position = maxPosition;
+                    jumpTo(position);
+                    setTimeout(() => { track.style.transition = 'transform 0.5s ease'; position--; updateCarousel(); }, 20);
+                } else { position--; updateCarousel(); }
+            };
+            nextBtn.onclick = () => {
+                if (position >= maxPosition) {
+                    position = 0;
+                    jumpTo(position);
+                    setTimeout(() => { track.style.transition = 'transform 0.5s ease'; position++; updateCarousel(); }, 20);
+                } else { position++; updateCarousel(); }
+            };
+            window.addEventListener('resize', () => {
+                itemsToShow = window.innerWidth >= 992 ? 3 : window.innerWidth >= 576 ? 2 : 1;
+                cloneItems();
+                maxPosition = Math.max(0, itemCount - itemsToShow);
+                position = Math.min(position, maxPosition);
+                jumpTo(position);
+            });
+
+            let carouselInterval = setInterval(() => nextBtn.click(), intervalSec * 1000);
+            carousel.onmouseenter = () => clearInterval(carouselInterval);
+            carousel.onmouseleave = () => carouselInterval = setInterval(() => nextBtn.click(), intervalSec * 1000);
+
+            // 微信二维码功能优化
+            const wechatBtn = document.getElementById('wechatBtn');
+            const wechatQrcode = document.getElementById('wechatQrcode');
+            wechatBtn.onclick = () => wechatQrcode.classList.toggle('active');
+            wechatBtn.onmouseenter = () => wechatQrcode.classList.add('active');
+            wechatQrcode.onmouseleave = () => wechatQrcode.classList.remove('active');
+            document.addEventListener('click', (e) => {
+                if (!wechatBtn.contains(e.target) && !wechatQrcode.contains(e.target)) {
+                    wechatQrcode.classList.remove('active');
                 }
             });
-        });
-        
-        // 页面滚动时导航栏样式变化
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(5px)';
-            } else {
-                header.style.backgroundColor = 'var(--white)';
-                header.style.backdropFilter = 'none';
+
+            // FAQ 折叠功能优化
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.onclick = () => {
+                    const answer = document.getElementById(question.getAttribute('data-target'));
+                    const icon = question.querySelector('.faq-icon');
+                    answer.classList.toggle('active');
+                    icon.style.transform = answer.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                };
+            });
+
+            // 导航栏样式变化
+            window.addEventListener('scroll', () => {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.backgroundColor = 'rgba(255,255,255,0.95)';
+                    header.style.backdropFilter = 'blur(5px)';
+                } else {
+                    header.style.backgroundColor = 'var(--white)';
+                    header.style.backdropFilter = 'none';
+                }
+            });
+
+            // 视频播放器自适应
+            if (window.Plyr) {
+                const player = new Plyr('#player', {
+                    controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'fullscreen'],
+                    autoplay: false,
+                    muted: false,
+                    loop: { active: false },
+                    fullscreen: { enabled: true, fallback: true, iosNative: true },
+                    ratio: '16:9',
+                    disableContextMenu: true
+                });
+                function resizePlayer() {
+                    const videoContainer = document.querySelector('#player').parentElement;
+                    videoContainer.style.height = `${videoContainer.offsetWidth * 0.5625}px`;
+                }
+                resizePlayer();
+                window.addEventListener('resize', resizePlayer);
             }
         });
     </script>
+    <script src="js/plyr.min.js"></script>
 </body>
+
 </html>
-
-
