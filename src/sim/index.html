@@ -473,6 +473,35 @@
             right: 10px;
         }
         
+        /* plyr播放器自适应优化 */
+        #introVideo {
+            width: 100% !important;
+            max-width: 800px;
+            height: 45vw;
+            max-height: 450px;
+            min-height: 220px;
+            border-radius: 0;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            background: #000;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            #introVideo {
+                height: 55vw;
+                max-height: 320px;
+                min-height: 160px;
+            }
+        }
+        @media (max-width: 576px) {
+            #introVideo {
+                height: 60vw;
+                max-height: 200px;
+                min-height: 120px;
+            }
+        }
+        
         /* 右下角功能按钮组 */
         .fixed-actions {
             position: fixed;
@@ -859,10 +888,20 @@
                 <h2>办理渠道(任选)</h2>
                 <p>内部渠道，专属优惠(如不稳定 您可更换)</p>
                 <p><span style="color: red; font-weight: bold;">注：</span>部分卡，客服会联系审核；请您留意信息正确</p>
-                <!-- 介绍视频 ifram方式-->
-                <div style="margin-top:10px;">
-                    <iframe src="https://workdrive.zohopublic.com.cn/embed/f0nwc4cc1014d89994b00ad982c34b9ce64d3?toolbar=false&appearance=light&themecolor=green" scrolling="no" frameborder="0" allowfullscreen="true" width="800" height="450" title="流量卡介绍视频"></iframe>
+                <!-- Plyr播放器样式和JS -->
+                <link rel="stylesheet" href="css/plyr.css">
+                <div style="display:flex;justify-content:center;align-items:center;margin-top:18px;">
+                    <video id="introVideo" controls playsinline>
+                        <source src="https://workdrive.zohopublic.com.cn/external/018ab5d812bbf68dc846e317dd6362e575de6f751d2c771f0cd68d32d847a9cf/download?directDownload=true" type="video/mp4">
+                        您的浏览器不支持视频播放
+                    </video>
                 </div>
+                <script src="js/plyr.min.js"></script>
+                <script>
+                    if(window.Plyr){
+                        new Plyr('#introVideo');
+                    }
+                </script>
             </div>
               
             <div class="channels-grid">
