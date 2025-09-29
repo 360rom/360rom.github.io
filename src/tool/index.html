@@ -10,6 +10,47 @@
     <meta name="description" content="360刷机工具，支持刷机、纯净系统、解锁、Root、Twrp、IMEI串码修复等功能，专业可靠，21年维护至今。">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/main.css">
+    <style>
+        .qr-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 18px 0;
+        }
+
+        .qr-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .qr-image {
+            display: block;
+            width: 220px;
+            height: 220px;
+        }
+
+        #changeCodeBtn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 2;
+            padding: 4px 12px;
+            font-size: 14px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            opacity: 0.45;
+            transition: opacity 0.2s;
+        }
+
+        #changeCodeBtn:hover,
+        #changeCodeBtn:active,
+        #changeCodeBtn:focus {
+            opacity: 0.92;
+        }
+    </style>
 </head>
 
 <body>
@@ -71,7 +112,7 @@
 
         <!-- 密码区域 -->
         <section class="section">
-            <h2>密码（新增-自助获取）</h2>
+            <h2>密码（新增-自助获取/操作）</h2>
 
             <button class="collapsible" id="passwordExplanation">
                 密码解释
@@ -111,17 +152,23 @@
                 </table>
             </div>
 
-            <div class="qr-container">
-                <img src="pic/fk.png" alt="在线密钥" class="qr-image">
+            <div class="qr-center">
+                <div class="qr-container">
+                    <img src="pic/fk.png" alt="在线密钥" class="qr-image" id="qrImage">
+                    <button id="changeCodeBtn">换码</button>
+                </div>
             </div>
 
             <div class="button-center">
                  <a href="https://sim.360os.top/" target="_blank" class="btn btn-primary" id="getPassword"
                     aria-label="密码渠道">
+                    <i class="fa fa-bolt "></i> 免费·获取
+                </a>
+                <a href="https://www.kdocs.cn/l/cmlNpbzA08FB" target="_blank" class="btn btn-primary" id="getPassword"
+                    aria-label="密码渠道">
                     <i class="fa fa-key"></i> 免费·获取
                 </a>
-                </a>
-                <a href="https://pay.ldxp.cn/item/4sxtg5" target="_blank" class="btn btn-primary" id="getPassword"
+                <a href="https://pay.ldxp.cn/shop/EMSDA9S1/olon3p" target="_blank" class="btn btn-primary" id="getPassword"
                     aria-label="密码渠道">
                     <i class="fa fa-unlock "></i> 自购·获取
                 </a>
@@ -144,8 +191,8 @@
             </button>
             <div class="content" id="instructionsContent">
                 <ul style="margin: 15px; line-height: 1.8; list-style-position: inside;">
+                    <li>多种渠道，可选</li>
                     <li>使用鼠标，点击确认，避免回车</li>
-
                     <li>将获取的密码，输入 对应密码框 即可</li>
                     <li>注意大小写；一机一码，24小时有效期</li>
                     <li>密码不唯一，且不通用，注意辨别流程/使用</li>
@@ -167,7 +214,7 @@
             <div class="divider"></div>
 
             <div class="help-text">
-    <strong>工微（付费咨询）：</strong>wander-wechat
+    <strong>工微（仅捐赠者）：</strong>wander-wechat
 </div>
 
                 <a href="https://www.360os.top/src/donation/" target="_blank" class="btn btn-secondary"
@@ -233,17 +280,21 @@
                 <p>3. 请详阅，相关文本或附件，对您很有帮助</p>
                 <p>4. 请尽量在，正版windows操作系统上使用</p>
             </div>
-             <h3>咨询</h3>
+             <h3>咨询（优先捐赠者）</h3>
              <div class="modal-body">
-                <p>1. 嫌繁琐，请考虑远程协助，成功率100%</p>
+                <p>1. 嫌繁琐，不会弄，请考虑远程协助，成功率100%</p>
                 <p>2. 无关，无意义、认知面差异大的，咨询，孰不回答</p>
             </div>
-             <h3>密码</h3>
+             <h3>密码（多种渠道）</h3>
              <div class="modal-body">
                 <p>1. 免费：免费任务，完成获取（多种形式，可联系）</p>
                 <p>2. 发卡：自购后，获取</p>
                 <p>3. 捐赠：捐赠后，获取</p>
                 <p>4. 其它：公众号、下载的资源等</p>
+            </div>
+            <h3>其它</h3>
+             <div class="modal-body">
+                <p>密码、远程协助支持，是两码事，按需选择</p>
             </div>
         </div>
     </div>
@@ -261,6 +312,26 @@
     </div>
 
     <script src="js/main.js"></script>
+    <script>
+        // 换码按钮切换二维码图片
+        (function() {
+            var btn = document.getElementById('changeCodeBtn');
+            var img = document.getElementById('qrImage');
+            var img1 = 'pic/fk.png';
+            var img2 = 'pic/wx1.png';
+            var showing1 = true;
+            btn.addEventListener('click', function() {
+                if (showing1) {
+                    img.src = img2;
+                    showing1 = false;
+                } else {
+                    img.src = img1;
+                    showing1 = true;
+                }
+            });
+        })();
+    </script>
+    
 </body>
 
 </html>
