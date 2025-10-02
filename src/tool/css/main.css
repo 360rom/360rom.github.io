@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 body {
     background-color: #f5f7fa;
     color: #333;
@@ -12,32 +13,38 @@ body {
     position: relative;
     padding-bottom: 80px;
 }
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
+
 header {
     background-color: #0076db;
     color: white;
     padding: 20px 0;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .logo {
     font-size: 24px;
     font-weight: bold;
     display: flex;
     align-items: center;
 }
+
 .logo i {
     margin-right: 10px;
     font-size: 28px;
 }
+
 .announcement {
     background-color: #fff;
     margin: 20px 0;
@@ -46,24 +53,29 @@ header {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     overflow: hidden;
 }
+
 .announcement h2 {
     color: #0076db;
     margin-bottom: 15px;
     font-size: 18px;
 }
+
 .announcement-list {
     height: 60px;
     overflow: hidden;
     position: relative;
 }
+
 .announcement-item {
     position: absolute;
     width: 100%;
     transition: transform 0.5s ease-in-out;
 }
+
 .announcement-item strong {
     color: #e53935;
 }
+
 .section {
     background-color: #fff;
     margin: 20px 0;
@@ -71,6 +83,7 @@ header {
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
+
 .section h2 {
     color: #0076db;
     margin-bottom: 20px;
@@ -78,6 +91,7 @@ header {
     padding-bottom: 10px;
     border-bottom: 1px solid #eee;
 }
+
 .tool-container {
     display: flex;
     flex-wrap: wrap;
@@ -85,15 +99,18 @@ header {
     gap: 15px;
     margin-bottom: 20px;
 }
+
 .button-group {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
 }
+
 .input-group {
     flex: 1;
     min-width: 160px;
 }
+
 .input-group input {
     width: 100%;
     padding: 10px 15px;
@@ -101,11 +118,14 @@ header {
     border-radius: 4px;
     font-size: 14px;
 }
+
 .input-group.extract-code {
     flex: 0 0 130px;
     min-width: 130px;
 }
-.btn, a.btn {
+
+.btn,
+a.btn {
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
@@ -119,31 +139,44 @@ header {
     outline: none;
     user-select: none;
 }
+
 a.btn:focus {
     outline: 2px solid #0076db;
 }
-.btn i, a.btn i {
+
+.btn i,
+a.btn i {
     margin-right: 5px;
 }
-.btn-primary, a.btn.btn-primary {
+
+.btn-primary,
+a.btn.btn-primary {
     background-color: #0076db;
     color: white;
 }
-.btn-primary:hover, a.btn.btn-primary:hover {
+
+.btn-primary:hover,
+a.btn.btn-primary:hover {
     background-color: #005baa;
 }
-.btn-secondary, a.btn.btn-secondary {
+
+.btn-secondary,
+a.btn.btn-secondary {
     background-color: #f0f0f0;
     color: #333;
 }
-.btn-secondary:hover, a.btn.btn-secondary:hover {
+
+.btn-secondary:hover,
+a.btn.btn-secondary:hover {
     background-color: #e0e0e0;
 }
+
 .hint {
     text-align: center;
     margin: 15px 0;
     color: #666;
 }
+
 .collapsible {
     background-color: #f5f5f5;
     color: #333;
@@ -160,14 +193,17 @@ a.btn:focus {
     justify-content: space-between;
     align-items: center;
 }
+
 .collapsible:after {
     content: '\f078';
     font-family: 'FontAwesome';
     transition: transform 0.3s;
 }
+
 .active:after {
     transform: rotate(180deg);
 }
+
 .content {
     padding: 0 15px;
     max-height: 0;
@@ -175,25 +211,30 @@ a.btn:focus {
     transition: max-height 0.2s ease-out;
     background-color: white;
 }
+
 .password-table {
     width: 100%;
     border-collapse: collapse;
     margin: 15px 0;
 }
+
 .password-table th {
     color: #ff9800;
     padding: 12px;
     text-align: left;
     border-bottom: 2px solid #f0f0f0;
 }
+
 .password-table td {
     padding: 12px;
     border-bottom: 1px solid #f0f0f0;
 }
+
 .qr-container {
     text-align: center;
     margin: 20px 0;
 }
+
 .qr-image {
     max-width: 200px;
     height: auto;
@@ -201,6 +242,7 @@ a.btn:focus {
     padding: 10px;
     border-radius: 4px;
 }
+
 .button-center {
     text-align: center;
     margin: 20px 0;
@@ -209,25 +251,34 @@ a.btn:focus {
     gap: 15px;
     flex-wrap: wrap;
 }
+
 .help-text {
     margin-bottom: 15px;
     line-height: 1.8;
 }
-.link, a {
+
+.link,
+a {
     color: #0076db;
     text-decoration: none;
 }
-.link:hover, a:hover {
+
+.link:hover,
+a:hover {
     text-decoration: underline;
 }
-a.btn:hover, a.btn:active {
+
+a.btn:hover,
+a.btn:active {
     text-decoration: none;
 }
+
 .divider {
     height: 1px;
     background-color: #eee;
     margin: 20px 0;
 }
+
 footer {
     background-color: #f0f0f0;
     padding: 20px 0;
@@ -240,6 +291,7 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
 .float-button {
     position: fixed;
     right: 20px;
@@ -250,18 +302,23 @@ footer {
     overflow: hidden;
     border-radius: 20px;
 }
+
 #qrButton {
     bottom: 20px;
 }
+
 #topButton {
     bottom: 70px;
 }
+
 .float-button.active {
     width: 160px;
 }
+
 .float-button:hover {
     width: 160px;
 }
+
 .float-btn {
     width: 40px;
     height: 40px;
@@ -279,6 +336,7 @@ footer {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     z-index: 2;
 }
+
 .float-content {
     position: absolute;
     right: 0;
@@ -295,10 +353,12 @@ footer {
     transition: opacity 0.3s ease;
     opacity: 0;
 }
+
 .float-button.active .float-content,
 .float-button:hover .float-content {
     opacity: 1;
 }
+
 .wechat-qr-container {
     position: fixed;
     right: 20px;
@@ -310,26 +370,30 @@ footer {
     transform-origin: bottom right;
     transform: scale(0.95);
 }
+
 .wechat-qr-container .wechat-qr-content {
     background: #fff;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 10px 10px 5px 10px;
     text-align: center;
 }
+
 .wechat-qr-image {
     width: 160px;
     height: 160px;
     border: 5px solid white;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     margin-bottom: 8px;
 }
+
 .wechat-qr-text {
     font-size: 15px;
     color: #0076db;
     margin-bottom: 2px;
 }
+
 .modal {
     display: none;
     position: fixed;
@@ -341,6 +405,7 @@ footer {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.4);
 }
+
 .modal-content {
     background-color: #fefefe;
     margin: 15% auto;
@@ -352,10 +417,19 @@ footer {
     position: relative;
     animation: modalFadeIn 0.3s;
 }
+
 @keyframes modalFadeIn {
-    from {opacity: 0; transform: translateY(-50px);}
-    to {opacity: 1; transform: translateY(0);}
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 .close {
     color: #aaa;
     float: right;
@@ -366,39 +440,62 @@ footer {
     right: 20px;
     top: 10px;
 }
+
 .close:hover,
 .close:focus {
     color: black;
     text-decoration: none;
 }
+
 .modal-body {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
 .modal-footer {
     text-align: center;
     padding-top: 15px;
     border-top: 1px solid #eee;
 }
+
 @media (max-width: 768px) {
     .section {
-        padding: 10px !important; /* 原来是25px，改小一点 */
+        padding: 10px !important;
+        /* 原来是25px，改小一点 */
     }
+
     .tool-container {
-        gap: 0 !important; /* 间距为0，彻底去掉空白 */
+        gap: 0 !important;
+        /* 间距为0，彻底去掉空白 */
         margin-bottom: 10px !important;
     }
+
     .input-group,
     .input-group.extract-code {
         min-width: 0 !important;
         width: 100% !important;
         margin-bottom: 5px !important;
     }
+
     .button-group {
         gap: 5px !important;
         margin-top: 0 !important;
-        justify-content: center !important; /* 新增：按钮居中 */
+        justify-content: center !important;
+        /* 新增：按钮居中 */
         width: 100%;
         display: flex;
     }
+}
+
+/* button */
+.btn-green,
+a.btn.btn-green {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.btn-green:hover,
+a.btn.btn-green:hover {
+    background-color: #45a049;
+    /* 深绿色（ hover 效果） */
 }
