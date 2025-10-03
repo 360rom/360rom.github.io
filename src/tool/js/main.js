@@ -173,3 +173,37 @@ addAccessibleClick('copyLink', function() {
         this.innerHTML = originalText;
     }, 2000);
 });
+
+// 工具区域折叠功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取工具区域的折叠按钮和内容
+    const toolCollapsible = document.getElementById('toolCollapsible');
+    const toolContent = document.getElementById('toolContent');
+    
+    // 如果存在工具区域元素，则添加事件监听器
+    if (toolCollapsible && toolContent) {
+        toolCollapsible.addEventListener('click', function() {
+            // 切换active类
+            this.classList.toggle('active');
+            
+            // 切换内容显示
+            if (toolContent.style.maxHeight) {
+                toolContent.style.maxHeight = null;
+            } else {
+                toolContent.style.maxHeight = toolContent.scrollHeight + "px";
+            }
+            
+            // 切换图标
+            const icon = this.querySelector('i');
+            if (icon) {
+                if (this.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            }
+        });
+    }
+});
