@@ -84,46 +84,7 @@
 
         <!-- 密码区域 -->
         <section class="section">
-            <h2>密码（新增-自助获取/操作）</h2>
-
-            <button class="collapsible" id="passwordExplanation">
-                密码解释
-                <i class="fa fa-chevron-down"></i>
-            </button>
-            <div class="content" id="passwordContent">
-                <table class="password-table">
-                    <tr>
-                        <th>密码类型</th>
-                        <th>作用</th>
-                        <th>渠道</th>
-                        <th>备注</th>
-                    </tr>
-                    <tr>
-                        <td>解压码</td>
-                        <td>解压文件</td>
-                        <td>公众号、网盘文件、捐赠、发卡</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>使用码</td>
-                        <td>解压软件</td>
-                        <td>公众号、网盘文件、捐赠、发卡</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>授权码</td>
-                        <td>打开使用软件</td>
-                        <td>公众号、网盘文件、捐赠、发卡</td>
-                        <td>本次使用</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" style="text-align: left;">
-                            注：密码类型，非全部使用，仅作说明
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
+            <h2>密码（多渠道/自取）</h2>
             <div class="qr-center">
                 <div class="qr-container">
                     <img src="pic/fk.png" alt="在线密钥" class="qr-image" id="qrImage">
@@ -134,7 +95,7 @@
             <div class="button-center">
                 <a href="https://sim.360os.top/" target="_blank" class="btn btn-primary" id="getPassword"
                     aria-label="密码渠道">
-                    <i class="fa fa-bolt "></i> 免费·获取
+                    <i class="fa fa-key "></i> 免费·获取
                 </a>
                 <a href="https://www.kdocs.cn/l/cmlNpbzA08FB" target="_blank" class="btn btn-primary" id="getPassword"
                     aria-label="密码渠道">
@@ -142,7 +103,7 @@
                 </a>
                 <a href="https://pay.ldxp.cn/shop/EMSDA9S1/olon3p" target="_blank" class="btn btn-green"
                     id="getPassword" aria-label="密码渠道">
-                    <i class="fa fa-key"></i> 自购·优惠
+                    <i class="fa fa-bolt"></i> 极速·推荐
                 </a>
                 <!-- <a href="javascript:;" class="btn btn-secondary" id="verifyOnline" aria-label="在线验证">
                     <i class="fa fa-check-circle"></i> 在线验证
@@ -155,21 +116,51 @@
                 </a>
             </div>
 
-            <div class="hint">亲，因存滥用、新增验证，感谢理解，100%可用</div>
+            <div class="hint">预防滥用；一步刷机，100%可用</div>
 
             <button class="collapsible" id="passwordInstructions">
-                密码说明
+                使用说明
                 <i class="fa fa-chevron-down"></i>
             </button>
             <div class="content" id="instructionsContent">
                 <ul style="margin: 15px; line-height: 1.8; list-style-position: inside;">
-                    <li>多种渠道，可选</li>
                     <li>使用鼠标，点击确认，避免回车</li>
                     <li>将获取的密码，输入 对应密码框 即可</li>
-                    <li>注意大小写；一机一码，24小时有效期</li>
-                    <li>密码不唯一，且不通用，注意辨别流程/使用</li>
                     <li>已选购，或捐赠者，可联系工微，免费咨询问题</li>
                 </ul>
+            </div>
+            <button class="collapsible" id="passwordExplanation">
+                密码解释
+                <i class="fa fa-chevron-down"></i>
+            </button>
+            <div class="content" id="passwordContent">
+                <table class="password-table">
+                    <tr>
+                        <th>密码类型</th>
+                        <th>作用</th>
+                        <th>备注</th>
+                    </tr>
+                    <tr>
+                        <td>解压码</td>
+                        <td>解压文件</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>使用码</td>
+                        <td>解压软件</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>授权码</td>
+                        <td>打开使用软件</td>
+                        <td>本次使用</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="text-align: left;">
+                            注：密码类型，非全部使用，仅作说明
+                        </td>
+                    </tr>
+                </table>
             </div>
         </section>
         <!-- 工具区域 -->
