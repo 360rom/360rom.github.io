@@ -1,310 +1,291 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>360OS手机线上帮协 - 公告必读</title>
+    <title>360手机 - 线上帮协公告</title>
     <style>
-        /* 优化整体背景和字体 */
-        body {
-            background: linear-gradient(135deg, #e3f0ff 0%, #f8fafc 100%);
-            color: #222;
-            font-size: 17px;
-            line-height: 1.7;
-            padding: 0;
+        /* 基础样式保持不变 */
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0e9d2;
+            padding: 20px;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
-            /* 让内容始终居中且宽度自适应 */
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
         }
 
-        .notification-container {
-            margin-top: 24px;
-            margin-bottom: 24px;
-            max-width: 980px;
-            /* 增大容器宽度 */
-            width: 98vw;
-            min-width: 320px;
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 8px 32px rgba(22, 93, 255, 0.10), 0 1.5px 8px rgba(0, 0, 0, 0.04);
-            overflow: hidden;
-            transition: box-shadow 0.3s;
-            border: 1.5px solid #e3eafc;
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-        }
-
-        .notification-container:hover {
-            box-shadow: 0 16px 48px rgba(22, 93, 255, 0.18), 0 2px 12px rgba(0, 0, 0, 0.06);
-        }
-
-        .notification-header {
-            background: linear-gradient(90deg, #165DFF 60%, #4fc3f7 100%);
-            color: #fff;
-            padding: 18px 24px 10px 24px;
-            text-align: center;
+        .envelope {
             position: relative;
-        }
-
-        .notification-header h1 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 2px;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 8px rgba(22, 93, 255, 0.12);
-        }
-
-        .notification-header p {
-            font-size: 13px;
-            opacity: 0.92;
-            font-weight: 400;
-        }
-
-        .notification-content {
-            padding: 32px 48px 24px 48px;
-            /* 增大左右内边距 */
-        }
-
-        .section {
-            margin-bottom: 24px;
-            padding-bottom: 18px;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .section:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .section h2 {
-            font-size: 19px;
-            color: #165DFF;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .section h2 i {
-            margin-right: 9px;
-            width: 24px;
-            height: 24px;
-            background: linear-gradient(135deg, #e3f0ff 0%, #c3e0ff 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #165DFF;
-            font-size: 15px;
-        }
-
-        .section p {
-            margin-bottom: 12px;
-            color: #222;
-            line-height: 1.6;
-        }
-
-        .badge {
-            background: linear-gradient(90deg, #FF7D00 60%, #FFD580 100%);
-            color: #fff;
-            padding: 2px 8px;
+            width: 100%;
+            max-width: 800px;
+            background-color: #fffdf7;
+            min-height: 600px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
             border-radius: 4px;
-            font-size: 13px;
-            margin-left: 10px;
-            font-weight: 600;
-            box-shadow: 0 1px 4px rgba(255, 125, 0, 0.08);
+            padding: 40px 60px;
+            overflow: hidden;
         }
 
-        .info-box,
-        .warning-box {
-            margin-bottom: px;
-            padding: 4px 6px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(22, 93, 255, 0.04);
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23d1c9b0' fill-opacity='0.05'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.7;
+            pointer-events: none;
         }
 
-        .info-box {
-            background: #f4f8ff;
-            border-left: 3px solid #165DFF;
-        }
-
-        .info-box h3 {
-            font-size: 16px;
-            color: #165DFF;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .info-box ul,
-        .info-box ol {
-            padding-left: 18px;
-            margin-bottom: 8px;
-            color: #222;
-        }
-
-        .info-box ul li,
-        .info-box ol li {
-            margin-bottom: 6px;
-            line-height: 1.5;
-        }
-
-        .warning-box {
-            background: #fff6f3;
-            border-left: 3px solid tomato;
-        }
-
-        .warning-box h3 {
-            color: tomato;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            font-weight: 700;
-        }
-
-        .warning-box h3 i {
-            margin-right: 8px;
-        }
-
-        .warning-box ul {
-            padding-left: 18px;
-            color: #222;
-        }
-
-        .warning-box ul li {
-            margin-bottom: 6px;
-            line-height: 1.5;
-        }
-
-        .footer {
+        .envelope-header {
+            border-bottom: 1px solid #e0d8c0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            position: relative;
             text-align: center;
-            padding: 18px 0 12px 0;
-            background: #f8fafc;
-            margin-top: 18px;
-            border-radius: 0 0 18px 18px;
         }
 
-        .footer h3 {
-            color: #165DFF;
-            margin-bottom: 7px;
-            font-weight: 700;
-            font-size: 19px;
+        .envelope-header::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 10px;
+            background-color: #f0e9d2;
+            border-radius: 50%;
         }
 
-        .footer p {
-            color: #222;
+        .envelope-header h1 {
+            font-size: 28px;
+            color: #5d4b36;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .envelope-header .date {
+            color: #8b7d6b;
             font-style: italic;
             font-size: 14px;
         }
 
-        /* 响应式优化 */
-        @media (max-width: 900px) {
-            .notification-container {
-                margin-top: 10px;
-                margin-bottom: 10px;
-                max-width: 99vw;
-                border-radius: 10px;
+        .content-section {
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .content-section h2 {
+            font-size: 20px;
+            color: #5d4b36;
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 3px solid #c9b88f;
+        }
+
+        .content-section p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .note-box {
+            background-color: #f8f5ea;
+            border-left: 3px solid #c9b88f;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* 不同重要程度的提示框样式区分 */
+        .note-box.mandatory {
+            border-left-color: #e74c3c;
+        }
+        .note-box.mandatory h3::before {
+            color: #e74c3c;
+            content: '⚠️';
+        }
+        .note-box.important {
+            border-left-color: #f39c12;
+        }
+        .note-box.important h3::before {
+            color: #f39c12;
+            content: '❗';
+        }
+
+        .note-box h3 {
+            font-size: 16px;
+            color: #8b6e4f;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .note-box h3::before {
+            margin-right: 8px;
+            color: #c9b88f;
+            content: '✦';
+        }
+
+        .note-box p {
+            font-size: 15px;
+            margin-bottom: 0;
+        }
+
+        .content-section ul {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .content-section li {
+            margin-bottom: 8px;
+        }
+
+        .envelope-footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e0d8c0;
+            text-align: right;
+            color: #8b7d6b;
+            font-style: italic;
+        }
+
+        .stamp {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    /* 修改这一行：将原来蓝色渐变改为红色 */
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border-radius: 3px;
+    transform: rotate(5deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+        @media (max-width: 768px) {
+            .envelope {
+                padding: 30px 25px;
+                min-height: auto;
             }
 
-            .notification-header {
-                padding: 10px 8px 6px 8px;
+            .stamp {
+                width: 50px;
+                height: 50px;
+                top: 25px;
+                right: 25px;
+                font-size: 10px;
             }
 
-            .notification-content {
-                padding: 18px 12px 12px 12px;
+            .envelope-header h1 {
+                font-size: 24px;
+            }
+
+            .content-section h2 {
+                font-size: 18px;
             }
         }
 
-        @media (max-width: 600px) {
-            .notification-container {
-                margin-top: 6px;
-                margin-bottom: 6px;
-                max-width: 98vw;
-                border-radius: 10px;
-            }
-
-            .notification-header {
-                padding: 8px 6px 4px 6px;
-            }
-
-            .notification-content {
-                padding: 18px 8px 12px 8px;
-            }
-        }
-
-        /* 平滑滚动 */
-        html {
-            scroll-behavior: smooth;
+        .envelope::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 50px 50px;
+            border-color: transparent transparent #d9d0b8 transparent;
+            box-shadow: -2px -2px 5px rgba(0,0,0,0.05);
         }
     </style>
 </head>
-
 <body>
-    <div class="notification-container">
-        <div class="notification-header">
-            <h1>360手机-线上帮协</h1>
-            <p>请您详阅 合理选择</p>
+    <div class="envelope">
+        <!-- 邮票装饰 -->
+        <div class="stamp">请详阅</div>
+        
+        <!-- 信封头部 -->
+        <div class="envelope-header">
+            <h1>公告</h1>
+            <div class="date" id="current-date"></div>
+            <p style="margin-top:10px; color:#666; font-size:15px;"></p>
         </div>
+        
+        <!-- 内容区域 -->
+        <div class="envelope-content">
+            <div class="content-section">
+                <h2>基本支持</h2>
+                <div class="note-box mandatory">
+                    <p></p>
+                    <ul style="margin-top:10px;">
+                        <li>刷机、解锁、救砖、纯净系统、保资料</li>
+                        <li>Root、TWRP/Recovery、Magisk、Xposed</li>
 
-        <div class="notification-content">
-            <!-- 基本须知 -->
-            <div class="section">
-                <h2>
-                    <i class="fa fa-info-circle"></i>
-                    基本须知
-                    <span class="badge">必读</span>
-                </h2>
-                <p>「支持360手机」刷机、解锁、救砖、纯净系统、Root、TWRP、Magisk等</p>
-            </div>
-
-            <!-- 远程协助 -->
-            <div class="section">
-                <h2>
-                    <i class="fa fa-comments"></i>
-                    远程协助
-                    <span class="badge">重要</span>
-                </h2>
-                <p>「向日葵远程+成功率100%」人工支持：按需选择，逾期不候！</p>
-
-                <div class="info-box">
-                    <ul>
-                        <li>免费支持；现因恶意打扰，仅提供捐赠者</li>
                     </ul>
                 </div>
             </div>
-
-            <!-- 其它 -->
-            <div class="section">
-                <h2>
-                    <i class="fa fa-exclamation-triangle"></i>
-                    其它
-                    <span class="badge">注意</span>
-                </h2>
-                <p>公益与情怀提供；感谢您的理解，如有困难，提前告知...</p>
-
-                <div class="warning-box">
-                    <h3>
-                        <i class="fa fa-warning"></i>
-                        重要提醒
-                    </h3>
-                    <ul>
-                        <li>本站，为公益站，无任何费用</li>
-                        <li>近期，存部分恶意与打扰人群，烦请远离；带来不便，实在抱歉！</li>
-                    </ul>
+            
+            <div class="content-section">
+                <h2>远程协助</h2>
+                <div class="note-box important">
+                    <p>「向日葵远程协助」免费支持，成功率100%</p>
+                    <p>--- 现因恶意打扰，仅捐赠者---</p>
+                </div>
+                <p></p>
+            </div>
+            
+            <div class="content-section">
+                <h2>其它</h2>
+                <div class="note-box">
+                    <h3>注意事项</h3>
+                    <p>本站，为公益站，无任何费用</p>
+                    <p>公益与情怀提供；如有困难，提前告知...</p>
+                    <p>近期，存部分恶意与打扰人群，烦请远离；带来不便，实在抱歉！</p>
                 </div>
             </div>
         </div>
-
-        <div class="footer">
-            <h3>一点一滴 真诚付出</h3>
+        
+        <!-- 页脚 -->
+        <div class="envelope-footer">
+            <p>一点一滴 真诚付出</p>
         </div>
     </div>
-</body>
 
+    <script>
+        // 显示当前日期
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateElement = document.getElementById('current-date');
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            const currentDate = new Date().toLocaleDateString('zh-CN', options);
+            dateElement.textContent = `更新日期：${currentDate}`;
+            
+            // 页面加载动画效果
+            const envelope = document.querySelector('.envelope');
+            envelope.style.opacity = '0';
+            envelope.style.transform = 'translateY(20px)';
+            envelope.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            
+            setTimeout(() => {
+                envelope.style.opacity = '1';
+                envelope.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
 </html>

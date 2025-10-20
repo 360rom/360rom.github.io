@@ -18,21 +18,118 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     setInterval(nextAnnouncement, 3000);
 
-    // 折叠面板功能
-    function setupCollapsible(id) {
-        const coll = document.getElementById(id);
-        coll.addEventListener("click", function() {
-            this.classList.toggle("active");
-            const content = this.nextElementSibling;
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
+    // 折叠面板功能（改为通用绑定，支持 Collapsible、Collapsible1..9、以及 .collapsible）
+    function setupAllCollapsibles() {
+        // 先选取带有 class .collapsible 的元素，再选取 id 中包含 Collapsible 的元素（大小写兼容）
+        const elems = new Set();
+        document.querySelectorAll('.collapsible').forEach(e => elems.add(e));
+        // 尽量避免遍历过多，查找可能包含 Collapsible 的元素
+        document.querySelectorAll('[id]').forEach(e => {
+            if (e.id && e.id.toLowerCase().includes('collapsible')) elems.add(e);
+        });
+        const pairs = []; // 存储 {coll, content}
+        Array.from(elems).forEach(coll => {
+            if (!coll || coll._collapsibleInitialized) return;
+            coll._collapsibleInitialized = true;
+
+            const collId = (coll.id || '').trim();
+            let content = null;
+
+            if (collId) {
+                const idLower = collId.toLowerCase();
+
+                // 1) CollapsibleN -> ContentN （支持 Collapsible1、collapsible01 等）
+                const mNum = collId.match(/collapsible(\d+)$/i);
+                if (mNum) {
+                    const contentId = collId.replace(/collapsible(\d+)$/i, 'Content$1');
+                    content = document.getElementById(contentId) || document.getElementById(contentId.replace(/^./, c => c.toLowerCase()));
+                }
+
+                // 2) 前缀 Collapsible -> 前缀 Content（如 toolCollapsible -> toolContent）
+                if (!content && /collapsible$/i.test(collId)) {
+                    const contentId = collId.replace(/collapsible$/i, 'Content');
+                    content = document.getElementById(contentId) || document.getElementById(contentId.replace(/^./, c => c.toLowerCase()));
+                }
+
+                // 3) 任意位置的 Collapsible 替换为 Content（更通用）
+                if (!content && /collapsible/i.test(collId)) {
+                    const contentId = collId.replace(/collapsible/i, 'Content');
+                    content = document.getElementById(contentId) || document.getElementById(contentId.replace(/^./, c => c.toLowerCase()));
+                }
+
+                // 4) 常见后缀映射： Instructions/Explanation -> Content
+                if (!content && /instructions$/i.test(collId)) {
+                    content = document.getElementById(collId.replace(/Instructions$/i, 'Content'));
+                }
+                if (!content && /explanation$/i.test(collId)) {
+                    content = document.getElementById(collId.replace(/Explanation$/i, 'Content'));
+                }
             }
+
+            // 5) 回退到紧随其后的兄弟元素（保持兼容旧结构）
+            if (!content) {
+                let sibling = coll.nextElementSibling;
+                while (sibling) {
+                    // 优先选择 class 包含 content 的元素
+                    if (sibling.nodeType === 1 && (sibling.classList.contains('content') || sibling.classList.contains('panel') || sibling.tagName.toLowerCase() === 'div')) {
+                        content = sibling;
+                        break;
+                    }
+                    sibling = sibling.nextElementSibling;
+                }
+            }
+
+            if (!content) return;
+
+            // 可访问性及键盘支持
+            coll.setAttribute('tabindex', coll.getAttribute('tabindex') || '0');
+            coll.setAttribute('role', 'button');
+            coll.setAttribute('aria-expanded', 'false');
+
+            // 初始化 maxHeight 为 0（折叠状态）
+            content.style.maxHeight = content.classList.contains('active') ? content.scrollHeight + 'px' : (content.style.maxHeight || '');
+
+            function toggleColl(e) {
+                if (e && e.type === 'keydown' && e.key === ' ') e.preventDefault();
+
+                coll.classList.toggle('active');
+                if (coll.classList.contains('active')) {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    coll.setAttribute('aria-expanded', 'true');
+                } else {
+                    content.style.maxHeight = null;
+                    coll.setAttribute('aria-expanded', 'false');
+                }
+
+                // 切换图标（fa-chevron-up/down）
+                const icon = coll.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-chevron-up');
+                    icon.classList.toggle('fa-chevron-down');
+                }
+            }
+
+            coll.addEventListener('click', toggleColl);
+            coll.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    toggleColl.call(this, e);
+                }
+            });
+
+            pairs.push({ coll, content });
+        });
+
+        // 窗口大小改变时，重新计算已展开项的高度，避免内容被截断
+        window.addEventListener('resize', function() {
+            pairs.forEach(p => {
+                if (p.coll.classList.contains('active')) {
+                    p.content.style.maxHeight = p.content.scrollHeight + 'px';
+                }
+            });
         });
     }
-    setupCollapsible('passwordExplanation');
-    setupCollapsible('passwordInstructions');
+    // 立即初始化页面上所有折叠项
+    setupAllCollapsibles();
 
     // 云盘链接功能
     document.getElementById('openLink').addEventListener('click', function() {
@@ -72,8 +169,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    setupModal('showInfo', 'infoModal', 'closeInfoModal');
     setupModal('showInfo2', 'infoModal', 'closeInfoModal');
+    // 将“刷机包”中的说明按钮已迁移到 Collapsible3（id: toolShowInfo）
+    setupModal('toolShowInfo', 'infoModal', 'closeInfoModal');
     setupModal('humanService', 'serviceModal', 'closeServiceModal');
     // 绑定“密码获取-渠道二”按钮逻辑为人工客服弹窗
     document.getElementById('getKey').onclick = function() {
@@ -172,38 +270,4 @@ addAccessibleClick('copyLink', function() {
     setTimeout(() => {
         this.innerHTML = originalText;
     }, 2000);
-});
-
-// 工具区域折叠功能
-document.addEventListener('DOMContentLoaded', function() {
-    // 获取工具区域的折叠按钮和内容
-    const toolCollapsible = document.getElementById('toolCollapsible');
-    const toolContent = document.getElementById('toolContent');
-    
-    // 如果存在工具区域元素，则添加事件监听器
-    if (toolCollapsible && toolContent) {
-        toolCollapsible.addEventListener('click', function() {
-            // 切换active类
-            this.classList.toggle('active');
-            
-            // 切换内容显示
-            if (toolContent.style.maxHeight) {
-                toolContent.style.maxHeight = null;
-            } else {
-                toolContent.style.maxHeight = toolContent.scrollHeight + "px";
-            }
-            
-            // 切换图标
-            const icon = this.querySelector('i');
-            if (icon) {
-                if (this.classList.contains('active')) {
-                    icon.classList.remove('fa-chevron-down');
-                    icon.classList.add('fa-chevron-up');
-                } else {
-                    icon.classList.remove('fa-chevron-up');
-                    icon.classList.add('fa-chevron-down');
-                }
-            }
-        });
-    }
 });

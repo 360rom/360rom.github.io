@@ -85,8 +85,8 @@
         <!-- 密码区域 -->
         <section class="section">
             <h2>密码（多渠道/自取）</h2>
-            <div class="urgent-notice">
-    <!--<strong style="color: red;">关于：</strong>-->
+            <div class="urgent-notice>
+  <!--   <strong style="color: red;>关于：</strong> -->
 </div>
             <div class="qr-center">
                 <div class="qr-container">
@@ -100,13 +100,13 @@
                     aria-label="密码渠道">
                     <i class="fa fa-key "></i> 免费·获取
                 </a>-->
-                <a href="https://www.kdocs.cn/l/cmlNpbzA08FB" target="_blank" class="btn btn-primary" id="getPassword"
+                <a href="https://www.kdocs.cn/l/cmlNpbzA08FB" target="_blank" class="btn btn-secondary" id="getPassword"
                     aria-label="密码渠道">
                     <i class="fa fa-unlock"></i> 免费·获取
                 </a>
                 <a href="https://pay.ldxp.cn/shop/EMSDA9S1/olon3p" target="_blank" class="btn btn-green"
                     id="getPassword" aria-label="密码渠道">
-                    <i class="fa fa-bolt"></i> 极速·推荐
+                    <i class="fa fa-bolt"></i> 极速·获取
                 </a>
                 <!-- <a href="javascript:;" class="btn btn-secondary" id="verifyOnline" aria-label="在线验证">
                     <i class="fa fa-check-circle"></i> 在线验证
@@ -121,21 +121,21 @@
 
             <div class="hint">100%可用，一步刷机</div>
 
-            <button class="collapsible" id="passwordInstructions">
+            <button class="collapsible" id="Collapsible1">
                 使用说明
                 <i class="fa fa-chevron-down"></i>
             </button>
-            <div class="content" id="instructionsContent">
+            <div class="content">
                 <ul style="margin: 15px; line-height: 1.8; list-style-position: inside;">
                     <li>鼠标，点击确认，避免回车</li>
                     <li>将获取的密码，输入 对应密码框</li>
                 </ul> 
             </div>
-            <button class="collapsible" id="passwordExplanation">
+            <button class="collapsible" id="Collapsible2">
                 密码解释
                 <i class="fa fa-chevron-down"></i>
             </button>
-            <div class="content" id="passwordContent">
+            <div class="content">
                 <table class="password-table">
                     <tr>
                         <th>密码类型</th>
@@ -167,12 +167,35 @@
         </section>
         <!-- 工具区域 -->
         <section class="section">
-            <h2>工具</h2>
-            <button class="collapsible" id="toolCollapsible">
-                下载地址
+            <h2>刷机资源</h2>
+            
+            <!-- 新增：Collapsible3 - 刷机工具 -->
+            <button class="collapsible" id="Collapsible3">
+                刷机工具
                 <i class="fa fa-chevron-down"></i>
             </button>
-            <div class="content" id="toolContent">
+            <div class="content">
+                <div class="tool-container">
+                    <div class="input-group">
+                        <!-- 可放置简短说明或留空 -->
+                        <input type="text" id="toolNote" value="免注册，直下载" placeholder="刷机工具" readonly>
+                    </div>
+                    <div class="button-group">
+                        <a href="https://workdrive.zohopublic.com.cn/external/a7a9bd83348293c03493b9a2cd025b570b21c62d18c1130544b878d72000dfd1/download?directDownload=true" class="btn btn-green" id="toolDownload" aria-label="直接下载刷机工具">
+                            <i class="fa fa-download"></i> 立即下载
+                        </a>
+                        <a href="javascript:;" class="btn btn-secondary" id="toolShowInfo" aria-label="显示刷机工具说明">
+                            <i class="fa fa-info-circle"></i> 说明
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="collapsible" id="Collapsible4">
+                刷机包
+                <i class="fa fa-chevron-down"></i>
+            </button>
+            <div class="content">
                 <div class="tool-container">
                     <div class="input-group">
                         <input type="text" id="cloudLink"
@@ -189,12 +212,7 @@
                         <a href="javascript:;" class="btn btn-secondary" id="copyLink" aria-label="复制云盘链接">
                             <i class="fa fa-copy"></i> 复制
                         </a>
-                        <a href="javascript:;" class="btn btn-secondary" id="showInfo" aria-label="显示说明">
-                            <i class="fa fa-info-circle"></i> 说明
-                        </a>
-                        <a href="javascript:;" class="btn btn-secondary" id="downloadBtn" aria-label="下载工具">
-                            <i class="fa fa-download"></i> 下载
-                        </a>
+                        <!-- 已将“说明”和“下载”按钮移至 刷机工具 (Collapsible3) -->
                     </div>
                 </div>
                 <div class="hint">注：如您已在官网下载，可忽视</div>
@@ -204,7 +222,6 @@
         <section class="section">
             <h2>帮助</h2>
             <div class="help-text">
-                遇到任何问题，可联系反馈<br>
                 <strong>官网：</strong><a href="https://360os.top" class="link" target="_blank"
                     rel="noopener noreferrer">360os.top</a>
             </div>
@@ -215,7 +232,7 @@
                 <strong>工微（优先捐赠者）：</strong>wander-wechat
             </div>
             <div class="help-text">
-                远程协助：优质高效、成功率100%；质保一年
+                远程协助：成功率100%；质保一年
             </div>
 
             <a href="https://www.360os.top/src/donation/" target="_blank" class="btn btn-secondary"
@@ -236,7 +253,7 @@
     <!-- 页脚 -->
     <footer>
         <div class="container">
-            <p>本工具仅供学习，请下载后24h删除</p>
+            <p>仅供学习，请下载后24h删除</p>
             <p>现在时间: <span id="currentTime">--:--</span></p>
         </div>
     </footer>
@@ -315,23 +332,20 @@
 
     <script src="js/main.js"></script>
     <script>
-        // 换码按钮切换二维码图片
+        // 换码按钮切换二维码图片（修复语法并避免页面内报错）
         (function () {
             var btn = document.getElementById('changeCodeBtn');
             var img = document.getElementById('qrImage');
+            if (!btn || !img) return;
             var img1 = 'pic/fk.png';
             var img2 = 'pic/wx1.png';
             var showing1 = true;
             btn.addEventListener('click', function () {
-                if (showing1) {
-                    img.src = img2;
-                    showing1 = false;
-                } else {
-                    img.src = img1;
-                    showing1 = true;
-                }
+                img.src = showing1 ? img2 : img1;
+                showing1 = !showing1;
             });
         })();
+        // 说明：页面上其它折叠/链接等事件由 js/main.js 初始化（移除页面内重复绑定以避免冲突）。
     </script>
 
 </body>
