@@ -398,6 +398,7 @@
     }
 
     browserRedirect(); //调用自身，页面一打开就开始跳转
+
     // 动态设置更新时间
     function setUpdateTime() {
       const now = new Date();
@@ -411,6 +412,10 @@
         updateTimeElement.textContent = updateTimeStr;
       }
     }
+
+    // 立即执行函数
+    setUpdateTime();
+
   </script>
   <!-- 权限提示弹窗 -->
   <div class="permission-alert"></div>
