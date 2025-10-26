@@ -10,7 +10,7 @@
   <meta name="keywords"
     content="360手机 360手机解锁 360手机刷机救砖 360手机刷机包分享 360手机纯净无广告系统 360手机位置穿越 酷派奇酷刷机 CPB解包 QGDP破解版 360手机TwrpRootMagisk QikuDownloadAssistant 360N5 360N5S 360N6 360N6Lite 360N6PRO 360N7 360N7Lite 360N7Pro 360Q5 360Q5Plus" />
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-  <base href="https://360os.top" />
+  <base href="https://360rom.github.io" />
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="stylesheet" href="src/webmp3/css/player.css">
   <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -202,12 +202,8 @@
         <a href="javascript:void(0);" id="aboutLink">关于</a> |
         <script async type="text/javascript" src="//js.users.51.la/21405253.js"></script>
       </div>
-      <span class="site-info">
-        备站：
-        <a href="https://360rom.github.io" target="_blank" style="color:#222 !important;">360rom.github.io</a>
-      </span>
       <div style="margin-top: 5px;">
-        <a href="https://sim.360os.top" target="_blank" class="adult-link"
+        <a href="src/sim/index.html" target="_blank" class="adult-link"
           style="color:#222 !important;font-size:16px;">🔞成人福利 深夜独享</a>
       </div>
       <div id="showsectime" class="runtime" style="font-size:16px;"></div>
@@ -263,11 +259,9 @@
     <div
       style="position: relative;width: 90%;max-width: 700px;background: #FFF;border-radius: 40px;padding: 60px 40px;box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
       <div style="font-size: 16px;margin-top: 10px;line-height: 28px;color: #666;">
-        <p style="text-align: left;"><strong>资源：</strong><a href="https://tool.360os.top"
-            target="_blank">tool.360os.top</a></p>
         <p style="text-align: left;"><strong>问卷：</strong><a href="https://wj.qq.com/s2/24520404/73b6/"
             target="_blank">调查</a></p>
-        <p style="text-align: left;"><strong style="color: red;">关于：</strong>更新：<span
+         <p style="text-align: left;"><strong style="color: red;">关于：</strong>更新：<span
             id="updateTime"></span>；经"问卷调查"+机器群体趋向“零”，现决定：下月底，所有服务，终止清空；如有需求，请尽快：下载+刷机；2021-维护至今，有缘见！</p>
         <p style="text-align: left;margin-top: 15px;padding-left: 20px;position: relative;">
           <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 刷纯净版：无任何广告
@@ -295,7 +289,7 @@
     <div class="modal-content"
       style="width: 300px; margin: 15% auto; padding: 30px 20px 20px 20px; text-align: center; position: relative; font-size:16px;">
       <span class="close" id="closeEmailModal">×</span>
-      <p style="font-weight: bold; color: #7a7a7a; margin: 10px 0 0 0;">投递：os@360os.top</p>
+      <p style="font-weight: bold; color: #7a7a7a; margin: 10px 0 0 0;">投递：os360@foxmail.com</p>
     </div>
   </div>
   <!-- 用户评价模态框 -->
@@ -325,7 +319,7 @@
   </div>
   <!-- 微信二维码弹窗 -->
   <div id="wechat-qrcode">
-    <img src="pic/wx-gzh.png" alt="微信二维码" style="width:120px;height:120px;">
+    <img src="https://360rom.github.io//pic/wx-gzh.png" alt="微信二维码" style="width:120px;height:120px;">
   </div>
 
   <!-- webmp3 音乐播放器区域 -->
@@ -405,25 +399,22 @@
 
     browserRedirect(); //调用自身，页面一打开就开始跳转
 
-    // 页面加载完成后执行
-    window.addEventListener('DOMContentLoaded', setUpdateTime);
+    // 动态设置更新时间
+    function setUpdateTime() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1;
+      // 只显示年份和月份，不显示日期
+      const updateTimeStr = `${year}年${month}月`;
 
-   // 动态设置更新时间
-function setUpdateTime() {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  // 只显示年份和月份，不显示日期
-  const updateTimeStr = `${year}年${month}月`;
+      const updateTimeElement = document.getElementById('updateTime');
+      if (updateTimeElement) {
+        updateTimeElement.textContent = updateTimeStr;
+      }
+    }
 
-  const updateTimeElement = document.getElementById('updateTime');
-  if (updateTimeElement) {
-    updateTimeElement.textContent = updateTimeStr;
-  }
-}
-
-// 立即执行函数
-setUpdateTime();
+    // 立即执行函数
+    setUpdateTime();
 
   </script>
   <!-- 权限提示弹窗 -->
