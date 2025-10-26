@@ -83,7 +83,7 @@
         <section class="section">
             <h2>密码（多渠道/自取）</h2>
             <div class="urgent-notice">
-              <!--  <strong style="color: red;">关于：</strong>关于： -->
+                <strong style="color: red;">更新时间：<span id="updateTime"></span></strong>
             </div>
             <div class="qr-center">
                 <div class="qr-container">
@@ -171,10 +171,12 @@
                         <input type="text" id="toolNote" value="免注册，直下载" placeholder="刷机工具" readonly>
                     </div>
                     <div class="button-group">
-                        <a href="https://workdrive.zohopublic.com.cn/external/a7a9bd83348293c03493b9a2cd025b570b21c62d18c1130544b878d72000dfd1/download?directDownload=true" class="btn btn-green" id="toolDownload" aria-label="直接下载刷机工具">
+                        <a href="https://workdrive.zohopublic.com.cn/external/a7a9bd83348293c03493b9a2cd025b570b21c62d18c1130544b878d72000dfd1/download?directDownload=true"
+                            class="btn btn-green" id="toolDownload" aria-label="直接下载刷机工具">
                             <i class="fa fa-download"></i> 立即下载
                         </a>
-                         <a href="https://www.360os.top/src/webmp4/index.html" target="_blank" class="btn btn-secondary"  aria-label="视频">
+                        <a href="https://www.360os.top/src/webmp4/index.html" target="_blank" class="btn btn-secondary"
+                            aria-label="视频">
                             <i class="fa fa-window-restore"></i> 刷机视频
                         </a>
                         <a href="javascript:;" class="btn btn-secondary" id="toolShowInfo" aria-label="显示刷机工具说明">
@@ -229,7 +231,7 @@
                 远程支持：刷机、解锁、Root、Twrp、IMEI、位置穿越等
             </div>
 
-          <!--    <a href="https://www.360os.top/src/donation/" target="_blank" class="btn btn-secondary"
+            <!--    <a href="https://www.360os.top/src/donation/" target="_blank" class="btn btn-secondary"
                 id="humanVerification" aria-label="人机验证">
                 <i class="fa fa-shield"></i> 人机验证
             </a>-->
@@ -317,7 +319,7 @@
             <span class="close" id="closeServiceModal">&times;</span>
             <div class="modal-body" style="text-align: center;">
                 <img src="pic/wx-code.png" alt="二维码" style="max-width: 180px; margin: 10px auto;">
-                <p style="margin-top: 15px; font-weight: bold; color: red;">仅捐赠者 其它不管</p>
+                <p style="margin-top: 15px; font-weight: bold; color: red;">优先-捐赠者</p>
                 <p style="font-size: 13px; font-weight: bold; color: rgb(80, 80, 80);">注：简述事宜</p>
             </div>
         </div>
@@ -338,7 +340,30 @@
                 showing1 = !showing1;
             });
         })();
+
+        // 页面加载完成后执行
+        window.addEventListener('DOMContentLoaded', setUpdateTime);
+
+        // 动态设置更新时间
+
+        function setUpdateTime() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth() + 1;
+            const day = now.getDate();
+            // 显示年份、月份和日期
+            const updateTimeStr = `${year}年${month}月${day}日`;
+
+            const updateTimeElement = document.getElementById('updateTime');
+            if (updateTimeElement) {
+                updateTimeElement.textContent = updateTimeStr;
+            }
+        }
+
+        // 立即执行函数
+        setUpdateTime();
     </script>
+
 
 </body>
 
