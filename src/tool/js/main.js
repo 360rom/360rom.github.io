@@ -4,19 +4,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalAnnouncements = 3;
     const announcementHeight = 60;
     const announcements = document.querySelectorAll('.announcement-item');
-    announcements.forEach((item, i) => {
-        item.style.transform = `translateY(${(i - currentAnnouncement) * announcementHeight}px)`;
-    });
-    function showAnnouncement(index) {
+    // 新增：读取html中是否允许滚动
+    const scrollSwitch = document.getElementById('announcementScroll');
+    const enableScroll = scrollSwitch ? (scrollSwitch.value === 'true') : true;
+    // 公告自适应：如果不滚动，全部显示，无需transform
+    if (enableScroll) {
         announcements.forEach((item, i) => {
-            item.style.transform = `translateY(${(i - index) * announcementHeight}px)`;
+            item.style.transform = `translateY(${(i - currentAnnouncement) * announcementHeight}px)`;
+        });
+        function showAnnouncement(index) {
+            announcements.forEach((item, i) => {
+                item.style.transform = `translateY(${(i - index) * announcementHeight}px)`;
+            });
+        }
+        function nextAnnouncement() {
+            currentAnnouncement = (currentAnnouncement + 1) % totalAnnouncements;
+            showAnnouncement(currentAnnouncement);
+        }
+        setInterval(nextAnnouncement, 3000);
+    } else {
+        // 不滚动时全部显示，无需transform
+        announcements.forEach(item => {
+            item.style.transform = '';
         });
     }
-    function nextAnnouncement() {
-        currentAnnouncement = (currentAnnouncement + 1) % totalAnnouncements;
-        showAnnouncement(currentAnnouncement);
-    }
-    setInterval(nextAnnouncement, 3000);
 
     // 折叠面板功能（改为通用绑定，支持 Collapsible、Collapsible1..9、以及 .collapsible）
     function setupAllCollapsibles() {
@@ -132,26 +143,15 @@ document.addEventListener('DOMContentLoaded', function() {
     setupAllCollapsibles();
 
     // 云盘链接功能
-    document.getElementById('openLink').addEventListener('click', function() {
-        const url = document.getElementById('cloudLink').value;
-        window.open(url, '_blank');
-    });
-    document.getElementById('copyLink').addEventListener('click', function() {
-        const linkInput = document.getElementById('cloudLink');
-        linkInput.select();
-        document.execCommand('copy');
-        const originalText = this.innerHTML;
-        this.innerHTML = '<i class="fa fa-check"></i> 已复制';
-        setTimeout(() => {
-            this.innerHTML = originalText;
-        }, 2000);
-    });
+    // 已移除页面顶部对 openLink / copyLink 的重复绑定，使用后面的 addAccessibleClick 统一绑定（避免重复事件）
 
     // 模态框功能
     function setupModal(buttonId, modalId, closeId) {
         const modal = document.getElementById(modalId);
         const btn = document.getElementById(buttonId);
         const closeBtn = document.getElementById(closeId);
+        // 增加存在性检查，避免找不到元素时报错
+        if (!modal || !btn || !closeBtn) return;
         btn.addEventListener('click', function() {
             modal.style.display = 'block';
         });
@@ -263,11 +263,30 @@ addAccessibleClick('openLink', function() {
 });
 addAccessibleClick('copyLink', function() {
     const linkInput = document.getElementById('cloudLink');
-    linkInput.select();
-    document.execCommand('copy');
-    const originalText = this.innerHTML;
-    this.innerHTML = '<i class="fa fa-check"></i> 已复制';
-    setTimeout(() => {
-        this.innerHTML = originalText;
-    }, 2000);
+    if (!linkInput) return;
+    const textToCopy = linkInput.value || '';
+    // 优先使用现代 Clipboard API
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(textToCopy).then(() => {
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fa fa-check"></i> 已复制';
+            setTimeout(() => {
+                this.innerHTML = originalText;
+            }, 2000);
+        }).catch(() => {
+            // fallback
+            linkInput.select();
+            try { document.execCommand('copy'); } catch (e) {}
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fa fa-check"></i> 已复制';
+            setTimeout(() => { this.innerHTML = originalText; }, 2000);
+        });
+    } else {
+        // 兼容老浏览器
+        linkInput.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        const originalText = this.innerHTML;
+        this.innerHTML = '<i class="fa fa-check"></i> 已复制';
+        setTimeout(() => { this.innerHTML = originalText; }, 2000);
+    }
 });
