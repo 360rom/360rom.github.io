@@ -141,10 +141,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     // 立即初始化页面上所有折叠项
     setupAllCollapsibles();
-
-    // 云盘链接功能
-    // 已移除页面顶部对 openLink / copyLink 的重复绑定，使用后面的 addAccessibleClick 统一绑定（避免重复事件）
-
     // 模态框功能
     function setupModal(buttonId, modalId, closeId) {
         const modal = document.getElementById(modalId);
@@ -173,67 +169,135 @@ document.addEventListener('DOMContentLoaded', function() {
     // 将“刷机包”中的说明按钮已迁移到 Collapsible3（id: toolShowInfo）
     setupModal('toolShowInfo', 'infoModal', 'closeInfoModal');
     setupModal('humanService', 'serviceModal', 'closeServiceModal');
-    // 绑定“密码获取-渠道二”按钮逻辑为人工客服弹窗
-    document.getElementById('getKey').onclick = function() {
-        document.getElementById('serviceModal').style.display = 'block';
-    };
+    // 绑定“密码获取-渠道二”按钮逻辑为人工客服弹窗（安全绑定，避免因元素不存在报错）
+    const getKeyBtnSafe = document.getElementById('getKey');
+    if (getKeyBtnSafe) {
+        getKeyBtnSafe.addEventListener('click', function () {
+            const svcModal = document.getElementById('serviceModal');
+            if (svcModal) svcModal.style.display = 'block';
+        });
+    }
 
-    // 右下角浮动按钮功能
-    const qrButton = document.getElementById('qrButton');
-    const topButton = document.getElementById('topButton');
-    const qrBtn = document.getElementById('qrCodeBtn');
-    const topBtn = document.getElementById('backToTop');
-    const wechatQrContainer = document.getElementById('wechatQrContainer');
-    qrBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (qrButton.classList.contains('active')) {
-            qrButton.classList.remove('active');
-            wechatQrContainer.style.opacity = '0';
-            setTimeout(() => {
-                wechatQrContainer.style.display = 'none';
-            }, 300);
+    // 右下角浮动按钮功能（稳健实现，带键盘支持与鼠标悬停）
+    (function () {
+        const qrButton = document.getElementById('qrButton');
+        const topButton = document.getElementById('topButton');
+        const qrBtn = document.getElementById('qrCodeBtn');
+        const topBtn = document.getElementById('backToTop');
+        const wechatQrContainer = document.getElementById('wechatQrContainer');
+
+        // 简单存在性校验，缺少任何关键元素则退化为无操作（不抛错）
+        if (!qrButton || !qrBtn || !wechatQrContainer) {
+            // 如果没有页面上的二维码区域则直接返回，不影响其它功能
         } else {
-            qrButton.classList.add('active');
-            wechatQrContainer.style.display = 'block';
-            wechatQrContainer.style.opacity = '1';
+            // 行为说明：
+            // - 鼠标移入（mouseenter）显示 QR（临时显示）
+            // - 鼠标移出（mouseleave）隐藏（仅当未通过点击固定显示）
+            // - 点击按钮切换“固定显示”状态（点击显示并固定，再次点击取消固定并隐藏）
+            let shownByClick = false;
+
+            function showQr(persistent) {
+                qrButton.classList.add('active');
+                wechatQrContainer.style.display = 'block';
+                requestAnimationFrame(() => {
+                    wechatQrContainer.style.opacity = '1';
+                    wechatQrContainer.style.transform = 'scale(1)';
+                });
+                qrBtn.setAttribute('aria-expanded', 'true');
+                if (persistent) shownByClick = true;
+            }
+            function hideQr(force) {
+                // force 表示强制隐藏（例如全局点击或取消固定），否则如果已被点击固定则不隐藏
+                if (!force && shownByClick) return;
+                qrButton.classList.remove('active');
+                wechatQrContainer.style.opacity = '0';
+                wechatQrContainer.style.transform = 'scale(0.95)';
+                qrBtn.setAttribute('aria-expanded', 'false');
+                setTimeout(() => {
+                    if (wechatQrContainer) wechatQrContainer.style.display = 'none';
+                }, 300);
+                if (force) shownByClick = false;
+                // 如果非强制隐藏，也在需要时清除固定标识（如点击关闭会传 true）
+            }
+
+            // 鼠标移入显示（临时）
+            qrButton.addEventListener('mouseenter', function () {
+                try {
+                    showQr(false);
+                } catch (err) {
+                    console.warn('qrButton mouseenter handler error', err);
+                }
+            });
+
+            // 鼠标移出：若未通过点击固定显示则隐藏；若已固定则保持显示
+            qrButton.addEventListener('mouseleave', function () {
+                try {
+                    hideQr(false);
+                } catch (err) {
+                    console.warn('qrButton mouseleave handler error', err);
+                }
+            });
+
+            // 点击切换：若已固定则取消固定并隐藏；否则固定显示
+            qrBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                const isVisible = window.getComputedStyle(wechatQrContainer).display === 'block' && qrButton.classList.contains('active');
+                if (shownByClick) {
+                    // 已被点击固定 -> 取消固定并隐藏
+                    hideQr(true);
+                } else {
+                    // 未被固定 -> 固定显示
+                    showQr(true);
+                }
+            });
+            qrBtn.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    qrBtn.click();
+                }
+            });
         }
-    });
-    qrButton.addEventListener('mouseenter', function() {
-        if (!qrButton.classList.contains('active')) {
-            wechatQrContainer.style.display = 'block';
-            wechatQrContainer.style.opacity = '1';
+
+        // 返回顶部按钮（独立绑定，带存在性检查与键盘支持）
+        if (topBtn && topButton) {
+            topBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (!topButton.classList.contains('active')) {
+                    topButton.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    setTimeout(() => {
+                        topButton.classList.remove('active');
+                    }, 500);
+                }
+            });
+            topBtn.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    topBtn.click();
+                }
+            });
         }
-    });
-    qrButton.addEventListener('mouseleave', function() {
-        if (!qrButton.classList.contains('active')) {
-            wechatQrContainer.style.opacity = '0';
-            setTimeout(() => {
-                wechatQrContainer.style.display = 'none';
-            }, 300);
-        }
-    });
-    topBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        if (!topButton.classList.contains('active')) {
-            topButton.classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            setTimeout(() => {
-                topButton.classList.remove('active');
-            }, 500);
-        }
-    });
-    document.addEventListener('click', function(event) {
-        if (!qrButton.contains(event.target) && !wechatQrContainer.contains(event.target)) {
-            qrButton.classList.remove('active');
-            wechatQrContainer.style.opacity = '0';
-            setTimeout(() => {
-                wechatQrContainer.style.display = 'none';
-            }, 300);
-        }
-        if (!topButton.contains(event.target)) {
-            topButton.classList.remove('active');
-        }
-    });
+
+        // 全局点击隐藏（防止 null 引用）
+        document.addEventListener('click', function (event) {
+            try {
+                if (qrButton && wechatQrContainer && !qrButton.contains(event.target) && !wechatQrContainer.contains(event.target)) {
+                    qrButton.classList.remove('active');
+                    wechatQrContainer.style.opacity = '0';
+                    setTimeout(() => {
+                        if (wechatQrContainer) wechatQrContainer.style.display = 'none';
+                    }, 300);
+                }
+                if (topButton && !topButton.contains(event.target)) {
+                    topButton.classList.remove('active');
+                }
+            } catch (e) {
+                // 防御：任何运行时异常都不应中断页面其它脚本
+                console.warn('Floating buttons hide handler error', e);
+            }
+        });
+    })();
+
     function updateTime() {
         const now = new Date();
         let hours = now.getHours();
