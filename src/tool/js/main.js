@@ -95,10 +95,34 @@ document.addEventListener('DOMContentLoaded', function() {
             // 可访问性及键盘支持
             coll.setAttribute('tabindex', coll.getAttribute('tabindex') || '0');
             coll.setAttribute('role', 'button');
-            coll.setAttribute('aria-expanded', 'false');
 
-            // 初始化 maxHeight 为 0（折叠状态）
-            content.style.maxHeight = content.classList.contains('active') ? content.scrollHeight + 'px' : (content.style.maxHeight || '');
+            // 新增：优先从 data-expanded 属性读取初始状态（支持 "true"/"false"，不区分大小写）
+            const dataExpanded = coll.getAttribute('data-expanded');
+            let initialExpanded;
+            if (dataExpanded === null || dataExpanded === undefined || dataExpanded === '') {
+                // 回退到原始行为：根据 class active 判断
+                initialExpanded = coll.classList.contains('active');
+            } else {
+                initialExpanded = String(dataExpanded).toLowerCase() === 'true';
+            }
+
+            coll.setAttribute('aria-expanded', initialExpanded ? 'true' : 'false');
+
+            // 初始化 maxHeight 与图标
+            if (initialExpanded) {
+                coll.classList.add('active');
+                content.style.maxHeight = content.scrollHeight + 'px';
+            } else {
+                coll.classList.remove('active');
+                content.style.maxHeight = null;
+            }
+
+            // 初始化图标（fa-chevron-up 表示展开，fa-chevron-down 表示收起）
+            const initIcon = coll.querySelector('i');
+            if (initIcon) {
+                initIcon.classList.remove('fa-chevron-up', 'fa-chevron-down');
+                initIcon.classList.add(initialExpanded ? 'fa-chevron-up' : 'fa-chevron-down');
+            }
 
             function toggleColl(e) {
                 if (e && e.type === 'keydown' && e.key === ' ') e.preventDefault();
