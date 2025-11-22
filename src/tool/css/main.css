@@ -479,6 +479,33 @@ footer {
         width: 100%;
         display: flex;
     }
+
+    /* --- 新增：仅针对刷机工具（tool-stack）在移动端强制换行、按钮独占一行 --- */
+    .tool-container.tool-stack {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    .tool-container.tool-stack .input-group {
+        width: 100% !important;
+        min-width: 0 !important;
+        margin-bottom: 10px !important;
+        order: 0;
+    }
+
+    .tool-container.tool-stack .button-group {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        order: 1;
+        margin-top: 6px !important;
+    }
+
+    .tool-container.tool-stack .button-group .btn {
+        flex: 0 0 auto;
+        /* 保持按钮本身的大小不被拉伸 */
+    }
 }
 
 /* button */

@@ -50,6 +50,21 @@
         #changeCodeBtn:focus {
             opacity: 0.92;
         }
+
+        @media (max-width: 768px) {
+            .tool-container.tool-stack {
+                flex-direction: column;
+            }
+
+            .tool-container.tool-stack .input-group,
+            .tool-container.tool-stack .button-group {
+                width: 100%;
+            }
+
+            .tool-container.tool-stack .button-group {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 
@@ -73,8 +88,9 @@
             </div>
             <div class="announcement-list">
                 <div class="announcement-item" id="announcement1">
-                    1.全网唯一可用</br>
-                    2.防止滥用，捐赠者，优先使用</br>
+                    1.全网唯一可；2021-至今</br>
+                    2.因恶意滥用，优先：捐赠者，使用</br>
+                    3.因该机，人群渐少，本站或停运；请尽快获取+下载
                 </div>
             </div>
         </section>
@@ -88,14 +104,14 @@
                 <i class="fa fa-chevron-down"></i>
             </button>
             <div class="content">
-                <div class="tool-container">
+                <div class="tool-container tool-stack">
                     <div class="input-group">
-                        <input type="text" id="toolNote" value="免注册，直下载（因滥用，加验证）" placeholder="刷机工具" readonly>
+                        <input type="text" id="toolNote" value="免注册，直下载" placeholder="刷机工具" readonly>
                     </div>
                     <div class="button-group">
                         <a href="https://workdrive.zohopublic.com.cn/external/a7a9bd83348293c03493b9a2cd025b570b21c62d18c1130544b878d72000dfd1/download?directDownload=true"
                             class="btn btn-green" id="toolDownload" aria-label="直接下载刷机工具">
-                            <i class="fa fa-download"></i> 立即下载
+                            <i class="fa fa-download"></i> 下载
                         </a>
                         <a href="https://www.360os.top/src/webmp4/index.html" target="_blank" class="btn btn-secondary"
                             aria-label="视频">
@@ -133,9 +149,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="hint">注：如您已在官网下载，可忽视</div>
             </div>
-             <div class="hint">刷机后 无任何广告 纯净系统</div>
+             <div class="hint">注：已在官网下载，可忽视</br>刷纯净系统 无任何广告 </div>
         </section>
 
         <!-- 密码区域 -->
@@ -220,7 +235,7 @@
                 <strong>工微（优先捐赠者）：</strong>wander-wechat
             </div>
             <div class="help-text">
-                远程支持：刷机、解锁、Root、Twrp、IMEI、位置穿越等
+                支持：刷机、解锁、Root、Twrp、IMEI、位置穿越等
             </div>
 
               <a href="https://www.360os.top/src/donation/" target="_blank" class="btn btn-secondary"
