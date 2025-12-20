@@ -2,372 +2,445 @@
 <html lang="zh-CN">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>360刷机 - 360手机刷机</title>
-    <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
-    <meta name="keywords" content="360刷机工具, 手机刷机, 纯净系统, 解锁, Root, Twrp, IMEI修复">
-    <meta name="description" content="360刷机工具，支持刷机、纯净系统、解锁、Root、Twrp、IMEI串码修复等功能，专业可靠，21年维护至今。">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/main.css">
-    <style>
-        .qr-center {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 18px 0;
-        }
-
-        .qr-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .qr-image {
-            display: block;
-            width: 220px;
-            height: 220px;
-        }
-
-        #changeCodeBtn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 2;
-            padding: 4px 12px;
-            font-size: 14px;
-            background: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            opacity: 0.45;
-            transition: opacity 0.2s;
-        }
-
-        #changeCodeBtn:hover,
-        #changeCodeBtn:active,
-        #changeCodeBtn:focus {
-            opacity: 0.92;
-        }
-
-        @media (max-width: 768px) {
-            .tool-container.tool-stack {
-                flex-direction: column;
-            }
-
-            .tool-container.tool-stack .input-group,
-            .tool-container.tool-stack .button-group {
-                width: 100%;
-            }
-
-            .tool-container.tool-stack .button-group {
-                justify-content: center;
-            }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="baidu-site-verification" content="codeva-dCMsLe1AR4" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>360手机-360手机刷机RootTwrp</title>
+  <meta name="description" content="360手机官方资源站:全网唯一可用，支持刷机解锁救砖Twrp/Root/Magisk教程与位置穿越功能修复，免费下载360手机刷机包" />
+  <meta name="keywords"
+    content="360手机 360手机解锁 360手机刷机救砖 360手机刷机包分享 360手机纯净无广告系统 360手机位置穿越 酷派奇酷刷机 CPB解包 QGDP破解版 360手机TwrpRootMagisk QikuDownloadAssistant 360N5 360N5S 360N6 360N6Lite 360N6PRO 360N7 360N7Lite 360N7Pro 360Q5 360Q5Plus" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <base href="https://360rom.github.io" />
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" href="src/webmp3/css/player.css">
+  <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/page_main.css">
 </head>
 
 <body>
-    <header>
-        <div class="container header-content">
-            <div class="logo">
-                <i class="fa fa-android"></i>
-                <span>360PhoneWinTool</span>
+  <!-- 顶部横条 -->
+  <header class="top-bar">
+    <div class="container">
+      <p>360手机刷机、纯净系统、解锁、Root、Twrp</p>
+    </div>
+  </header>
+
+  <!-- 主要内容区 -->
+  <main class="main-container">
+    <div class="content-wrapper" style="font-size:16px;">
+      <div class="section-title">
+        <span style="font-size:24px;">系统下载（全部机型）</span>
+      </div>
+
+      <!-- part1 -->
+      <ul class="device-list">
+        <li>
+          <a target="_blank" href="360os/360n7lite/360n7lite.html">
+            <img src="pic/n7lite.png" alt="360手机N7 Lite机型图片">
+            <p style="font-size:16px;">360手机N7 Lite</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360n7pro/360n7pro.html">
+            <img src="pic/n7pro.png" alt="360手机N7 Pro机型图片">
+            <p style="font-size:16px;">360手机N7 Pro</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360n7/360n7.html">
+            <img src="pic/n7.png" alt="360手机N7机型图片">
+            <p style="font-size:16px;">360手机N7</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360n6lite/360n6lite.html">
+            <img src="pic/n6lite.png" alt="360手机N6 Lite机型图片">
+            <p style="font-size:16px;">360手机N6 Lite</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360n6pro/360n6pro.html">
+            <img src="pic/n6pro.png" alt="360手机N6 Pro机型图片">
+            <p style="font-size:16px;">360手机N6 Pro</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360n6/360n6.html">
+            <img src="pic/n6.png" alt="360手机N6机型图片">
+            <p style="font-size:16px;">360手机N6</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360vizza/360vizza.html">
+            <img src="pic/vizza.png" alt="360手机vizza机型图片">
+            <p style="font-size:16px;">360手机 vizza</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360n5s/360n5s.html">
+            <img src="pic/n5s.png" alt="360手机N5S机型图片">
+            <p style="font-size:16px;">360手机 N5S</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360n5/360n5.html">
+            <img src="pic/n5.png" alt="360手机N5机型图片">
+            <p style="font-size:16px;">360手机 N5</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360n4a/360n4a.html">
+            <img src="pic/n4a.png" alt="360手机N4A机型图片">
+            <p style="font-size:16px;">360手机N4A</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360q5/360q5.html">
+            <img src="pic/q5.png" alt="360手机Q5机型图片">
+            <p style="font-size:16px;">360手机 Q5</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360q5plus/360q5plus.html">
+            <img src="pic/q5plus.png" alt="360手机Q5 Plus机型图片">
+            <p style="font-size:16px;">360手机 Q5 Plus</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360n4s/360n4s.html">
+            <img src="pic/n4s.png" alt="360手机N4S骁龙版机型图片">
+            <p style="font-size:16px;">360手机 N4S骁龙版</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360n4smtk/360n4smtk.html">
+            <img src="pic/n4s.png" alt="360手机N4S机型图片">
+            <p style="font-size:16px;">360手机N4S</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360n4/360n4.html">
+            <img src="pic/n4.png" alt="360手机N4全网通机型图片">
+            <p style="font-size:16px;">360手机N4全网通</p>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="360os/360f4/360f4.html">
+            <img src="pic/f4.png" alt="360手机f4全网通机型图片">
+            <p style="font-size:16px;">360手机f4全网通</p>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="pic/n4.png" alt="360手机N4移动版机型图片">
+            <p style="font-size:16px;">360手机N4移动版</p>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="pic/f4.png" alt="360手机f4移动版机型图片">
+            <p style="font-size:16px;">360手机f4移动版</p>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="pic/qikupro.png" alt="奇酷手机极客版机型图片">
+            <p style="font-size:16px;">奇酷手机极客版</p>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="pic/dazen.png" alt="大神Note3全网通机型图片">
+            <p style="font-size:16px;">大神Note3全网通</p>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="pic/dazen.png" alt="大神Note3移动版机型图片">
+            <p style="font-size:16px;">大神Note3移动版</p>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="pic/qikupro.png" alt="奇酷手机旗舰版（全网通）机型图片">
+            <p style="font-size:16px;">奇酷手机旗舰版（全网通）</p>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="pic/qikupro.png" alt="奇酷手机旗舰版（移动联通双4G）机型图片">
+            <p style="font-size:16px;">奇酷手机旗舰版（移动联通双4G）</p>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="pic/qiku.png" alt="奇酷手机青春版（全网通）机型图片">
+            <p style="font-size:16px;">奇酷手机青春版（全网通）</p>
+          </a>
+        </li>
+        <li>
+          <a href="javascript:;">
+            <img src="pic/qiku.png" alt="奇酷手机青春版（移动联通双4G）机型图片">
+            <p style="font-size:16px;">奇酷手机青春版（移动联通双4G）</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- part2 -->
+  <footer class="footer" style="font-size:16px;">
+    <div class="container">
+      <div class="footer-links" style="font-size:16px;">
+        <a href="src/notice/index.html" target="_blank">公告</a> |
+        <a href="src/donation/index.html" target="_blank">客服</a> |
+        <a href="javascript:void(0);" id="emailLink">邮件</a> |
+        <a href="src/webmp4/index.html" target="_blank">视频教程</a> |
+        <a href="src/tool/index.html" target="_blank">资源下载</a> |
+        <a href="javascript:void(0);" id="evaluateLink">用户评价</a> |
+        <a href="javascript:void(0);" id="aboutLink">关于</a> |
+        <script async type="text/javascript" src="//js.users.51.la/21405253.js"></script>
+      </div>
+      <div style="margin-top: 5px;">
+        <a href="src/sim/index.html" target="_blank" class="adult-link"
+          style="color:#222 !important;font-size:16px;">🔞成人福利 深夜独享</a>
+      </div>
+      <div id="showsectime" class="runtime" style="font-size:16px;"></div>
+    </div>
+  </footer>
+
+  <!-- 关于模态框 -->
+  <div id="aboutModal" class="modal">
+    <div class="modal-content" style="font-size:16px;">
+      <span class="close" id="closeAboutModal">×</span>
+      <div style="text-align:left;">
+        <p style="line-height:2em;">星光点点，不问赶路人…</p>
+        <p style="text-indent:2em; line-height:2em;">北冬少雅韵，心境随物迁</p>
+        <p style="text-indent:2em; line-height:2em;">
+          忆起此机的故事，伫立人生路途，自购第一机N6（4+32G），1300元左右；期间跌宕起伏，似不断打补丁
+        </p>
+        <p style="text-indent:2em; line-height:2em;">
+          于辗转流年中，结业多年；亦在情怀、摩尔定律下，22年，隐匿在不知名角落；亦如18年青春岁月，一去不返。
+        </p>
+        <p style="text-indent:2em; line-height:2em;">
+          后知，360手机"战略转型"的变动、使该品牌齿轮，停滞且定格在18-19年，随后官方，关闭多数服务...
+        </p>
+        <p style="text-indent:2em; line-height:2em;">
+          后经半年之久的研究与测验，取得不限机型，100%成功率的幸运；其后，基于情怀，渐有感而发，上线本站、开放整合资源；为360机友，公益性提供/维护部分内容。
+        </p>
+        <p style="text-indent:2em; line-height:2em;">
+          性价比，许是一种选择；但事、物在某些方面，究要在天平两端倾平；小众也是一种市场与选择。
+        </p>
+        <p style="text-indent:2em; line-height:2em;">
+          现今，随手机、硬件、ROM等的迭代；刷机与折腾，也从互联网形态的转变和用户群体的需求，逐零碎凋落之态...但少年，还记得折腾之路，青春中成功的瞬间吗？
+        </p>
+        <p style="text-indent:2em; line-height:2em;">
+          新的旅程，往往从告别开始，似如时代与我们的无奈，恰或正确的决择。
+        </p>
+        <p style="text-indent:2em; line-height:2em;">
+          再次驻足回望...或许某天，这方小站，也会悄然落幕，从此相忘于江湖。
+        </p>
+        <p style="text-indent:2em; line-height:2em;">
+          最后，愿360手机回归；See You Again…
+        </p>
+      </div>
+      <p style="text-align:right; line-height:3;">
+        <span style="color:#A4A4A4;">by.2022年春夏之夜</span>
+      </p>
+      <p style="text-indent:2em; line-height:1.5; text-align: center;">
+        提示:点框外或X 均可退出
+      </p>
+    </div>
+  </div>
+  <!--part 4弹窗 -->
+  <div class="web_notice"
+    style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.5);z-index: 99999;display: flex;align-items: center;justify-content: center;">
+    <div
+      style="position: relative;width: 90%;max-width: 700px;background: #FFF;border-radius: 40px;padding: 60px 40px;box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
+      <div style="font-size: 16px;margin-top: 10px;line-height: 28px;color: #666;">
+        <p style="text-align: left;"><strong>提示：</strong>迅雷浏览器，转存后，迅雷下载，飙快</p> 
+        <p style="text-align: left;margin-top: 15px;padding-left: 20px;position: relative;">
+        <p style="text-align: left;margin-top: 15px;padding-left: 20px;position: relative;">
+          <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 刷纯净版：无任何广告
+        </p>
+        <p style="text-align: left;margin-top: 10px;padding-left: 20px;position: relative;">
+          <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 支持下载：刷机包+刷机工具+教程
+        </p>
+        <p style="text-align: left;margin-top: 10px;padding-left: 20px;position: relative;">
+          <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 技术支持："位置穿越" 功能修复使用
+        </p>
+        <p
+          style="margin-top: 20px;padding: 12px;background: #fff8f8;border-left: 4px solid #ff6b6b;border-radius: 4px;color: #cd5c5c;text-align: left;">
+          <strong>注：</strong>访问卡：刷新/换网/浏览器
+        </p>
+      </div>
+      <a style="display: block;background: linear-gradient(135deg, #7b88ff, #98a3ff);color: #FFF;text-align: center;font-weight: bold;font-size: 20px;line-height: 64px;margin: 0 auto;margin-top: 40px;border-radius: 32px;width: 80%;transition: all 0.3s;box-shadow: 0 4px 12px rgba(123,136,255,0.4);"
+        onclick="document.querySelector('.web_notice').remove()">
+        知道了
+      </a>
+    </div>
+  </div>
+  </div>
+  <!-- 邮件模态框 -->
+  <div id="emailModal" class="modal">
+    <div class="modal-content"
+      style="width: 300px; margin: 15% auto; padding: 30px 20px 20px 20px; text-align: center; position: relative; font-size:16px;">
+      <span class="close" id="closeEmailModal">×</span>
+      <p style="font-weight: bold; color: #7a7a7a; margin: 10px 0 0 0;">投递：os360@foxmail.com</p>
+    </div>
+  </div>
+  <!-- 用户评价模态框 -->
+  <div id="evaluateModal" class="modal">
+    <div class="modal-content"
+      style="width: 90%; max-width: 600px; height: 80vh; padding:0; position:relative; font-size:16px;">
+      <span class="close" id="closeEvaluateModal">×</span>
+      <iframe src="src/evaluate/index.html" frameborder="0" style="width:100%;height:100%;border-radius:12px;"></iframe>
+    </div>
+  </div>
+
+  <!-- 右下角固定按钮区域 -->
+  <div class="fixed-bottom-buttons"
+    style="position: fixed; right: 18px; bottom: 18px; z-index: 9999; display: flex; flex-direction: column; gap: 16px;">
+    <!-- 微信图标 -->
+    <div id="wechat-btn">
+      <i class="fa fa-weixin" style="font-size:28px;color:#52c41a;"></i>
+    </div>
+    <!-- 置顶按钮 -->
+    <div id="scroll-top-btn">
+      <i class="fa fa-arrow-up" style="font-size:24px;color:#1890ff;"></i>
+    </div>
+    <!-- 置底按钮 -->
+    <div id="scroll-bottom-btn">
+      <i class="fa fa-arrow-down" style="font-size:24px;color:#faad14;"></i>
+    </div>
+  </div>
+  <!-- 微信二维码弹窗 -->
+  <div id="wechat-qrcode">
+    <img src="pic/wx-gzh.png" alt="微信二维码" style="width:120px;height:120px;">
+  </div>
+
+  <!-- webmp3 音乐播放器区域 -->
+  <div id="QPlayer">
+    <div id="pContent">
+      <div id="player">
+        <span class="cover"></span>
+        <div class="ctrl">
+          <div class="musicTag marquee">
+            <strong>Title</strong>
+            <span> - </span>
+            <span class="artist">Artist</span>
+          </div>
+          <div class="progress">
+            <div class="timer left">0:00</div>
+            <div class="contr">
+              <div class="rewind icon"></div>
+              <div class="playback icon"></div>
+              <div class="fastforward icon"></div>
             </div>
+            <div class="right">
+              <div class="liebiao icon"></div>
+            </div>
+          </div>
         </div>
-    </header>
-
-    <main class="container">
-        <!-- 公告区域 -->
-        <section class="announcement">
-            <h2>公告</h2>
-            <input type="hidden" id="announcementScroll" value="">
-             <div class="urgent-notice">
-                <strong style="color: red;">最后更新：<span id="updateTime"></span></strong>
-            </div>
-            <div class="announcement-list">
-                <div class="announcement-item" id="announcement1">
-                    1.全网唯一可用；2021-至今</br>
-                    2.因恶意滥用，优先：捐赠者，使用</br>
-                    3.🪶情怀支持，但考虑到，该机，人群渐少，本站或停运；请尽快获取+下载
-                </div>
-            </div>
-        </section>
-
- <!-- 工具区域 -->
-        <section class="section">
-            <h2>刷机资源</h2>
-            <!-- data-expanded 支持：设置为 "true" 将初始展开，"false" 为初始收起；若不设置，保持原有行为 -->
-            <button class="collapsible" id="Collapsible3" data-expanded="true">
-                刷机工具
-                <i class="fa fa-chevron-down"></i>
-            </button>
-            <div class="content">
-                <div class="tool-container tool-stack">
-                    <div class="input-group">
-                        <input type="text" id="toolNote" value="免注册，直下载" placeholder="刷机工具" readonly>
-                    </div>
-                    <div class="button-group">
-                        <a href="https://workdrive.zohopublic.com.cn/external/a7a9bd83348293c03493b9a2cd025b570b21c62d18c1130544b878d72000dfd1/download?directDownload=true"
-                            class="btn btn-green" id="toolDownload" aria-label="直接下载刷机工具">
-                            <i class="fa fa-download"></i> 下载
-                        </a>
-                        <a href="https://www.360os.top/src/webmp4/index.html" target="_blank" class="btn btn-secondary"
-                            aria-label="视频">
-                            <i class="fa fa-window-restore"></i> 刷机视频
-                        </a>
-                        <a href="javascript:;" class="btn btn-secondary" id="toolShowInfo" aria-label="说明">
-                            <i class="fa fa-info-circle"></i> 说明
-                        </a>
-
-                    </div>
-                </div>
-                
-            </div>
-
-            <button class="collapsible" id="Collapsible4" data-expanded="false">
-                刷机包
-                <i class="fa fa-chevron-down"></i>
-            </button>
-            <div class="content">
-                <div class="tool-container">
-                    <div class="input-group">
-                        <input type="text" id="cloudLink"
-                            value="https://pan.xunlei.com/s/VORRS6Nv19u6ucrc0_OVvx8DA1?pwd=m8ef" placeholder="云盘链接"
-                            readonly>
-                    </div>
-                    <div class="input-group extract-code">
-                        <input type="text" id="extractCode" value="提取码：m8ef" placeholder="提取码" readonly>
-                    </div>
-                    <div class="button-group">
-                        <a href="javascript:;" class="btn btn-secondary" id="openLink" aria-label="打开云盘链接">
-                            <i class="fa fa-window-restore"></i> 打开
-                        </a>
-                        <a href="javascript:;" class="btn btn-secondary" id="copyLink" aria-label="复制云盘链接">
-                            <i class="fa fa-copy"></i> 复制
-                        </a>
-                    </div>
-                </div>
-            </div>
-             <div class="hint">注：已在官网下载，可忽视</br>刷纯净系统 无任何广告 </div>
-        </section>
-
-        <!-- 密码区域 -->
-        <section class="section">
-            <h2>密码（自动发）</h2>
-
-            <div class="qr-center">
-                <div class="qr-container">
-                    <img src="pic/fk.png" alt="在线密钥" class="qr-image" id="qrImage">
-                    <button id="changeCodeBtn">微码</button>
-                </div>
-            </div>
-
-            <div class="button-center">
-                <a href="https://pay.ldxp.cn/shop/EMSDA9S1/olon3p" target="_blank" class="btn btn-green"
-                    id="getPasswordPay" aria-label="密码渠道">
-                    <i class="fa fa-bolt"></i> 密码·获取
-                </a>
-                <a href="https://www.kdocs.cn/l/cjoiPfvOmvgY" target="_blank"class="btn btn-secondary"  aria-label="帮助">
-                    <i class="fa fa-info-circle"></i> 帮助
-                </a>
-            </div>
-
-            <div class="hint">如需密码 自行获取 100%可用</div>
-
-            <!-- 为使用说明按钮设定可通过 data-expanded 控制的默认值 -->
-            <button class="collapsible" id="Collapsible1" data-expanded="false">
-                使用说明
-                <i class="fa fa-chevron-down"></i>
-            </button>
-            <div class="content">
-                <ul style="margin: 15px; line-height: 1.8; list-style-position: inside;">
-                    <li>将获取的密码，输入 对应密码框</li>
-                </ul>
-            </div>
-              <!--<button class="collapsible" id="Collapsible2">
-                密码解释
-                <i class="fa fa-chevron-down"></i>
-            </button>
-           <div class="content">
-                <table class="password-table">
-                    <tr>
-                        <th>密码类型</th>
-                        <th>作用</th>
-                        <th>备注</th>
-                    </tr>
-                    <tr>
-                        <td>解压码</td>
-                        <td>解压文件</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>使用码</td>
-                        <td>解压软件</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>授权码</td>
-                        <td>打开使用软件</td>
-                        <td>本次使用</td>
-                    </tr>
-                    <tr>
-                        <td colspan="4" style="text-align: left;">
-                            注：密码类型，非全部使用，仅作说明
-                        </td>
-                    </tr>
-                </table>
-            </div>-->
-        </section>
-       
-        <!-- 帮助区域 -->
-        <section class="section">
-            <h2>帮助</h2>
-            <div class="help-text">
-                <strong>官网：</strong><a href="https://360os.top" class="link" target="_blank"
-                    rel="noopener noreferrer">360os.top</a>
-            </div>
-
-            <div class="divider"></div>
-
-            <div class="help-text">
-                 <strong>远程协助</strong>
-            </div>
-            <div class="help-text">
-                工微（优先捐赠者）：wander-wechat</br>
-                解决99%的问题/支持：刷机、解锁、Root、Twrp、IMEI、位置穿越等</br>
-            </div>
-
-              <a href="https://www.360os.top/src/donation/" target="_blank" class="btn btn-secondary"
-                id="humanVerification" aria-label="公益捐赠">
-                <i class="fa fa-dollar"></i> 捐赠
-            </a>
-            <a href="javascript:;" class="btn btn-secondary" id="humanService" aria-label="人工客服">
-                <i class="fa fa-user"></i> 人工
-            </a>
-          
-            <a href="https://sunlogin.oray.com/download?categ=personal" target="_blank" rel="noopener noreferrer"
-                class="btn btn-secondary" id="remoteHelp" aria-label="向日葵远程">
-                <i class="fa fa-desktop"></i> 远程
-            </a>
-        </section>
-    </main>
-
-    <!-- 页脚 -->
-    <footer>
-        <div class="container">
-            <p>仅供学习，请下载后24h删除</p>
-            <p>现在时间: <span id="currentTime">--:--</span></p>
-        </div>
-    </footer>
-
-   <!-- 公众号二维码显示区域 -->
-<div class="wechat-qr-container" id="wechatQrContainer">
-    <div class="wechat-qr-content">
-        <img src="pic/wx-gzh.png" alt="微信公众号" class="wechat-qr-image">
-        <div class="wechat-qr-text">微信公众号</div>
+      </div>
+      <div class="ssBtn">
+        <div class="adf"></div>
+      </div>
     </div>
-</div>
+    <ol id="playlist"></ol>
+  </div>
 
-<!-- 二维码按钮 -->
-<div class="float-button" id="qrButton">
-    <button class="float-btn" id="qrCodeBtn" aria-label="显示微信公众号二维码" tabindex="0" aria-expanded="false">
-        <i class="fa fa-qrcode"></i>
-    </button>
-    <div class="float-content">
-        <span class="float-text">微信公众号</span>
+  <script src="src/webmp3/js/jquery.min.js"></script>
+  <script src="src/webmp3/js/jquery.marquee.min.js"></script>
+  <script>
+    // webmp3 播放器歌曲列表
+    var playlist = [
+      {
+        title: "See You Again - ",
+        artist: "",
+        cover: "https://p2.music.126.net/6MhAiNsF-Je1DtG15nY5ug==/109951164497419892.jpg?param=106x106F",
+        mp3: "https://workdrive.zohopublic.com.cn/external/a44da1ff17bb0eb428cbb9907eef7b33e30b1d6c31ee28709e58ec3a3269110a/download?directDownload=true"
+      },
+    ];
+    var isRotate = true;
+    var autoplay = false;
+  </script>
+  <script src="src/webmp3/js/player.js"></script>
+  <script>
+        <div class="adf"></div>
+      </div>
     </div>
-</div>
+    <ol id="playlist"></ol>
+  </div>
 
-<!-- 置顶按钮 -->
-<div class="float-button" id="topButton">
-    <button class="float-btn" id="backToTop" aria-label="返回顶部" tabindex="0" aria-expanded="false">
-        <i class="fa fa-angle-up"></i>
-    </button>
-    <div class="float-content">
-        <span class="float-text">返回顶部</span>
-    </div>
-</div>
+  <script src="src/webmp3/js/jquery.min.js"></script>
+  <script src="src/webmp3/js/jquery.marquee.min.js"></script>
+  <script>
+    // webmp3 播放器歌曲列表
+    var playlist = [
+      {
+        title: "See You Again - ",
+        artist: "",
+        cover: "https://p2.music.126.net/6MhAiNsF-Je1DtG15nY5ug==/109951164497419892.jpg?param=106x106F",
+        mp3: "https://workdrive.zohopublic.com.cn/external/a44da1ff17bb0eb428cbb9907eef7b33e30b1d6c31ee28709e58ec3a3269110a/download?directDownload=true"
+      },
+    ];
+    var isRotate = true;
+    var autoplay = false;
+  </script>
+  <script src="src/webmp3/js/player.js"></script>
+  <script>
+    function bgChange() {
+      var lis = $('.lib');
+      for (var i = 0; i < lis.length; i += 2)
+        lis[i].style.background = 'rgba(246, 246, 246, 0.5)';
+    }
+    window.onload = bgChange;
+  </script>
+  <!-- 移动端设备判断和跳转 -->
+  <script type="text/javascript">
+    function browserRedirect() {
+      var sUserAgent = navigator.userAgent.toLowerCase();
+      var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+      var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+      var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+      var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+      var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+      var bIsAndroid = sUserAgent.match(/android/i) == "android";
+      var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+      var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
 
-    <!-- 说明模态框 -->
-    <div id="infoModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeInfoModal">&times;</span>
-            <p style="text-align: center; font-weight: bold;">21年~至今（100%可用）</p>
-            <h3>工具（唯一可用）</h3>
-            <div class="modal-body">
-                <p>1. 请合理使用，不滥用</p>
-                <p>2. 已在官网下载，可忽视</p>
-                <p>3. 请详阅，相关文本，对您很有帮助</p>
-                <p>4. 请尽量在，正版windows系统上使用</p>
-            </div>
-            <h3>咨询（优先捐赠者）</h3>
-            <div class="modal-body">
-                <p>1. 嫌繁琐，不会弄，请考虑远程协助</p>
-            </div>
-            <h3>密码（多种渠道获取）</h3>
-            <div class="modal-body">
-                <p>1. 免费：免费任务</p>
-                <p>2. 自购：自己选购</p>
-                <p>3. 捐赠：捐赠</p>
-                <p>4. 其它：见附件</p>
-            </div>
-        </div>
-    </div>
+      if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+        window.location.href = 'index.htm';
+      } else {
+        // window.location= '';
+      }
+    }
 
-    <!-- 人工客服模态框 -->
-    <div id="serviceModal" class="modal">
-        <div class="modal-content" style="width: 320px; max-width: 90%; padding: 20px 18px;">
-            <span class="close" id="closeServiceModal">&times;</span>
-            <div class="modal-body" style="text-align: center;">
-                <img src="pic/wx-code.png" alt="二维码" style="max-width: 180px; margin: 10px auto;">
-                <p style="margin-top: 15px; font-weight: bold; color: red;">优先-捐赠者(恶意打扰，删)</p>
-                <p style="font-size: 13px; font-weight: bold; color: rgb(80, 80, 80);">注：不符勿扰；简述事宜</p>
-            </div>
-        </div>
-    </div>
+    browserRedirect(); //调用自身，页面一打开就开始跳转
 
-    <script src="js/main.js"></script>
-    <script>
-        // 换码按钮切换二维码图片（修复语法并避免页面内报错）
-        (function () {
-            var btn = document.getElementById('changeCodeBtn');
-            var img = document.getElementById('qrImage');
-            if (!btn || !img) return;
-            var img1 = 'pic/fk.png';
-            var img2 = 'pic/wx1.png';
-            var showing1 = true;
-            btn.addEventListener('click', function () {
-                img.src = showing1 ? img2 : img1;
-                showing1 = !showing1;
-            });
-        })();
+    // 动态设置更新时间
+    function setUpdateTime() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1;
+      // 只显示年份和月份，不显示日期
+      const updateTimeStr = `${year}年${month}月`;
 
-        // 页面加载完成后执行
-        window.addEventListener('DOMContentLoaded', setUpdateTime);
+      const updateTimeElement = document.getElementById('updateTime');
+      if (updateTimeElement) {
+        updateTimeElement.textContent = updateTimeStr;
+      }
+    }
 
-        // 动态设置更新时间
+    // 立即执行函数
+    setUpdateTime();
 
-        function setUpdateTime() {
-            const now = new Date();
-            const year = now.getFullYear();
-            const month = now.getMonth() + 1;
-            const day = now.getDate();
-            // 显示年份、月份和日期
-            const updateTimeStr = `${year}年${month}月`;
-
-            const updateTimeElement = document.getElementById('updateTime');
-            if (updateTimeElement) {
-                updateTimeElement.textContent = updateTimeStr;
-            }
-        }
-
-        // 立即执行函数
-        setUpdateTime();
-    </script>
-
-
+  </script>
+  <!-- 权限提示弹窗 -->
+  <div class="permission-alert"></div>
+  <script src="js/page_main.js"></script>
 </body>
 
 </html>
