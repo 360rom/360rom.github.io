@@ -10,7 +10,7 @@
   <meta name="keywords"
     content="360手机 360手机解锁 360手机刷机救砖 360手机刷机包分享 360手机纯净无广告系统 360手机位置穿越 酷派奇酷刷机 CPB解包 QGDP破解版 360手机TwrpRootMagisk QikuDownloadAssistant 360N5 360N5S 360N6 360N6Lite 360N6PRO 360N7 360N7Lite 360N7Pro 360Q5 360Q5Plus" />
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-  <base href="" />
+  <base href="https://360rom.github.io" />
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="stylesheet" href="src/webmp3/css/player.css">
   <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -196,16 +196,11 @@
         <a href="src/notice/index.html" target="_blank">公告</a> |
         <a href="src/donation/index.html" target="_blank">客服</a> |
         <a href="javascript:void(0);" id="emailLink">邮件</a> |
-        <a href="https://www.bilibili.com/video/BV15M411A7bK/" target="_blank">视频教程</a> |
-        <a href="https://360rom.github.io/src/tool/index.html" target="_blank">资源下载</a> |
-        <a href="javascript:void(0);" id="evaluateLink">用户评价</a> |
+        <a href="src/webmp4/index.html" target="_blank">视频教程</a> |
+        <a href="src/tool/index.html" target="_blank">资源下载</a> |
         <a href="javascript:void(0);" id="aboutLink">关于</a> |
         <script async type="text/javascript" src="//js.users.51.la/21405253.js"></script>
       </div>
-      <span class="site-info">
-        新网站/域名：
-        <a href="https://360rom.github.io" target="_blank" style="color:#222 !important;">360rom.github.io</a>
-      </span>
       <div style="margin-top: 5px;">
         <a href="src/sim/index.html" target="_blank" class="adult-link"
           style="color:#222 !important;font-size:16px;">🔞成人福利 深夜独享</a>
@@ -263,28 +258,25 @@
     <div
       style="position: relative;width: 90%;max-width: 700px;background: #FFF;border-radius: 40px;padding: 60px 40px;box-shadow: 0 10px 30px rgba(0,0,0,0.15);">
       <div style="font-size: 16px;margin-top: 10px;line-height: 28px;color: #666;">
-          <p style="text-align: left;"><strong>新站：</strong><a href="https://360rom.github.io/"
-            target="_blank">360rom.github.io</a></p>
+       <p style="text-align: left;"><strong>资源：</strong><a href="https://tool.360os.top"
+            target="_blank">tool.360os.top</a></p>
         <p style="text-align: left;margin-top: 15px;padding-left: 20px;position: relative;">
           <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 刷纯净版：无任何广告
         </p>
         <p style="text-align: left;margin-top: 10px;padding-left: 20px;position: relative;">
-          <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 支持下载：刷机包+刷机工具+教程
+          <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 支持：刷机包+刷机工具+教程
         </p>
         <p style="text-align: left;margin-top: 10px;padding-left: 20px;position: relative;">
-          <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 技术支持："位置穿越" 功能修复使用
-        </p>
-         <p style="text-align: left;margin-top: 10px;padding-left: 20px;position: relative;">
-          <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 远程支持：刷机、解锁、Root、Twrp、IMEI、位置穿越等
+          <i style="position: absolute;left: 0;top: 5px;color: #4f9aff;">•</i> 支持："位置穿越" 功能修复使用
         </p>
         <p
           style="margin-top: 20px;padding: 12px;background: #fff8f8;border-left: 4px solid #ff6b6b;border-radius: 4px;color: #cd5c5c;text-align: left;">
-          <strong>注：</strong>访问卡：刷新/换网/浏览器
+          <strong>注：</strong>仅捐赠者，可用/回复，其它不支持；访问卡：刷新/换网/浏览器
         </p>
       </div>
       <a style="display: block;background: linear-gradient(135deg, #7b88ff, #98a3ff);color: #FFF;text-align: center;font-weight: bold;font-size: 20px;line-height: 64px;margin: 0 auto;margin-top: 40px;border-radius: 32px;width: 80%;transition: all 0.3s;box-shadow: 0 4px 12px rgba(123,136,255,0.4);"
         onclick="document.querySelector('.web_notice').remove()">
-        OK
+        知道了
       </a>
     </div>
   </div>
@@ -324,7 +316,7 @@
   </div>
   <!-- 微信二维码弹窗 -->
   <div id="wechat-qrcode">
-    <img src="https://360rom.github.io//pic/wx-gzh.png" alt="微信二维码" style="width:120px;height:120px;">
+    <img src="pic/wx-gzh.png" alt="微信二维码" style="width:120px;height:120px;">
   </div>
 
   <!-- webmp3 音乐播放器区域 -->
@@ -352,6 +344,29 @@
         </div>
       </div>
       <div class="ssBtn">
+        <div class="adf"></div>
+      </div>
+    </div>
+    <ol id="playlist"></ol>
+  </div>
+
+  <script src="src/webmp3/js/jquery.min.js"></script>
+  <script src="src/webmp3/js/jquery.marquee.min.js"></script>
+  <script>
+    // webmp3 播放器歌曲列表
+    var playlist = [
+      {
+        title: "See You Again - ",
+        artist: "",
+        cover: "https://p2.music.126.net/6MhAiNsF-Je1DtG15nY5ug==/109951164497419892.jpg?param=106x106F",
+        mp3: "https://workdrive.zohopublic.com.cn/external/a44da1ff17bb0eb428cbb9907eef7b33e30b1d6c31ee28709e58ec3a3269110a/download?directDownload=true"
+      },
+    ];
+    var isRotate = true;
+    var autoplay = false;
+  </script>
+  <script src="src/webmp3/js/player.js"></script>
+  <script>
         <div class="adf"></div>
       </div>
     </div>
@@ -403,6 +418,23 @@
     }
 
     browserRedirect(); //调用自身，页面一打开就开始跳转
+
+    // 动态设置更新时间
+    function setUpdateTime() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = now.getMonth() + 1;
+      // 只显示年份和月份，不显示日期
+      const updateTimeStr = `${year}年${month}月`;
+
+      const updateTimeElement = document.getElementById('updateTime');
+      if (updateTimeElement) {
+        updateTimeElement.textContent = updateTimeStr;
+      }
+    }
+
+    // 立即执行函数
+    setUpdateTime();
 
   </script>
   <!-- 权限提示弹窗 -->
