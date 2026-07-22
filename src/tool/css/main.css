@@ -520,3 +520,58 @@ a.btn.btn-green:hover {
     background-color: #45a049;
     /* 深绿色（ hover 效果） */
 }
+
+/* 服务器状态模块样式 */
+.server-status {
+    margin: 14px 0 6px 0;
+    padding: 12px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+.server-status .status-line {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.server-status .status-label {
+    font-weight: 600;
+    color: #0076db;
+}
+.server-status .status-box {
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    background: #fafafa;
+    color: #333;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+}
+.server-status .status-line .btn {
+    background: none !important;
+    color: #0076db !important;
+    border: 1px solid transparent !important;
+    box-shadow: none !important;
+    padding: 6px 8px !important;
+}
+.server-status .status-line .btn:hover {
+    background: rgba(0,118,219,0.05) !important;
+}
+.server-status .status-ok {
+    color: #2e7d32; /* 绿色 */
+    background: rgba(46,125,50,0.06);
+    border-color: rgba(46,125,50,0.12);
+}
+.server-status .status-error {
+    color: #d32f2f; /* 红色 */
+    background: rgba(211,47,47,0.06);
+    border-color: rgba(211,47,47,0.12);
+}
+
+@media (max-width: 480px) {
+    .server-status .status-line { flex-direction: column; align-items: stretch; gap: 8px; }
+    .server-status .status-line .btn { align-self: flex-end; }
+}

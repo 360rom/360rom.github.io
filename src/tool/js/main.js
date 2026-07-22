@@ -378,3 +378,85 @@ addAccessibleClick('copyLink', function() {
         setTimeout(() => { this.innerHTML = originalText; }, 2000);
     }
 });
+
+// 服务器状态检测逻辑（纯本地实现）
+(function() {
+    const statusBox = document.getElementById('serverStatusBox');
+    const refreshBtn = document.getElementById('refreshServerStatus');
+    const urlInput = document.getElementById('serverUrl');
+    const builtinUrl = urlInput ? urlInput.value.trim() : 'https://360os.top';
+    let checking = false;
+
+    function setStatus(text, state) {
+        if (!statusBox) return;
+        statusBox.textContent = text;
+        statusBox.classList.remove('status-ok', 'status-error');
+        if (state === 'ok') statusBox.classList.add('status-ok');
+        if (state === 'error') statusBox.classList.add('status-error');
+    }
+
+    // 简单网络检测：向内置地址发起 fetch 请求，超时处理
+    function checkServer() {
+        if (!statusBox) return;
+        if (checking) return; // 防止并发
+        checking = true;
+        setStatus('检测中...', null);
+        if (refreshBtn) {
+            refreshBtn.setAttribute('disabled', 'disabled');
+            refreshBtn.setAttribute('aria-busy', 'true');
+            const origHtml = refreshBtn.getAttribute('data-orig') || refreshBtn.innerHTML;
+            refreshBtn.setAttribute('data-orig', origHtml);
+            try { refreshBtn.innerHTML = '<i class="fa fa-refresh fa-spin"></i> 刷新'; } catch (e) {}
+        }
+
+        // 记录开始时间，保证最少显示 3 秒“检测中..."
+        const startedAt = Date.now();
+
+        // 超时实现：fetch 最长等待 3 秒
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 3000);
+
+        fetch(builtinUrl, { method: 'HEAD', mode: 'no-cors', signal: controller.signal })
+            .then(() => {
+                clearTimeout(timeout);
+                const finalize = () => {
+                    setStatus('负载正常，请使用', 'ok');
+                    checking = false;
+                    if (refreshBtn) {
+                        refreshBtn.removeAttribute('disabled');
+                        refreshBtn.removeAttribute('aria-busy');
+                        const orig = refreshBtn.getAttribute('data-orig');
+                        if (orig) refreshBtn.innerHTML = orig;
+                    }
+                };
+                const elapsed = Date.now() - startedAt;
+                const wait = Math.max(0, 3000 - elapsed);
+                setTimeout(finalize, wait);
+            })
+            .catch((err) => {
+                clearTimeout(timeout);
+                const finalizeErr = () => {
+                    setStatus('网络异常，请刷新/反馈', 'error');
+                    checking = false;
+                    if (refreshBtn) {
+                        refreshBtn.removeAttribute('disabled');
+                        refreshBtn.removeAttribute('aria-busy');
+                        const orig = refreshBtn.getAttribute('data-orig');
+                        if (orig) refreshBtn.innerHTML = orig;
+                    }
+                };
+                const elapsed = Date.now() - startedAt;
+                const wait = Math.max(0, 3000 - elapsed);
+                setTimeout(finalizeErr, wait);
+            });
+    }
+
+    // 初始检测：等待约3秒后执行（按需求）
+    setTimeout(checkServer, 3000);
+
+    if (refreshBtn) {
+        refreshBtn.addEventListener('click', function() {
+            checkServer();
+        });
+    }
+})();

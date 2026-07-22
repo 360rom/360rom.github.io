@@ -147,13 +147,26 @@
                         </a>
                     </div>
                 </div>
-            </div>
-             <div class="hint">注：压缩包格式，请解压后使用</div>
+                </div>
+
+                <!-- 服务器状态模块 -->
+                <div class="server-status" id="serverStatusModule" aria-live="polite">
+                    <input type="hidden" id="serverUrl" value="https://360os.top">
+                    <div class="status-line">
+                        <span class="status-label">服务器状态</span>
+                        <button class="btn btn-secondary" id="refreshServerStatus" aria-label="刷新服务器状态">
+                            <i class="fa fa-refresh"></i> 刷新
+                        </button>
+                    </div>
+                    <div class="status-box" id="serverStatusBox">检测中...</div>
+                </div>
+
+                 <div class="hint">转存下载，速度飙快</div>
         </section>
 
         <!-- 密码区域 -->
         <section class="section">
-            <h2>软件/密码</h2>
+            <h2>工具/密码</h2>
 
             <!--  <div class="qr-center">
                 <div class="qr-container">
@@ -173,7 +186,7 @@
                 </a>
             </div>
 
-            <div class="hint">自行获取 均可使用</div>
+            <div class="hint">自行获取  100%可用 不满意包退</div>
 
             <!-- 为使用说明按钮设定可通过 data-expanded 控制的默认值 
             <button class="collapsible" id="Collapsible1" data-expanded="false">
@@ -231,14 +244,6 @@
             </div>
 
             <div class="divider"></div>
-
-            <div class="help-text">
-                 <h2>捐赠权益</h2>
-                 <strong>不限速下载：</strong><a href="https://os.360os.top/" class="link" target="_blank"
-                    rel="noopener noreferrer">os.360os.top</a> </br>
-                    <strong>万能文档：</strong><a href="https://doc.360os.top" class="link" target="_blank"
-                    rel="noopener noreferrer">doc.360os.top</a> </br>
-            </div>
             <div class="help-text">
                 工微（仅捐赠者）：wander-wechat</br>
                 支持：刷机、解锁、救砖、Root、Twrp、IMEI、位置穿越等</br>
@@ -258,7 +263,6 @@
     <footer>
         <div class="container">
             <p>仅供学习，请下载后24h删除</p>
-            <p>现在时间: <span id="currentTime">--:--</span></p>
         </div>
     </footer>
 
