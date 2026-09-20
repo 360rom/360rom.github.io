@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>360手机资源 全网唯一</title>
     <meta name="description" content="360手机刷机资源网站，提供360N4S、N5、N5S、N6、N6Pro、N7、N7Pro、Q5、Q5Plus等机型官方固件刷机包，型号代码查询，原厂刷机包下载。">
     <meta name="keywords" content="360手机,360OS,360N4S,N5,N5S,N6,N6Lite,N6Pro,N7,N7Lite,N7Pro,Q5,Q5Plus,刷机包,官方固件,型号代码,360os.top">
-
+    <title>360手机资源｜360OS</title>
     <style>
         * {
             margin: 0;
@@ -72,7 +71,6 @@
         }
         .link-text{
             font-size:14px;
-            color:#1677ff;
         }
         .pwd-info{
             margin-top:8px;
@@ -125,17 +123,19 @@
 <body>
 <div class="wrap">
     <div class="card">
-        <div class="title-main">360手机资源 全网唯一可用</div>
+        <div class="title-main">360手机资源 全网唯一</div>
+        <div class="official-site">官网：<a href="https://360os.top" target="_blank">360os.top</a></div>
         <div class="desc-text">原厂模式，官方刷机，极速适配，完美解决</div>
         <div class="link-box">
-            <div class="lab">云盘分享</div>
-            <div class="link-text" id="shareLink">https://pan.xunlei.com/s/VORRS6Nv19u6ucrc0_OVvx8DA1?pwd=m8ef</div>
+            <div class="lab"><strong>云盘分享</strong></div>
+            <div class="link-text" id="shareLink">
+                <a href="https://pan.xunlei.com/s/VORRS6Nv19u6ucrc0_OVvx8DA1?pwd=m8ef" target="_blank" style="color:#1677ff;word-break:break-all;text-decoration:none;">https://pan.xunlei.com/s/VORRS6Nv19u6ucrc0_OVvx8DA1?pwd=m8ef</a>
+            </div>
             <div class="pwd-info">提取码：<span id="pwdVal">m8ef</span></div>
         </div>
         <button class="copy-btn" id="copyBtn">复制链接+提取码</button>
     </div>
 
-    <!-- 官网链接，居中，放在表格卡片内部标题上方 -->
     <div class="card">
         <div class="official-site" style="margin-bottom:12px;">官网：<a href="https://360os.top" target="_blank">360os.top</a></div>
         <h3 style="margin-bottom:12px;font-size:17px;text-align:center;">360手机常见型号代码</h3>
@@ -170,7 +170,8 @@
 <script>
     const copyBtn = document.getElementById('copyBtn');
     const toast = document.getElementById('toast');
-    const shareLink = document.getElementById('shareLink').innerText;
+    // 复制功能：取a标签内部文本
+    const shareLink = document.querySelector('#shareLink a').innerText;
     const pwdVal = document.getElementById('pwdVal').innerText;
     copyBtn.addEventListener('click', async () => {
         const copyText = `${shareLink}\n提取码：${pwdVal}`;
