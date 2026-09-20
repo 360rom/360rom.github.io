@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面未找到</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* 页面容器 */
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* 星空背景动画 */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* 404数字样式 */
+        .error-number {
+            font-size: 15rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* 错误信息样式 */
+        .error-message {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+
+        /* 返回首页按钮 */
+        .home-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .home-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .home-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .home-button:hover:before {
+            left: 100%;
+        }
+
+        /* 装饰元素 */
+        .decor {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            filter: blur(20px);
+            z-index: 0;
+        }
+
+        .decor:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation: move 15s infinite ease-in-out;
+        }
+
+        .decor:nth-child(2) {
+            bottom: 20%;
+            right: 15%;
+            animation: move 20s infinite ease-in-out 2s;
+        }
+
+        .decor:nth-child(3) {
+            top: 60%;
+            right: 20%;
+            animation: move 18s infinite ease-in-out 4s;
+        }
+
+        @keyframes move {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(20px, -20px); }
+            50% { transform: translate(40px, 0); }
+            75% { transform: translate(20px, 20px); }
+        }
+
+        /* 页脚 */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .error-number {
+                font-size: 10rem;
+            }
+            
+            .error-message {
+                font-size: 1.5rem;
+            }
+            
+            .home-button {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-number {
+                font-size: 7rem;
+            }
+            
+            .error-message {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div class="stars"></div>
+    
+    <!-- 装饰元素 -->
+    <div class="decor"></div>
+    <div class="decor"></div>
+    <div class="decor"></div>
+    
+    <!-- 404内容 -->
+    <div class="error-number">404</div>
+    <div class="error-message">
+        抱歉，您访问的页面不存在或已被移动。<br>
+        请检查您输入的URL是否正确，或返回首页。
+    </div>
+    <button class="home-button" id="homeBtn">返回首页</button>
+    
+    <!-- 页脚 -->
+    <footer>© 保留所有权利</footer>
+
+    <script>
+        // 创建星空背景
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // 随机位置
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // 随机大小
+                const size = Math.random() * 2 + 1;
+                
+                // 随机动画延迟
+                const delay = Math.random() * 5;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.animationDelay = `${delay}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // 返回首页功能
+        function setupHomeButton() {
+            const homeBtn = document.getElementById('homeBtn');
+            
+            homeBtn.addEventListener('click', () => {
+                // 添加点击效果
+                homeBtn.style.transform = 'translateY(3px)';
+                homeBtn.style.boxShadow = '0 3px 10px rgba(52, 152, 219, 0.3)';
+                
+                // 延迟跳转，让用户看到点击效果
+                setTimeout(() => {
+                    window.location.href = '/'; // 跳转到首页
+                }, 200);
+            });
+        }
+        
+        // 页面加载完成后初始化
+        window.addEventListener('load', () => {
+            createStars();
+            setupHomeButton();
+            
+            // 添加页面载入动画
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>
