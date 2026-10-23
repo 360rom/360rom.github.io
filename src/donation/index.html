@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">z
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex,nofollow">
     <title>360手机-客服在线</title>
     <style>
@@ -24,27 +24,22 @@
             font-size: 22px;
             margin-bottom: 16px;
         }
-        /* 公告区域 */
+        /* 公告区域 修改为静态列表 */
         .notice-wrap {
             background: #fff8e6;
             border: 1px solid #ffdd88;
             border-radius: 8px;
-            padding: 12px 16px;
-            height: 80px;
-            overflow: hidden;
-            position: relative;
+            padding: 16px;
             margin-bottom: 30px;
         }
-        .notice-item {
-            height: 56px;
-            line-height: 56px;
-            text-align: center;
+        .notice-list {
+            padding-left: 22px;
+        }
+        .notice-list li {
             font-size: 15px;
             color: #ff2222;
             font-weight: bold;
-        }
-        .notice-inner {
-            transition: transform 0.4s ease;
+            line-height: 28px;
         }
         .title-block {
             text-align: center;
@@ -147,27 +142,25 @@
 </head>
 <body>
     <h1>公告中心</h1>
-    <!-- 公告滚动区域 3秒切换 -->
+    <!-- 公告改为有序列表排版，取消滚动 -->
     <div class="notice-wrap">
-        <div class="notice-inner" id="noticeInner">
-            <div class="notice-item">提示一：扫码≥3 （不用截图）</div>
-            <div class="notice-item">提示二：因恶意咨询打扰，仅捐赠者=回复（其它无视）</div>
-            <div class="notice-item">提示三：带来不便，实在抱歉（异常，可联系说明）</div>
-        </div>
+        <ol class="notice-list">
+            <li>任何咨询=扫码≥3 （不用截图）</li>
+            <li>因恶意咨询打扰，仅捐赠者=回复（其它无视）</li>
+            <li>带来不便，实在抱歉（异常，可联系说明）</li>
+            <li>先捐赠，在联系；不符无视（重要的事说三遍）</li>
+            <li>支持：刷机、解锁、救砖、Root、Twrp等（100%成功率）</li>
+        </ol>
     </div>
-
     <div class="btn-group">
         <button class="btn btn-wechat" id="btnWx">微信捐赠</button>
         <button class="btn btn-alipay" id="btnAli">支付宝捐赠</button>
     </div>
-
     <!-- 默认加载微信图片 wx0.jpg -->
     <div class="pic-container" id="picBox">
         <img src="wx0.jpg" alt="微信捐赠二维码">
     </div>
-
-    <button class="trigger-modal-btn" id="openModal">符合捐赠 点我联系（不符无视）</button>
-
+    <button class="trigger-modal-btn" id="openModal">先捐赠 在点我联系（不符无视）</button>
     <!-- 模态弹窗 -->
     <div class="modal-mask" id="modalMask">
         <div class="modal-box">
@@ -175,42 +168,21 @@
             <button class="modal-close" id="closeModal">关闭</button>
         </div>
     </div>
-
 <script>
-    // ========== 公告3秒自动轮播 ==========
-    const noticeInner = document.getElementById('noticeInner');
-    const noticeItems = document.querySelectorAll('.notice-item');
-    const noticeHeight = 56;
-    let currentNoticeIndex = 0;
-    const noticeTotal = noticeItems.length;
-
-    function rollNotice() {
-        currentNoticeIndex ++;
-        if(currentNoticeIndex >= noticeTotal){
-            currentNoticeIndex = 0;
-        }
-        noticeInner.style.transform = `translateY(-${currentNoticeIndex * noticeHeight}px)`;
-    }
-    // 每3000ms切换
-    setInterval(rollNotice, 3000);
-
     // ========== 二维码切换按钮逻辑 ==========
     const btnWx = document.getElementById('btnWx');
     const btnAli = document.getElementById('btnAli');
     const picBox = document.getElementById('picBox');
-
     btnWx.addEventListener('click', function(){
         picBox.innerHTML = `<img src="wx0.jpg" alt="微信捐赠二维码">`;
     });
     btnAli.addEventListener('click', function(){
         picBox.innerHTML = `<div class="empty-tip">图片加载失败!</div>`;
     });
-
     // ========== 模态弹窗逻辑 ==========
     const modalMask = document.getElementById('modalMask');
     const openModalBtn = document.getElementById('openModal');
     const closeModalBtn = document.getElementById('closeModal');
-
     openModalBtn.addEventListener('click', function(){
         modalMask.style.display = 'flex';
     });
